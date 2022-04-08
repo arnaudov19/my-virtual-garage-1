@@ -1,0 +1,24 @@
+@import 'antd/dist/antd.css';
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.nav-bar{
+    width:1440px;
+    height: 4.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+.nav-menu {
+    width: 5rem;
+    display: flex;
+    justify-content: center;
+}
+.nav-bar img {
+    height: 4.5rem;
+    width: 4.5rem;
+}

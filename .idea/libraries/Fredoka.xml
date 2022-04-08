@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Fredoka">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/fonts/Fredoka.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
