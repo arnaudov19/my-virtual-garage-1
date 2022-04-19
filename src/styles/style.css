@@ -1,7 +1,8 @@
 @import 'antd/dist/antd.css';
-/*@tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities;*/
+@tailwind utilities;
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -15,8 +16,8 @@ body {
     display:flex;
     align-items: center;
     justify-content: center;
-    /*background-image: linear-gradient(rgb(0,0,0,0.2), rgb(0,0,0,0.2)),url("../img/garage-background.jpeg");*/
     background-attachment: fixed;
+/*    background-image: url("../img/garage-background.jpeg");*/
     /*background-color: #37c6ff;*/
 }
 /* ------------- MAIN PAGE TITLE -------------*/

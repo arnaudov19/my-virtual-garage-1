@@ -5,9 +5,9 @@ import UserProfilePage from "./UserProfilePage"
 import LoginPage from "./LoginPage"
 import { WelcomePage } from "./WelcomePage"
 import DetailedCarInfoPage from "./DetailedCarInfoPage"
-import {ForgottenPasswordPage} from "./ForgottenPasswordPage";
+import { ForgottenPasswordPage } from "./ForgottenPasswordPage"
+import UserProfilePageV1 from "./UserProfilePageV1"
 
-// TODO rename to something better
 export const ChangePageComponent = () => {
     const [currentPage, setCurrentPage] = useState(0)
     const [currentEmail, setCurrentEmail] = useState("")
@@ -49,7 +49,10 @@ export const ChangePageComponent = () => {
             )
         case 6:
             return (
-                <ForgottenPasswordPage currentPageLogin={currentPage} onSetPage={(page: number) => setCurrentPage(page)} />
+                <ForgottenPasswordPage
+                    currentPageLogin={currentPage}
+                    onSetPage={(page: number) => setCurrentPage(page)}
+                />
             )
         default:
             return <WelcomePage />

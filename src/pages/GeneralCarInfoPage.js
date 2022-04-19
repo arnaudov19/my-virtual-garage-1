@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "../styles/style.css"
+/*import "../styles/style.css"*/
 import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps, Checkbox } from "antd"
 import { WelcomePage } from "./WelcomePage"
 import { ProgressSteps } from "../reusable-components/ProgressSteps"

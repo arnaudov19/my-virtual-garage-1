@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import "../styles/style.css"
+/*import "../styles/style.css"*/
 import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps, Checkbox } from "antd"
 import { Option } from "antd/es/mentions"
 import { WelcomePage } from "./WelcomePage"
