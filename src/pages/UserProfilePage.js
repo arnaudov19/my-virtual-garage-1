@@ -1,10 +1,11 @@
 // @flow
 
-import React, { Fragment } from "react"
+import React, { Fragment, useState } from "react"
 import { Disclosure, Menu, Transition } from "@headlessui/react"
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline"
 import { Descriptions, Tabs } from "antd"
 import { PaperClipIcon } from "@heroicons/react/solid"
+
 const TabPane = { Tabs }
 const user = {
     name: "Martin Arnaudov",
@@ -14,7 +15,7 @@ const user = {
 }
 const navigation = [
     { name: "General Car Info", current: true },
-    { name: "Detailed Card Info", current: false },
+    { name: "Detailed Car Info", current: false },
     { name: "Maintenance", current: false },
     { name: "Documents", current: false },
 ]
@@ -28,9 +29,11 @@ type Props = {
     onSetPage: number,
 }
 const UserProfilePage = (props: Props) => {
+    const [tabNumber, setTabNumber] = useState(0)
     const logOutHandler = () => {
         props.onSetPage(0)
     }
+    const changeTabHandler = () => {}
     return (
         <>
             <body style={{ display: "inherit", justifyContent: "flex-start" }}>

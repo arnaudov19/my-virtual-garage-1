@@ -26,26 +26,30 @@ const LoginPage = (props: Props): any => {
         setUserPass(event.target.value)
     }
     const userData = {
-        username: props.customerEmail,
+        userEmail: props.customerEmail,
         password: props.customerPassword,
     }
     const adminCredentials = {
-        username: "admin",
-        password: "admin",
+        adminEmail: "admin",
+        adminPassword: "admin",
     }
     console.log(userData)
-    const [userEmail, setUserEmail] = useState("")
-    const [userPass, setUserPass] = useState("")
+    const [userEmail, setUserEmail] = useState("o")
+    const [userPass, setUserPass] = useState("o")
 
-    let customerCredentials = userData.username === userEmail && userData.password === userPass
-    const adminLogin = adminCredentials.username === userEmail && adminCredentials.password === userPass
+    let customerCredentials = userData.userEmail === userEmail && userData.password === userPass
+    const adminLogin = adminCredentials.adminEmail === userEmail && adminCredentials.adminPassword === userPass
 
     const validateUserCredentials = () => {
-        if (customerCredentials || adminLogin) {
+        if (customerCredentials) {
+            console.log("Successful", userEmail, userPass)
+            props.onSetPage(2)
+        } else if (adminLogin) {
             console.log("Successful", userEmail, userPass)
             props.onSetPage(2)
         } else {
             console.log("Unsuccessful", userEmail, userPass)
+            props.onSetPage(1)
         }
     }
     const forgottenPasswordHandler = () => {

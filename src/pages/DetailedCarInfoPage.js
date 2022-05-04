@@ -46,17 +46,20 @@ const GeneralCarInfoPage = (props: Props) => {
         console.log(oilType)
     }
 
-    const submitHandler = (event) => {
+    const nextPageHandler = (event) => {
         event.preventDefault()
         props.onSetPage(1)
     }
+    const backPageHandler = (event) => {
+        event.preventDefault()
+        props.onSetPage(0)
+    }
+
     return (
         <div className="signup-form-container">
             <ProgressSteps currentStep={2} />
             <div className="input-fields-signup-container">
-                <form
-                    onSubmit={submitHandler}
-                    style={{ width: "60%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <Form style={{ width: "60%", display: "flex", flexDirection: "column", alignItems: "center" }}>
                     <CustomNumberInputField
                         onChange={getKmOnPurchase}
                         value={kmOnPurchase}
@@ -75,12 +78,19 @@ const GeneralCarInfoPage = (props: Props) => {
                     <CustomNumberInputField size="large" label="Power" placeholder="170hp" />
                     <CustomInputField onChange={getOilType} size="large" label="Oil type" placeholder="SAE 10W-40" />
 
-                    <Form.Item style={{ display: "flex", alignItems: "center" }}>
-                        <Button htmlType="submit" size="large" type="primary">
+                    <div style={{ width: "300px", display: "flex", justifyContent: "space-around" }}>
+                        <button
+                            onClick={backPageHandler}
+                            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+                            Back
+                        </button>
+                        <button
+                            onClick={nextPageHandler}
+                            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
                             Create Account
-                        </Button>
-                    </Form.Item>
-                </form>
+                        </button>
+                    </div>
+                </Form>
             </div>
         </div>
     )

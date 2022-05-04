@@ -6,7 +6,6 @@ import LoginPage from "./LoginPage"
 import { WelcomePage } from "./WelcomePage"
 import DetailedCarInfoPage from "./DetailedCarInfoPage"
 import { ForgottenPasswordPage } from "./ForgottenPasswordPage"
-import UserProfilePageV1 from "./UserProfilePageV1"
 
 export const ChangePageComponent = () => {
     const [currentPage, setCurrentPage] = useState(0)

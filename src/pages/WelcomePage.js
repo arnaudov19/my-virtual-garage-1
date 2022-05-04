@@ -18,12 +18,16 @@ export const WelcomePage = (props: Props) => {
                 <h1>Welcome to My Virtual Garage</h1>
             </div>
             <div className="button-container">
-                <Button onClick={goToCreateAccPage} type="primary" size="large">
+                <button
+                    onClick={goToCreateAccPage}
+                    className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
                     Create new
-                </Button>
-                <Button onClick={goToLoginPage} size="large">
+                </button>
+                <button
+                    onClick={goToLoginPage}
+                    className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
                     Log in
-                </Button>
+                </button>
             </div>
         </div>
     )

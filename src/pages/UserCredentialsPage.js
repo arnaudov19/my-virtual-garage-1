@@ -5,6 +5,7 @@ import { ProgressSteps } from "../reusable-components/ProgressSteps"
 import { CustomInputField } from "../reusable-components/CustomInputField"
 import CustomPasswordInputField from "../reusable-components/CustomPasswordInputField"
 import LoginPage from "./LoginPage"
+import { ArrowLeftOutlined } from "@ant-design/icons"
 
 const { Step } = Steps
 
@@ -28,28 +29,29 @@ const UserCredentialsPage = (props: Props) => {
     const getConfirmUserPassword = (event) => {
         setConfirmUserPassword(event.target.value)
     }
-    const submitHandler = (event) => {
+    const nextPageHandler = (event) => {
         event.preventDefault()
-        console.log("Form submitted")
         props.onSetPage(4)
-        props.userEmail(userData.email)
+        /*        props.userEmail(userData.email)
         props.password(userData.password)
         setUserEmail("")
         setUserPassword("")
-        setConfirmUserPassword("")
+        setConfirmUserPassword("")*/
+    }
+    const backPageHandler = (event) => {
+        event.preventDefault()
+        props.onSetPage(0)
     }
     const userData = {
         email: userEmail,
         password: userPassword,
         confirmPass: confirmUserPassword,
     }
-    console.log("pico", userData)
     return (
         <div className="signup-form-container">
             <ProgressSteps currentStep={0} />
             <div className="input-fields-signup-container">
-                <form
-                    onSubmit={submitHandler}
+                <Form
                     style={{
                         width: "60%",
                         display: "flex",
@@ -81,17 +83,19 @@ const UserCredentialsPage = (props: Props) => {
                         placeholder="Confirm Your Password"
                         name="confirm-password"
                     />
-                    <Form.Item>
-                        <Button htmlType="submit" size="large" type="primary">
+                    <div style={{ width: "300px", display: "flex", justifyContent: "space-around" }}>
+                        <button
+                            onClick={backPageHandler}
+                            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+                            Back
+                        </button>
+                        <button
+                            onClick={nextPageHandler}
+                            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
                             Next
-                        </Button>
-                    </Form.Item>
-                </form>
-                <div>
-                    <p>{userEmail}</p>
-                    <p>{userPassword}</p>
-                    <p>{confirmUserPassword}</p>
-                </div>
+                        </button>
+                    </div>
+                </Form>
             </div>
         </div>
     )

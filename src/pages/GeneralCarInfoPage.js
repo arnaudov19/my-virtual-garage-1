@@ -4,7 +4,6 @@ import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps, Ch
 import { WelcomePage } from "./WelcomePage"
 import { ProgressSteps } from "../reusable-components/ProgressSteps"
 import { CustomInputField } from "../reusable-components/CustomInputField"
-import { setCurrentPage } from "../storage/mainStorage"
 
 const { Step } = Steps
 const { Option } = Select
@@ -32,16 +31,19 @@ const GeneralCarInfoPage = (props: Props) => {
         setIsANewCar(event.target.value)
         console.log(setIsANewCar)
     }
-    const submitHandler = (event) => {
+    const nextPageHandler = (event) => {
         event.preventDefault()
         props.onSetPage(5)
+    }
+    const backPageHandler = (event) => {
+        event.preventDefault()
+        props.onSetPage(3)
     }
     return (
         <div className="signup-form-container">
             <ProgressSteps currentStep={1} />
             <div className="input-fields-signup-container">
                 <form
-                    onSubmit={submitHandler}
                     layout="horizontal"
                     style={{
                         width: "60%",
@@ -87,11 +89,18 @@ const GeneralCarInfoPage = (props: Props) => {
                             <DatePicker />
                         </div>
                     </Form.Item>
-                    <Form.Item style={{ display: "flex", alignItems: "center" }}>
-                        <Button size="large" htmlType="submit" type="primary">
+                    <div style={{ width: "300px", display: "flex", justifyContent: "space-around" }}>
+                        <button
+                            onClick={backPageHandler}
+                            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+                            Back
+                        </button>
+                        <button
+                            onClick={nextPageHandler}
+                            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
                             Next
-                        </Button>
-                    </Form.Item>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
