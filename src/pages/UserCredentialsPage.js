@@ -32,20 +32,10 @@ const UserCredentialsPage = (props: Props) => {
     const nextPageHandler = (event) => {
         event.preventDefault()
         props.onSetPage(4)
-        /*        props.userEmail(userData.email)
-        props.password(userData.password)
-        setUserEmail("")
-        setUserPassword("")
-        setConfirmUserPassword("")*/
     }
     const backPageHandler = (event) => {
         event.preventDefault()
         props.onSetPage(0)
-    }
-    const userData = {
-        email: userEmail,
-        password: userPassword,
-        confirmPass: confirmUserPassword,
     }
     return (
         <div className="signup-form-container">

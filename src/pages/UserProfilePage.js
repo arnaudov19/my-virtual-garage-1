@@ -28,12 +28,17 @@ function classNames(...classes) {
 type Props = {
     onSetPage: number,
 }
+
 const UserProfilePage = (props: Props) => {
-    const [tabNumber, setTabNumber] = useState(0)
+    const [tab, setTab] = useState(navigation[0].current)
     const logOutHandler = () => {
         props.onSetPage(0)
     }
-    const changeTabHandler = () => {}
+    const getTabValue = (event) => {
+        event.preventDefault()
+        setTab(event.target.value)
+        console.log(tab)
+    }
     return (
         <>
             <body style={{ display: "inherit", justifyContent: "flex-start" }}>
@@ -59,6 +64,7 @@ const UserProfilePage = (props: Props) => {
                                             <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                                                 {navigation.map((item) => (
                                                     <a
+                                                        onClick={getTabValue}
                                                         key={item.name}
                                                         className={classNames(
                                                             item.current
@@ -130,11 +136,12 @@ const UserProfilePage = (props: Props) => {
                                         </div>
                                     </div>
                                 </div>
-
                                 <Disclosure.Panel className="sm:hidden">
                                     <div className="pt-2 pb-3 space-y-1">
                                         {navigation.map((item) => (
                                             <Disclosure.Button
+                                                onClick={getTabValue}
+                                                value={tab}
                                                 key={item.name}
                                                 as="a"
                                                 href={item.href}
