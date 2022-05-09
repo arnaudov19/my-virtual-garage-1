@@ -34,7 +34,6 @@ config.json
 .idea
 build
 .env
-.next
 .terraform
 *.iml
 .serverless
