@@ -1,0 +1,8 @@
+build
+my_resources
+node_modules
+tests
+lambda
+__tests__
+sdk
+migrations
