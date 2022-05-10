@@ -1,4 +1,4 @@
-// @flow
+
 /*import "../styles/style.css"*/
 import { Button, Form, Input } from "antd"
 import Checkbox from "antd/es/checkbox/Checkbox"
@@ -13,7 +13,8 @@ type Props = {
 }
 
 const LoginPage = (props: Props): any => {
-    const onFinish = (values) => {
+
+    const onFinish = (values: any) => {
         console.log("Success:", values)
     }
     const onFinishFailed = (errorInfo) => {
