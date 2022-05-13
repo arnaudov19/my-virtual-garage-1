@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Fragment, useState } from "react"
 import { Disclosure, Menu, Transition } from "@headlessui/react"
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline"
@@ -14,31 +12,44 @@ const user = {
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 }
 const navigation = [
-    { name: "General Car Info", current: true },
-    { name: "Detailed Car Info", current: false },
+    { name: "General Car Info", current: false },
+    { name: "Detailed Car Info", current: true },
     { name: "Maintenance", current: false },
     { name: "Documents", current: false },
 ]
-const userNavigation = [{ name: "Your Profile" }, { name: "Settings" }, { name: "Sign out" }]
 
-function classNames(...classes) {
+function classNames(...classes: any) {
     return classes.filter(Boolean).join(" ")
 }
 
 type Props = {
-    onSetPage: number,
+    onSetPage: (page: number) => void
+    currentPageLogin: number
+    customerEmail: string
+    customerPassword: string
+    newPurchased: string
+    carModel: string
+    /*    carBrand: string
+    registrationDate: string
+    purchaseDate: string*/
 }
-
 const UserProfilePage = (props: Props) => {
     const [tab, setTab] = useState(navigation[0].current)
     const logOutHandler = () => {
         props.onSetPage(0)
     }
-    const getTabValue = (event) => {
+    const getTabValue = (event: any) => {
         event.preventDefault()
         setTab(event.target.value)
         console.log(tab)
     }
+    const userInput = {
+        userEmail: props.customerEmail,
+        userPassword: props.customerPassword,
+        newlyPurchased: props.newPurchased,
+        carModel: props.carModel,
+    }
+    console.log(userInput)
     return (
         <>
             <body style={{ display: "inherit", justifyContent: "flex-start" }}>
@@ -60,22 +71,6 @@ const UserProfilePage = (props: Props) => {
                                                     src={require("../img/my-virtual-garage-logo.png")}
                                                     alt="My Virtual garage"
                                                 />
-                                            </div>
-                                            <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-                                                {navigation.map((item) => (
-                                                    <a
-                                                        onClick={getTabValue}
-                                                        key={item.name}
-                                                        className={classNames(
-                                                            item.current
-                                                                ? "border-sky-500 text-gray-900"
-                                                                : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                                                            "inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                                                        )}
-                                                        aria-current={item.current ? "page" : undefined}>
-                                                        {item.name}
-                                                    </a>
-                                                ))}
                                             </div>
                                         </div>
                                         <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -137,25 +132,6 @@ const UserProfilePage = (props: Props) => {
                                     </div>
                                 </div>
                                 <Disclosure.Panel className="sm:hidden">
-                                    <div className="pt-2 pb-3 space-y-1">
-                                        {navigation.map((item) => (
-                                            <Disclosure.Button
-                                                onClick={getTabValue}
-                                                value={tab}
-                                                key={item.name}
-                                                as="a"
-                                                href={item.href}
-                                                className={classNames(
-                                                    item.current
-                                                        ? "bg-sky-50 border-sky-500 text-sky-700"
-                                                        : "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800",
-                                                    "block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-                                                )}
-                                                aria-current={item.current ? "page" : undefined}>
-                                                {item.name}
-                                            </Disclosure.Button>
-                                        ))}
-                                    </div>
                                     <div className="pt-4 pb-3 border-t border-gray-200">
                                         <div className="flex items-center px-4">
                                             <div className="flex-shrink-0">
@@ -171,16 +147,6 @@ const UserProfilePage = (props: Props) => {
                                                 <span className="sr-only">View notifications</span>
                                                 <BellIcon className="h-6 w-6" aria-hidden="true" />
                                             </button>
-                                        </div>
-                                        <div className="mt-3 space-y-1">
-                                            {userNavigation.map((item) => (
-                                                <Disclosure.Button
-                                                    key={item.name}
-                                                    as="a"
-                                                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
-                                                    {item.name}
-                                                </Disclosure.Button>
-                                            ))}
                                         </div>
                                     </div>
                                 </Disclosure.Panel>
@@ -200,15 +166,17 @@ const UserProfilePage = (props: Props) => {
                                         <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                                             <div className="sm:col-span-1">
                                                 <dt className="text-sm font-medium text-gray-500">Brand</dt>
-                                                <dd className="mt-1 text-sm text-gray-900">Skoda</dd>
+                                                <dd className="mt-1 text-sm text-gray-900">{userInput.userEmail}</dd>
                                             </div>
                                             <div className="sm:col-span-1">
                                                 <dt className="text-sm font-medium text-gray-500">Model</dt>
-                                                <dd className="mt-1 text-sm text-gray-900">Octavia vRS</dd>
+                                                <dd className="mt-1 text-sm text-gray-900">{userInput.carModel}</dd>
                                             </div>
                                             <div className="sm:col-span-1">
                                                 <dt className="text-sm font-medium text-gray-500">Newly Purchased?</dt>
-                                                <dd className="mt-1 text-sm text-gray-900">Yes</dd>
+                                                <dd className="mt-1 text-sm text-gray-900">
+                                                    {userInput.newlyPurchased}
+                                                </dd>
                                             </div>
                                             <div className="sm:col-span-1">
                                                 <dt className="text-sm font-medium text-gray-500">Purchase Date</dt>
