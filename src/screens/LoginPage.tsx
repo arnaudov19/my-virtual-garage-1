@@ -1,6 +1,6 @@
 import { Button, Form, Input } from "antd"
 import Checkbox from "antd/es/checkbox/Checkbox"
-import CreateUserCredentials from "./CreateUser-Credentials"
+import UserCredentialsPage from "./UserCredentialsPage"
 import React, { useState } from "react"
 import { LockClosedIcon } from "@heroicons/react/outline"
 import "../img/my-virtual-garage-logo.png"
