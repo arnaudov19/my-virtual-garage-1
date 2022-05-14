@@ -3,8 +3,6 @@ import { Button, Form, Input, Steps } from "antd"
 import { ProgressSteps } from "../components/ProgressSteps"
 import { CustomInputField } from "../components/CustomInputField"
 import CustomPasswordInputField from "../components/CustomPasswordInputField"
-import LoginPage from "./LoginPage"
-import { ArrowLeftOutlined } from "@ant-design/icons"
 
 const { Step } = Steps
 
@@ -15,7 +13,7 @@ type Props = {
     currentPageLogin: number
 }
 
-const UserCredentialsPage = (props: Props) => {
+const CreateUserCredentials = (props: Props) => {
     const [userEmail, setUserEmail] = useState("")
     const [userPassword, setUserPassword] = useState("")
     const [confirmUserPassword, setConfirmUserPassword] = useState("")
@@ -94,4 +92,4 @@ const UserCredentialsPage = (props: Props) => {
         </div>
     )
 }
-export default UserCredentialsPage
+export default CreateUserCredentials

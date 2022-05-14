@@ -1,7 +1,7 @@
 import { useState } from "react"
 /*import "../styles/style.css"*/
 import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps, Checkbox } from "antd"
-import { WelcomePage } from "./WelcomePage"
+import { WelcomeScreen } from "./WelcomeScreen"
 import { ProgressSteps } from "../components/ProgressSteps"
 import { CustomInputField } from "../components/CustomInputField"
 
@@ -13,9 +13,10 @@ type Props = {
     currentPageLogin: number
     newPurchasedCar: (newCar: string) => void
     carModel: (model: string) => void
+    registrationDate: (regDate: string) => void
 }
 
-const GeneralCarInfoPage = (props: Props) => {
+const CreateUserDetailedCarInfo = (props: Props) => {
     const [carBrand, setCarBrand] = useState("")
     const [carModel, setCarModel] = useState("")
     const [isANewCar, setIsANewCar] = useState("")
@@ -32,10 +33,15 @@ const GeneralCarInfoPage = (props: Props) => {
     const getIsANewCar = (event: any) => {
         setIsANewCar(event.target.value)
     }
+    const getRegistrationDate = (dateString: string) => {
+        setRegistrationDate(dateString)
+        console.log(registrationDate)
+    }
     const nextPageHandler = () => {
         props.onSetPage(5)
         props.newPurchasedCar(isANewCar)
         props.carModel(carModel)
+        props.registrationDate(registrationDate)
     }
     const backPageHandler = () => {
         props.onSetPage(3)
@@ -77,7 +83,7 @@ const GeneralCarInfoPage = (props: Props) => {
                         <Form.Item>
                             <div className="input-container">
                                 <label>Registration Date</label>
-                                <DatePicker />
+                                <DatePicker onChange={(dateString) => getRegistrationDate} />
                             </div>
                         </Form.Item>
 
@@ -106,4 +112,4 @@ const GeneralCarInfoPage = (props: Props) => {
     )
 }
 
-export default GeneralCarInfoPage
+export default CreateUserDetailedCarInfo

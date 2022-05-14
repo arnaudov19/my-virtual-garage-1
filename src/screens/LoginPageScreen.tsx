@@ -1,6 +1,6 @@
 import { Button, Form, Input } from "antd"
 import Checkbox from "antd/es/checkbox/Checkbox"
-import UserCredentialsPage from "./UserCredentialsPage"
+import CreateUserCredentials from "./CreateUser-Credentials"
 import React, { useState } from "react"
 import { LockClosedIcon } from "@heroicons/react/outline"
 import "../img/my-virtual-garage-logo.png"
@@ -11,7 +11,7 @@ type Props = {
     customerPassword: string
 }
 
-const LoginPage = (props: Props): any => {
+const LoginPageScreen = (props: Props): any => {
     const onFinish = (values: any) => {
         console.log("Success:", values)
     }
@@ -153,4 +153,4 @@ const LoginPage = (props: Props): any => {
     )
 }
 
-export default LoginPage
+export default LoginPageScreen

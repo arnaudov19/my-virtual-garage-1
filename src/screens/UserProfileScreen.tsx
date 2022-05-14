@@ -33,7 +33,7 @@ type Props = {
     registrationDate: string
     purchaseDate: string*/
 }
-const UserProfilePage = (props: Props) => {
+const UserProfileScreen = (props: Props) => {
     const [tab, setTab] = useState(navigation[0].current)
     const logOutHandler = () => {
         props.onSetPage(0)
@@ -181,7 +181,7 @@ const UserProfilePage = (props: Props) => {
                                             <div className="sm:col-span-1">
                                                 <dt className="text-sm font-medium text-gray-500">Purchase Date</dt>
                                                 <dd className="mt-1 text-sm text-gray-900">27.09.2020</dd>
-                                            </div>{" "}
+                                            </div>
                                             <div className="sm:col-span-1">
                                                 <dt className="text-sm font-medium text-gray-500">
                                                     First Registration Date
@@ -199,4 +199,4 @@ const UserProfilePage = (props: Props) => {
         </>
     )
 }
-export default UserProfilePage
+export default UserProfileScreen

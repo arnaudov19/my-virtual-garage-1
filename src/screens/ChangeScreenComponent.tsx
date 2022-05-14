@@ -1,13 +1,13 @@
 import React, { useState } from "react"
-import { WelcomePage } from "./WelcomePage"
-import UserCredentialsPage from "./UserCredentialsPage"
-import UserProfilePage from "./UserProfilePage"
-import { ForgottenPasswordPage } from "./ForgottenPasswordPage"
-import LoginPage from "./LoginPage"
-import DetailedCarInfoPage from "./DetailedCarInfoPage"
-import GeneralCarInfoPage from "./GeneralCarInfoPage"
+import { WelcomeScreen } from "./WelcomeScreen"
+import CreateUserCredentials from "./CreateUser-Credentials"
+import UserProfileScreen from "./UserProfileScreen"
+import { ForgottenPasswordScreen } from "./ForgottenPasswordScreen"
+import LoginPageScreen from "./LoginPageScreen"
+import DetailedCarInfoPage from "./CreateUser-GeneralCarInfo"
+import CreateUserDetailedCarInfo from "./CreateUser-DetailedCarInfo"
 
-export const ChangePageComponent = () => {
+export const ChangeScreenComponent = () => {
     const [currentPage, setCurrentPage] = useState(0)
     const [currentEmail, setCurrentEmail] = useState("")
     const [currentPass, setCurrentPass] = useState("")
@@ -16,10 +16,10 @@ export const ChangePageComponent = () => {
 
     switch (currentPage) {
         case 0:
-            return <WelcomePage onSetPage={(page: number) => setCurrentPage(page)} />
+            return <WelcomeScreen onSetPage={(page: number) => setCurrentPage(page)} />
         case 1:
             return (
-                <LoginPage
+                <LoginPageScreen
                     customerEmail={currentEmail}
                     customerPassword={currentPass}
                     currentPageLogin={currentPage}
@@ -28,7 +28,7 @@ export const ChangePageComponent = () => {
             )
         case 2:
             return (
-                <UserProfilePage
+                <UserProfileScreen
                     customerEmail={currentEmail}
                     customerPassword={currentPass}
                     newPurchased={newPurchase}
@@ -39,20 +39,20 @@ export const ChangePageComponent = () => {
             )
         case 3:
             return (
-                <UserCredentialsPage
+                <CreateUserCredentials
                     userEmail={(email: string) => setCurrentEmail(email)}
                     password={(password: string) => setCurrentPass(password)}
                     currentPageLogin={currentPage}
                     onSetPage={(page: number) => setCurrentPage(page)}
                 />
             )
-
         case 4:
             return (
-                <GeneralCarInfoPage
+                <CreateUserDetailedCarInfo
                     newPurchasedCar={(newCar: string) => setNewPurchase(newCar)}
                     currentPageLogin={currentPage}
                     carModel={(model: string) => setCarModel(model)}
+                    registrationDate={(regDate: string) => regDate}
                     onSetPage={(page: number) => setCurrentPage(page)}
                 />
             )
@@ -65,7 +65,7 @@ export const ChangePageComponent = () => {
             )
         case 6:
             return (
-                <ForgottenPasswordPage
+                <ForgottenPasswordScreen
                     currentPageLogin={currentPage}
                     onSetPage={(page: number) => setCurrentPage(page)}
                     confirmNewPassword={1}
@@ -73,6 +73,6 @@ export const ChangePageComponent = () => {
                 />
             )
         default:
-            return <WelcomePage onSetPage={(page: number) => setCurrentPage(page)} />
+            return <WelcomeScreen onSetPage={(page: number) => setCurrentPage(page)} />
     }
 }
