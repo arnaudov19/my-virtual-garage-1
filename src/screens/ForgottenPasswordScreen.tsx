@@ -7,7 +7,7 @@ type Props = {
     onSetPage: (page: number) => void
 }
 
-export const ForgottenPasswordPage = (props: Props) => {
+export const ForgottenPasswordScreen = (props: Props) => {
     const [newPass, setNewPass] = useState("")
     const [confirmNewPass, setConfirmNewPass] = useState("")
     return (

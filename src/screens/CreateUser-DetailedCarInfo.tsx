@@ -1,6 +1,7 @@
 import { useState } from "react"
+/*import "../styles/style.css"*/
 import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps, Checkbox } from "antd"
-import { WelcomePage } from "./WelcomePage"
+import { WelcomeScreen } from "./WelcomeScreen"
 import { ProgressSteps } from "../components/ProgressSteps"
 import { CustomInputField } from "../components/CustomInputField"
 
@@ -32,14 +33,15 @@ const CreateUserDetailedCarInfo = (props: Props) => {
     const getIsANewCar = (event: any) => {
         setIsANewCar(event.target.value)
     }
-    const getRegistrationDate = (event: any) => {
-        setRegistrationDate(event.target.value)
+    const getRegistrationDate = (dateString: string) => {
+        setRegistrationDate(dateString)
         console.log(registrationDate)
     }
     const nextPageHandler = () => {
         props.onSetPage(5)
         props.newPurchasedCar(isANewCar)
         props.carModel(carModel)
+        props.registrationDate(registrationDate)
     }
     const backPageHandler = () => {
         props.onSetPage(3)
@@ -81,7 +83,7 @@ const CreateUserDetailedCarInfo = (props: Props) => {
                         <Form.Item>
                             <div className="input-container">
                                 <label>Registration Date</label>
-                                <DatePicker onChange={getRegistrationDate} />
+                                <DatePicker onChange={(dateString) => getRegistrationDate} />
                             </div>
                         </Form.Item>
 

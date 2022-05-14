@@ -4,7 +4,7 @@ type Props = {
     onSetPage: (page: number) => void
 }
 
-export const WelcomePage = (props: Props) => {
+export const WelcomeScreen = (props: Props) => {
     const goToLoginPage = () => {
         props.onSetPage(1)
     }
