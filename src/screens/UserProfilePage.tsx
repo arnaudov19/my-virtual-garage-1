@@ -40,7 +40,17 @@ const UserProfilePage = (props: Props) => {
     }
     const handleTab = (tabName: string) => {
         setCurrenTab(tabName)
-        props.onSetPage(7)
+        if (currenTab === "Detailed Car Info") {
+            props.onSetPage(1)
+        } else if (currenTab === "Maintenance") {
+            props.onSetPage(7)
+        } else if (currenTab === "Documents") {
+            props.onSetPage(1)
+        } else if (currenTab === "General Car Info") {
+            props.onSetPage(1)
+        } else {
+            return undefined
+        }
 
         /* for (let i = 0; i <= 0; i++) {
             if (currenTab === navigation[i].name) {
@@ -94,7 +104,7 @@ const UserProfilePage = (props: Props) => {
                                                                     : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
                                                                 "inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
                                                             )}
-                                                            aria-current={isTab ? "page" : undefined}>
+                                                            aria-current={item.current ? "page" : undefined}>
                                                             {item.name}
                                                         </a>
                                                     )
