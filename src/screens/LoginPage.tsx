@@ -11,7 +11,7 @@ type Props = {
     customerPassword: string
 }
 
-const LoginPageScreen = (props: Props): any => {
+const LoginPage = (props: Props): any => {
     const onFinish = (values: any) => {
         console.log("Success:", values)
     }
@@ -153,4 +153,4 @@ const LoginPageScreen = (props: Props): any => {
     )
 }
 
-export default LoginPageScreen
+export default LoginPage

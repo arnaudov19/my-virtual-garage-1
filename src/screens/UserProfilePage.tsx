@@ -1,10 +1,7 @@
 import React, { Fragment, useState } from "react"
 import { Disclosure, Menu, Transition } from "@headlessui/react"
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline"
-import { Descriptions, Tabs } from "antd"
-import { PaperClipIcon } from "@heroicons/react/solid"
 
-const TabPane = { Tabs }
 const user = {
     name: "Martin Arnaudov",
     email: "arny@example.com",
@@ -17,8 +14,9 @@ const navigation = [
     { name: "Maintenance", current: false },
     { name: "Documents", current: false },
 ]
+const userNavigation = [{ name: "Your Profile" }, { name: "Settings" }, { name: "Sign out" }]
 
-function classNames(...classes: any) {
+const classNames = (...classes: any) => {
     return classes.filter(Boolean).join(" ")
 }
 
@@ -33,23 +31,34 @@ type Props = {
     registrationDate: string
     purchaseDate: string*/
 }
-const UserProfileScreen = (props: Props) => {
-    const [tab, setTab] = useState(navigation[0].current)
+const UserProfilePage = (props: Props) => {
+    const [isTab, setIsTab] = useState(false)
+    const [currenTab, setCurrenTab] = useState("")
+
     const logOutHandler = () => {
         props.onSetPage(0)
     }
-    const getTabValue = (event: any) => {
-        event.preventDefault()
-        setTab(event.target.value)
-        console.log(tab)
+    const handleTab = (tabName: string) => {
+        setCurrenTab(tabName)
+        props.onSetPage(7)
+
+        /* for (let i = 0; i <= 0; i++) {
+            if (currenTab === navigation[i].name) {
+                return (navigation[i].current = true)
+            }
+            setIsTab(navigation[i].current)
+        }*/
     }
+    console.log(currenTab)
+    console.log(navigation)
+    console.log(isTab)
+
     const userInput = {
         userEmail: props.customerEmail,
         userPassword: props.customerPassword,
         newlyPurchased: props.newPurchased,
         carModel: props.carModel,
     }
-    console.log(userInput)
     return (
         <>
             <body style={{ display: "inherit", justifyContent: "flex-start" }}>
@@ -71,6 +80,25 @@ const UserProfileScreen = (props: Props) => {
                                                     src={require("../img/my-virtual-garage-logo.png")}
                                                     alt="My Virtual garage"
                                                 />
+                                            </div>
+                                            <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+                                                {navigation.map((item) => {
+                                                    return (
+                                                        <a
+                                                            onClick={() => handleTab(item.name)}
+                                                            key={item.name}
+                                                            {...(item.current = isTab)}
+                                                            className={classNames(
+                                                                item.current
+                                                                    ? "border-sky-500 text-gray-900"
+                                                                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                                                                "inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                                                            )}
+                                                            aria-current={isTab ? "page" : undefined}>
+                                                            {item.name}
+                                                        </a>
+                                                    )
+                                                })}
                                             </div>
                                         </div>
                                         <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -132,6 +160,23 @@ const UserProfileScreen = (props: Props) => {
                                     </div>
                                 </div>
                                 <Disclosure.Panel className="sm:hidden">
+                                    <div className="pt-2 pb-3 space-y-1">
+                                        {navigation.map((item) => (
+                                            <Disclosure.Button
+                                                key={item.name}
+                                                as="a"
+                                                /*href={item.href}*/
+                                                className={classNames(
+                                                    item.current
+                                                        ? "bg-sky-50 border-sky-500 text-sky-700"
+                                                        : "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800",
+                                                    "block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+                                                )}
+                                                aria-current={item.current ? "page" : undefined}>
+                                                {item.name}
+                                            </Disclosure.Button>
+                                        ))}
+                                    </div>
                                     <div className="pt-4 pb-3 border-t border-gray-200">
                                         <div className="flex items-center px-4">
                                             <div className="flex-shrink-0">
@@ -181,7 +226,7 @@ const UserProfileScreen = (props: Props) => {
                                             <div className="sm:col-span-1">
                                                 <dt className="text-sm font-medium text-gray-500">Purchase Date</dt>
                                                 <dd className="mt-1 text-sm text-gray-900">27.09.2020</dd>
-                                            </div>
+                                            </div>{" "}
                                             <div className="sm:col-span-1">
                                                 <dt className="text-sm font-medium text-gray-500">
                                                     First Registration Date
@@ -199,4 +244,4 @@ const UserProfileScreen = (props: Props) => {
         </>
     )
 }
-export default UserProfileScreen
+export default UserProfilePage

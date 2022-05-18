@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { WelcomeScreen } from "./WelcomeScreen"
+import { WelcomePage } from "./WelcomePage"
 import CreateUserCredentials from "./CreateUser-Credentials"
-import UserProfileScreen from "./UserProfileScreen"
-import { ForgottenPasswordScreen } from "./ForgottenPasswordScreen"
-import LoginPageScreen from "./LoginPageScreen"
+import UserProfilePage from "./UserProfilePage"
+import { ForgottenPasswordPage } from "./ForgottenPasswordPage"
+import LoginPage from "./LoginPage"
 import DetailedCarInfoPage from "./CreateUser-GeneralCarInfo"
 import CreateUserDetailedCarInfo from "./CreateUser-DetailedCarInfo"
+import MaintanaceScreen from "./MaintanaceScreen"
 
 export const ChangeScreenComponent = () => {
     const [currentPage, setCurrentPage] = useState(0)
@@ -16,10 +17,10 @@ export const ChangeScreenComponent = () => {
 
     switch (currentPage) {
         case 0:
-            return <WelcomeScreen onSetPage={(page: number) => setCurrentPage(page)} />
+            return <WelcomePage onSetPage={(page: number) => setCurrentPage(page)} />
         case 1:
             return (
-                <LoginPageScreen
+                <LoginPage
                     customerEmail={currentEmail}
                     customerPassword={currentPass}
                     currentPageLogin={currentPage}
@@ -28,7 +29,7 @@ export const ChangeScreenComponent = () => {
             )
         case 2:
             return (
-                <UserProfileScreen
+                <UserProfilePage
                     customerEmail={currentEmail}
                     customerPassword={currentPass}
                     newPurchased={newPurchase}
@@ -65,14 +66,16 @@ export const ChangeScreenComponent = () => {
             )
         case 6:
             return (
-                <ForgottenPasswordScreen
+                <ForgottenPasswordPage
                     currentPageLogin={currentPage}
                     onSetPage={(page: number) => setCurrentPage(page)}
                     confirmNewPassword={1}
                     newPassword={1}
                 />
             )
+        case 7:
+            return <MaintanaceScreen onSetPage={(page: number) => setCurrentPage(page)} />
         default:
-            return <WelcomeScreen onSetPage={(page: number) => setCurrentPage(page)} />
+            return <WelcomePage onSetPage={(page: number) => setCurrentPage(page)} />
     }
 }
