@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps, Checkbox } from "antd"
 import { Option } from "antd/es/mentions"
-import { WelcomeScreen } from "./WelcomeScreen"
+import { WelcomePage } from "./WelcomePage"
 import { ProgressSteps } from "../components/ProgressSteps"
 import { CustomInputField } from "../components/CustomInputField"
 import CustomNumberInputField from "../components/CustomNumberInputField"
