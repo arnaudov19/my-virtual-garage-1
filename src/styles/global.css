@@ -42,15 +42,6 @@ body {
   height: 100vh;
 }
 
-
-/* ---------- UNIVERSAL BUTTON CONTAINER ----------*/
-.button-container {
-  width:438px;
-  display: flex;
-  justify-content: space-around;
-}
-
-
 /*--------- SIGN UP FORM CONTAINER --------*/
 .signup-form-container {
   height: 100vh;

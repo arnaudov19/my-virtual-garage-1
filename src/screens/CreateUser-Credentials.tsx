@@ -32,6 +32,9 @@ const CreateUserCredentials = (props: Props) => {
         props.onSetPage(4)
         props.userEmail(userEmail)
         props.password(userPassword)
+
+        // storeToRedux()
+        // store to inner state
     }
     const backPageHandler = (event: any) => {
         event.preventDefault()

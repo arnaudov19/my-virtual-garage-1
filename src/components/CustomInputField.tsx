@@ -4,6 +4,9 @@ import { Form, Input } from "antd"
 // @ts-ignore
 export const CustomInputField = (props) => {
     return (
+        // Not FormItem, only INPUT
+
+        // Rename so its clear that its FormItemInput component
         <Form.Item style={{ display: "flex", justifyContent: "center", width: "300px" }}>
             <label>{props.label}</label>
             <Input

@@ -1,9 +1,12 @@
-import { Button, Form, Input } from "antd"
+import { Form, Input, Button as AntButton } from "antd"
 import Checkbox from "antd/es/checkbox/Checkbox"
-import CreateUserCredentials from "./CreateUser-Credentials"
-import React, { useState } from "react"
+import CreateUserCredentials from "../CreateUser-Credentials"
+import React, { SyntheticEvent, useState } from "react"
 import { LockClosedIcon } from "@heroicons/react/outline"
-import "../img/my-virtual-garage-logo.png"
+import "../../img/my-virtual-garage-logo.png"
+import { Button } from "../../components/Button"
+import { UpCircleOutlined } from "@ant-design/icons"
+
 type Props = {
     currentPageLogin: number
     onSetPage: (page: number) => void
@@ -12,7 +15,7 @@ type Props = {
 }
 
 const LoginPage = (props: Props): any => {
-    const onFinish = (values: any) => {
+    const onFinish = (values: SyntheticEvent) => {
         console.log("Success:", values)
     }
     const onFinishFailed = (errorInfo: any) => {
@@ -21,9 +24,10 @@ const LoginPage = (props: Props): any => {
     const getUserEmail = (event: any) => {
         setUserEmail(event.target.value)
     }
-    const getUserPassword = (event: any) => {
+    const getUserPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserPass(event.target.value)
     }
+
     const userData = {
         userEmail: props.customerEmail,
         password: props.customerPassword,
@@ -32,7 +36,9 @@ const LoginPage = (props: Props): any => {
         adminEmail: "admin",
         adminPassword: "admin",
     }
+
     console.log(userData)
+
     const [userEmail, setUserEmail] = useState("o")
     const [userPass, setUserPass] = useState("o")
 
@@ -112,6 +118,7 @@ const LoginPage = (props: Props): any => {
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
+                                {/*// TODO create Input as component with some props and use it here*/}
                                 <input
                                     id="remember-me"
                                     name="remember-me"
@@ -133,6 +140,8 @@ const LoginPage = (props: Props): any => {
                         </div>
 
                         <div>
+                            <Button label="blabl" prefixIcon={<UpCircleOutlined />} />
+
                             <button
                                 type="submit"
                                 onClick={validateUserCredentials}
