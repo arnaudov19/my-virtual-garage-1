@@ -1,10 +1,5 @@
-
-import { ChangePageComponent } from "../screens/ChangePageComponent";
+import { ChangeScreenComponent } from "../screens/ChangeScreenComponent"
 
 export default function Home() {
-
-  return (
-      <ChangePageComponent/>
-  )
-
+    return <ChangeScreenComponent />
 }

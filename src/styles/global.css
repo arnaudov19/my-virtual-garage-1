@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Fredoka";
+  src: url("https://yoursite.com/css/fonts/CustomFont.eot");
+  src: url("https://yoursite.com/css/fonts/CustomFont.woff") format("woff"),
+  url("https://yoursite.com/css/fonts/CustomFont.otf") format("opentype"),
+  url("https://yoursite.com/css/fonts/CustomFont.svg#filename") format("svg");
+}
 *,
 *:before,
 *:after {
@@ -19,6 +26,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-family: 'Fredoka',sans-serif;
+  font-weight: 400;
 }
 
 
@@ -44,16 +53,8 @@ body {
 
 /*--------- SIGN UP FORM CONTAINER --------*/
 .signup-form-container {
-  height: 700px;
-  width: 900px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding-top:1rem;
-  background-color: white /*rgb(255,255,255,0.5)*/;
-  border-radius: 0.5rem;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  height: 100vh;
+  width: 100%;
 }
 .input-fields-signup-container {
   width:100%;
@@ -61,7 +62,6 @@ body {
   justify-content: center;
   gap:1.5rem;
 }
-
 .login-container {
   border: 2px solid #444;
   background-color: rgb(255,255,255,0.5);
@@ -71,10 +71,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-}
-.steps-container {
-  width: 100vh;
-  display: flex;
 }
 .input-container {
   width:300px;
