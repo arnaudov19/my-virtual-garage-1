@@ -5,10 +5,10 @@ type Props = {
 }
 
 export const WelcomePage = (props: Props) => {
-    const goToLoginPage = () => {
+    const loginPageHandler = () => {
         props.onSetPage(1)
     }
-    const goToCreateAccPage = () => {
+    const createAccountHandler = () => {
         props.onSetPage(3)
     }
 
@@ -19,12 +19,12 @@ export const WelcomePage = (props: Props) => {
             </div>
             <div className="button-container">
                 <button
-                    onClick={goToCreateAccPage}
+                    onClick={createAccountHandler}
                     className="group relative flex justify-center py-2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
                     Create new
                 </button>
                 <button
-                    onClick={goToLoginPage}
+                    onClick={loginPageHandler}
                     className="group relative flex justify-center py-2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
                     Log in
                 </button>

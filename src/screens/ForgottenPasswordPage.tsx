@@ -3,7 +3,7 @@ import React, { useState } from "react"
 type Props = {
     newPassword: number
     confirmNewPassword: number
-    currentPageLogin: number
+    currentPage: number
     onSetPage: (page: number) => void
 }
 

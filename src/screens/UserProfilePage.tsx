@@ -1,6 +1,9 @@
 import React, { Fragment, useState } from "react"
 import { Disclosure, Menu, Transition } from "@headlessui/react"
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline"
+import { UserDataContainer } from "../components/UserDataContainer"
+import MaintenanceScreen from "./MaintanaceScreen"
+import { Main } from "next/document"
 
 const user = {
     name: "Martin Arnaudov",
@@ -9,8 +12,8 @@ const user = {
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 }
 const navigation = [
-    { name: "General Car Info", current: false },
-    { name: "Detailed Car Info", current: true },
+    { name: "General Car Info", current: true },
+    { name: "Detailed Car Info", current: false },
     { name: "Maintenance", current: false },
     { name: "Documents", current: false },
 ]
@@ -22,17 +25,18 @@ const classNames = (...classes: any) => {
 
 type Props = {
     onSetPage: (page: number) => void
-    currentPageLogin: number
-    customerEmail: string
-    customerPassword: string
-    newPurchased: string
-    carModel: string
+    currentPage?: number
+    customerEmail?: string
+    customerPassword?: string
+    newPurchased?: string
+    carModel?: string
     /*    carBrand: string
     registrationDate: string
     purchaseDate: string*/
 }
+
 const UserProfilePage = (props: Props) => {
-    const [isTab, setIsTab] = useState(false)
+    const [isTab, setIsTab] = useState(true)
     const [currenTab, setCurrenTab] = useState("")
 
     const logOutHandler = () => {
@@ -41,23 +45,23 @@ const UserProfilePage = (props: Props) => {
     const handleTab = (tabName: string) => {
         setCurrenTab(tabName)
         if (currenTab === "Detailed Car Info") {
-            props.onSetPage(1)
-        } else if (currenTab === "Maintenance") {
             props.onSetPage(7)
+        } else if (currenTab === "Maintenance") {
+            props.onSetPage(8)
         } else if (currenTab === "Documents") {
             props.onSetPage(1)
         } else if (currenTab === "General Car Info") {
-            props.onSetPage(1)
+            props.onSetPage(2)
         } else {
             return undefined
         }
 
-        /* for (let i = 0; i <= 0; i++) {
-            if (currenTab === navigation[i].name) {
-                return (navigation[i].current = true)
-            }
-            setIsTab(navigation[i].current)
-        }*/
+        // for (let i = 0; i <= 0; i++) {
+        //     if (currenTab === navigation[i].name) {
+        //         return (navigation[i].current = true)
+        //     }
+        //     setIsTab(navigation[i].current)
+        // }
     }
     console.log(currenTab)
     console.log(navigation)
@@ -97,7 +101,6 @@ const UserProfilePage = (props: Props) => {
                                                         <a
                                                             onClick={() => handleTab(item.name)}
                                                             key={item.name}
-                                                            {...(item.current = isTab)}
                                                             className={classNames(
                                                                 item.current
                                                                     ? "border-sky-500 text-gray-900"
@@ -208,47 +211,6 @@ const UserProfilePage = (props: Props) => {
                             </>
                         )}
                     </Disclosure>
-                    <div className="py-10">
-                        <main>
-                            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                                <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-                                    <div className="px-4 py-5 sm:px-6">
-                                        <h3 className="text-lg leading-6 font-medium text-gray-900">
-                                            General Car Info
-                                        </h3>
-                                    </div>
-                                    <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
-                                        <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                                            <div className="sm:col-span-1">
-                                                <dt className="text-sm font-medium text-gray-500">Brand</dt>
-                                                <dd className="mt-1 text-sm text-gray-900">{userInput.userEmail}</dd>
-                                            </div>
-                                            <div className="sm:col-span-1">
-                                                <dt className="text-sm font-medium text-gray-500">Model</dt>
-                                                <dd className="mt-1 text-sm text-gray-900">{userInput.carModel}</dd>
-                                            </div>
-                                            <div className="sm:col-span-1">
-                                                <dt className="text-sm font-medium text-gray-500">Newly Purchased?</dt>
-                                                <dd className="mt-1 text-sm text-gray-900">
-                                                    {userInput.newlyPurchased}
-                                                </dd>
-                                            </div>
-                                            <div className="sm:col-span-1">
-                                                <dt className="text-sm font-medium text-gray-500">Purchase Date</dt>
-                                                <dd className="mt-1 text-sm text-gray-900">27.09.2020</dd>
-                                            </div>{" "}
-                                            <div className="sm:col-span-1">
-                                                <dt className="text-sm font-medium text-gray-500">
-                                                    First Registration Date
-                                                </dt>
-                                                <dd className="mt-1 text-sm text-gray-900">20.05.2010</dd>
-                                            </div>
-                                        </dl>
-                                    </div>
-                                </div>
-                            </div>
-                        </main>
-                    </div>
                 </div>
             </body>
         </>

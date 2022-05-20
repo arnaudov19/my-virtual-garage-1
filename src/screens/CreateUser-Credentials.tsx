@@ -10,7 +10,7 @@ type Props = {
     onSetPage: (page: number) => void
     userEmail: (email: string) => void
     password: (password: string) => void
-    currentPageLogin: number
+    currentPage: number
 }
 
 const CreateUserCredentials = (props: Props) => {

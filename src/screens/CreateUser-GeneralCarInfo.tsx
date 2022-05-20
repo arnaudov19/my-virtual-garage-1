@@ -1,95 +1,97 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps, Checkbox } from "antd"
-import { Option } from "antd/es/mentions"
 import { WelcomePage } from "./WelcomePage"
 import { ProgressSteps } from "../components/ProgressSteps"
 import { CustomInputField } from "../components/CustomInputField"
-import CustomNumberInputField from "../components/CustomNumberInputField"
 
 const { Step } = Steps
+const { Option } = Select
 
 type Props = {
     onSetPage: (page: number) => void
-    currentPageLogin: number
+    currentPage: number
+    newPurchasedCar: (newCar: string) => void
+    carModel: (model: string) => void
+    registrationDate: (regDate: string) => void
 }
 
-const GeneralCarInfoPage = (props: Props) => {
-    const [kmOnPurchase, setKmOnPurchase] = useState("")
-    const [price, setPrice] = useState("")
-    const [fuelType, setFuelType] = useState("")
-    const [displacement, setDisplacement] = useState("")
-    const [power, setPower] = useState("")
-    const [oilType, setOilType] = useState("")
+const CreateUserGeneralCarInfo = (props: Props) => {
+    const [carBrand, setCarBrand] = useState("")
+    const [carModel, setCarModel] = useState("")
+    const [isANewCar, setIsANewCar] = useState("")
+    const [registrationDate, setRegistrationDate] = useState("")
+    const [purchaseDate, setPurchaseDate] = useState("")
 
-    const getKmOnPurchase = (event: any) => {
-        setKmOnPurchase(event.target.value)
-        console.log(kmOnPurchase)
+    const getCarBrand = (event: any) => {
+        setCarBrand(event.target.value)
+        console.log(carBrand)
     }
-    const getPrice = (event: any) => {
-        setPrice(event.target.value)
-        console.log(price)
+    const getCarModel = (event: any) => {
+        setCarModel(event.target.value)
     }
-    const getFuelType = (event: any) => {
-        setFuelType(event.target.value)
-        console.log(fuelType)
+    const getIsANewCar = (event: any) => {
+        setIsANewCar(event.target.value)
     }
-    const getDisplacement = (event: any) => {
-        setDisplacement(event.target.value)
-        console.log(displacement)
+    const getRegistrationDate = (event: any) => {
+        setRegistrationDate(event.target.value)
+        console.log(registrationDate)
     }
-    const getPower = (event: any) => {
-        setPower(event.target.value)
-        console.log(power)
+    const nextPageHandler = () => {
+        props.onSetPage(5)
+        props.newPurchasedCar(isANewCar)
+        props.carModel(carModel)
     }
-    const getOilType = (event: any) => {
-        setOilType(event.target.value)
-        console.log(oilType)
+    const backPageHandler = () => {
+        props.onSetPage(3)
     }
-
-    const nextPageHandler = (event: any) => {
-        event.preventDefault()
-        props.onSetPage(1)
-    }
-    const backPageHandler = (event: any) => {
-        event.preventDefault()
-        props.onSetPage(4)
-    }
-
     return (
         <div className="signup-form-container flex flex-col items-center justify-center">
             <div className="h-5/6 w-4/6 flex flex-col items-center justify-evenly pt-4 rounded-lg shadow-2xl">
-                <ProgressSteps currentStep={2} />
+                <ProgressSteps currentStep={1} />
                 <div className="input-fields-signup-container">
-                    <Form className="w-4/6 flex flex-col items-center">
-                        <div className="flex h-5/6 gap-6 pb-12">
-                            <div>
-                                <CustomNumberInputField
-                                    onChange={getKmOnPurchase}
-                                    value={kmOnPurchase}
-                                    size="large"
-                                    label="Kilometres on Purchase"
-                                    placeholder="59000km"
-                                />
-                                <CustomNumberInputField size="large" label="Price" placeholder="4000$" />
-                                <CustomInputField
-                                    onChange={getFuelType}
-                                    size="large"
-                                    label="Fuel Type"
-                                    placeholder="Diesel, Gasoline.."
-                                />
+                    <form className="w-4/6 flex flex-col items-center">
+                        <Form.Item style={{ width: "300px" }}>
+                            <label>Brand</label>
+                            <Select size="large" placeholder="Select Your Car Brand">
+                                <Option value="audi">Audi</Option>
+                                <Option value="bmw">BMW</Option>
+                                <Option value="vw">VW</Option>
+                                <Option value="mercedes">Mercedes</Option>
+                                <Option value="skoda">Skoda</Option>
+                            </Select>
+                        </Form.Item>
+                        <CustomInputField
+                            value={carModel}
+                            onChange={getCarModel}
+                            name="model"
+                            label="Model"
+                            size="large"
+                            placeholder="Enter Your Car Model"
+                        />
+                        <p>{carModel}</p>
+                        <Form.Item>
+                            <div className="input-container">
+                                <label>Newly purchased?</label>
+                                <select onChange={getIsANewCar}>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
                             </div>
-                            <div>
-                                <CustomNumberInputField size="large" label="Displacement" placeholder="1998cc" />
-                                <CustomNumberInputField size="large" label="Power" placeholder="170hp" />
-                                <CustomInputField
-                                    onChange={getOilType}
-                                    size="large"
-                                    label="Oil type"
-                                    placeholder="SAE 10W-40"
-                                />
+                        </Form.Item>
+                        <Form.Item>
+                            <div className="input-container">
+                                <label>Registration Date</label>
+                                <DatePicker onChange={getRegistrationDate} />
                             </div>
-                        </div>
-                    </Form>
+                        </Form.Item>
+
+                        <Form.Item>
+                            <div className="input-container">
+                                <label>Purchase Date</label>
+                                <DatePicker />
+                            </div>
+                        </Form.Item>
+                    </form>
                 </div>
                 <div style={{ width: "300px", display: "flex", justifyContent: "space-around" }}>
                     <button
@@ -100,7 +102,7 @@ const GeneralCarInfoPage = (props: Props) => {
                     <button
                         onClick={nextPageHandler}
                         className="group relative flex justify-center py-2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
-                        Create Account
+                        Next
                     </button>
                 </div>
             </div>
@@ -108,4 +110,4 @@ const GeneralCarInfoPage = (props: Props) => {
     )
 }
 
-export default GeneralCarInfoPage
+export default CreateUserGeneralCarInfo
