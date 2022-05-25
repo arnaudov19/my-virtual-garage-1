@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps, Checkbox } from "antd"
-import { WelcomePage } from "./WelcomePage"
-import { ProgressSteps } from "../components/ProgressSteps"
-import { CustomInputField } from "../components/CustomInputField"
+import { WelcomePage } from "../WelcomePage"
+import { ProgressSteps } from "../../components/ProgressSteps"
+import { FormItemInput } from "../../components/form-input-fields/FormTextInput"
 
 const { Step } = Steps
 const { Option } = Select
@@ -60,7 +60,7 @@ const CreateUserGeneralCarInfo = (props: Props) => {
                                 <Option value="skoda">Skoda</Option>
                             </Select>
                         </Form.Item>
-                        <CustomInputField
+                        <FormItemInput
                             value={carModel}
                             onChange={getCarModel}
                             name="model"

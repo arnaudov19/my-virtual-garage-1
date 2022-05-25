@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { Form, Input } from "antd"
+import { Form, Input, InputNumber } from "antd"
 
-const CustomPasswordInputField = (props: any) => {
+export const PasswordInput = (props: any) => {
     return (
-        <Form.Item style={{ display: "flex", justifyContent: "center", width: "300px" }}>
+        <div style={styles.inputContainer}>
             <label>{props.label}</label>
             <Input.Password
+                style={styles.inputField}
                 onChange={props.onChange}
                 type={props.inputType}
                 value={props.value}
@@ -13,8 +14,16 @@ const CustomPasswordInputField = (props: any) => {
                 size={props.size}
                 placeholder={props.placeholder}
             />
-        </Form.Item>
+        </div>
     )
 }
-
-export default CustomPasswordInputField
+const styles = {
+    inputContainer: {
+        display: "flex",
+        justifyContent: "center",
+        width: "300px",
+    },
+    inputField: {
+        width: "100%",
+    },
+}

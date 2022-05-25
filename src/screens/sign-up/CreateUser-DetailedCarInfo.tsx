@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps, Checkbox } from "antd"
 import { Option } from "antd/es/mentions"
-import { WelcomePage } from "./WelcomePage"
-import { ProgressSteps } from "../components/ProgressSteps"
-import { CustomInputField } from "../components/CustomInputField"
-import CustomNumberInputField from "../components/CustomNumberInputField"
+import { WelcomePage } from "../WelcomePage"
+import { ProgressSteps } from "../../components/ProgressSteps"
+import { FormItemInput } from "../../components/form-input-fields/FormTextInput"
+import { FormItemNumberInput } from "../../components/form-input-fields/FormItemNumberInput"
 
 const { Step } = Steps
 
@@ -65,7 +65,7 @@ const CreateUserDetailedCarInfo = (props: Props) => {
                     <Form className="w-4/6 flex flex-col items-center">
                         <div className="flex h-5/6 gap-6 pb-12">
                             <div>
-                                <CustomNumberInputField
+                                <FormItemNumberInput
                                     onChange={(value: number) => setKmOnPurchase(value)}
                                     value={kmOnPurchase}
                                     size="large"
@@ -73,8 +73,8 @@ const CreateUserDetailedCarInfo = (props: Props) => {
                                     placeholder="59000km"
                                 />
 
-                                <CustomNumberInputField size="large" label="Price" placeholder="4000$" />
-                                <CustomInputField
+                                <FormItemNumberInput size="large" label="Price" placeholder="4000$" />
+                                <FormItemInput
                                     onChange={getFuelType}
                                     size="large"
                                     label="Fuel Type"
@@ -82,9 +82,9 @@ const CreateUserDetailedCarInfo = (props: Props) => {
                                 />
                             </div>
                             <div>
-                                <CustomNumberInputField size="large" label="Displacement" placeholder="1998cc" />
-                                <CustomNumberInputField size="large" label="Power" placeholder="170hp" />
-                                <CustomInputField
+                                <FormItemNumberInput size="large" label="Displacement" placeholder="1998cc" />
+                                <FormItemNumberInput size="large" label="Power" placeholder="170hp" />
+                                <FormItemInput
                                     onChange={getOilType}
                                     size="large"
                                     label="Oil type"

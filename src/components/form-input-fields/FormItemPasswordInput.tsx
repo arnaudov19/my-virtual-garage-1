@@ -1,15 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { Form, Input } from "antd"
 
-// @ts-ignore
-export const CustomInputField = (props) => {
+export const FormItemPasswordInput = (props: any) => {
     return (
-        // Not FormItem, only INPUT
-
-        // Rename so its clear that its FormItemInput component
-        <Form.Item style={{ display: "flex", justifyContent: "center", width: "300px" }}>
+        <Form.Item style={styles.FormItem}>
             <label>{props.label}</label>
-            <Input
+            <Input.Password
                 onChange={props.onChange}
                 type={props.inputType}
                 value={props.value}
@@ -19,4 +15,11 @@ export const CustomInputField = (props) => {
             />
         </Form.Item>
     )
+}
+const styles = {
+    FormItem: {
+        display: "flex",
+        justifyContent: "center",
+        width: "300px",
+    },
 }

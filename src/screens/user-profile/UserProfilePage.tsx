@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react"
 import { Disclosure, Menu, Transition } from "@headlessui/react"
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline"
-import { UserDataContainer } from "../components/UserDataContainer"
 import MaintenanceScreen from "./MaintanaceScreen"
 import { Main } from "next/document"
 

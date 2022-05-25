@@ -1,11 +1,13 @@
 import { Form, Input, Button as AntButton } from "antd"
-import Checkbox from "antd/es/checkbox/Checkbox"
-import CreateUserCredentials from "../CreateUser-Credentials"
+import CreateUserCredentials from "../sign-up/CreateUser-Credentials"
 import React, { SyntheticEvent, useState } from "react"
-import { LockClosedIcon } from "@heroicons/react/outline"
+import { LockClosedIcon, LockOpenIcon } from "@heroicons/react/outline"
 import "../../img/my-virtual-garage-logo.png"
-import { Button } from "../../components/Button"
+import { Button } from "../../components/buttons/Button"
 import { UpCircleOutlined } from "@ant-design/icons"
+import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
+import { PasswordInput } from "../../components/inputs/PasswordInput"
+import { TextInput } from "../../components/inputs/TextInput"
 
 type Props = {
     currentPageLogin: number
@@ -28,37 +30,13 @@ const LoginPage = (props: Props): any => {
         setUserPass(event.target.value)
     }
 
-    const userData = {
-        userEmail: props.customerEmail,
-        password: props.customerPassword,
-    }
-    const adminCredentials = {
-        adminEmail: "admin",
-        adminPassword: "admin",
-    }
+    const [userEmail, setUserEmail] = useState("")
+    const [userPass, setUserPass] = useState("")
 
-    console.log(userData)
-
-    const [userEmail, setUserEmail] = useState("o")
-    const [userPass, setUserPass] = useState("o")
-
-    let customerCredentials = userData.userEmail === userEmail && userData.password === userPass
-    const adminLogin = adminCredentials.adminEmail === userEmail && adminCredentials.adminPassword === userPass
-
-    const validateUserCredentials = () => {
-        /*        if (customerCredentials) {
-            console.log("Successful", userEmail, userPass)
-            props.onSetPage(2)
-        } else if (adminLogin) {
-            console.log("Successful", userEmail, userPass)
-            props.onSetPage(2)
-        } else {
-            console.log("Unsuccessful", userEmail, userPass)
-            props.onSetPage(1)
-        }*/
+    const signInClicked = () => {
         props.onSetPage(2)
     }
-    const forgottenPasswordHandler = () => {
+    const forgottenPasswordClicked = () => {
         props.onSetPage(6)
     }
     return (
@@ -66,11 +44,6 @@ const LoginPage = (props: Props): any => {
             <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-md w-full space-y-8">
                     <div>
-                        {/*<img
-                            className="mx-auto h-12 w-auto"
-                            src={require("../img/my-virtual-garage-logo.png").default}
-                            alt="My logo"
-                        />*/}
                         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
                             Sign in to your account
                         </h2>
@@ -94,11 +67,12 @@ const LoginPage = (props: Props): any => {
                                         message: "Please input your Email!",
                                     },
                                 ]}>
-                                <Input
-                                    className="hover:border-sky-400 focus:border-sky-500"
+                                <TextInput
                                     onChange={getUserEmail}
-                                    placeholder="Enter Your Email"
+                                    type="email"
                                     size="large"
+                                    placeholder="Enter Your Email"
+                                    value={userEmail}
                                 />
                             </Form.Item>
                             <Form.Item
@@ -109,30 +83,31 @@ const LoginPage = (props: Props): any => {
                                         message: "Please input your password!",
                                     },
                                 ]}>
-                                <Input.Password
-                                    onInput={getUserPassword}
-                                    placeholder="Enter Your Password"
+                                <PasswordInput
+                                    onChange={getUserPassword}
+                                    type="password"
                                     size="large"
+                                    placeholder="Enter Your Password"
+                                    value={userPass}
                                 />
                             </Form.Item>
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
-                                {/*// TODO create Input as component with some props and use it here*/}
                                 <input
                                     id="remember-me"
                                     name="remember-me"
                                     type="checkbox"
                                     className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                                 />
-                                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+                                <label htmlFor="remember-me" className="ml-2 block text-md text-gray-900">
                                     Remember me
                                 </label>
                             </div>
 
-                            <div className="text-sm">
+                            <div className="text-md">
                                 <a
-                                    onClick={forgottenPasswordHandler}
+                                    onClick={forgottenPasswordClicked}
                                     className="font-medium text-sky-600 hover:text-sky-500">
                                     Forgot your password?
                                 </a>
@@ -140,20 +115,16 @@ const LoginPage = (props: Props): any => {
                         </div>
 
                         <div>
-                            <Button label="blabl" prefixIcon={<UpCircleOutlined />} />
-
-                            <button
-                                type="submit"
-                                onClick={validateUserCredentials}
-                                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
-                                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                            <Button
+                                onClick={signInClicked}
+                                label="Sign in"
+                                prefixIcon={
                                     <LockClosedIcon
                                         className="h-5 w-5 text-sky-500 group-hover:text-sky-400"
                                         aria-hidden="true"
                                     />
-                                </span>
-                                Sign in
-                            </button>
+                                }
+                            />
                         </div>
                     </Form>
                 </div>

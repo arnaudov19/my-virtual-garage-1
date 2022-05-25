@@ -1,15 +1,15 @@
 import React, { useState } from "react"
 import { WelcomePage } from "./WelcomePage"
-import CreateUserCredentials from "./CreateUser-Credentials"
-import UserProfilePage from "./UserProfilePage"
+import CreateUserCredentials from "./sign-up/CreateUser-Credentials"
+import UserProfilePage from "./user-profile/UserProfilePage"
 import { ForgottenPasswordPage } from "./ForgottenPasswordPage"
-import LoginPage from "./Login/LoginPage"
-import DetailedCarInfoPage from "./CreateUser-DetailedCarInfo"
-import CreateUserGeneralCarInfo from "./CreateUser-GeneralCarInfo"
-import MaintenanceScreen from "./MaintanaceScreen"
+import LoginPage from "./login/LoginScreen"
+import DetailedCarInfoPage from "./sign-up/CreateUser-DetailedCarInfo"
+import CreateUserGeneralCarInfo from "./sign-up/CreateUser-GeneralCarInfo"
+import MaintenanceScreen from "./user-profile/MaintanaceScreen"
 
-import CreateUserDetailedCarInfo from "./CreateUser-DetailedCarInfo"
-import MaintanaceScreen from "./MaintanaceScreen"
+import CreateUserDetailedCarInfo from "./sign-up/CreateUser-DetailedCarInfo"
+import MaintanaceScreen from "./user-profile/MaintanaceScreen"
 
 export const ChangeScreenComponent = () => {
     const [currentPage, setCurrentPage] = useState(0)

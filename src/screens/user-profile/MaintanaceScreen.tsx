@@ -1,6 +1,5 @@
 import React from "react"
-import { UserDataContainer } from "../components/UserDataContainer"
-import UserProfilePage from "./UserProfilePage"
+
 type Props = {
     kmOnPurchase: number
     currentPage: number

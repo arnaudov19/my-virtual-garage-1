@@ -1,5 +1,4 @@
 import React from "react"
-import { UserDataContainer } from "../components/UserDataContainer"
 import UserProfilePage from "./UserProfilePage"
 
 export const DetailedCarInfoScreen = (props: any) => {
