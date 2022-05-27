@@ -15,7 +15,6 @@ export const Button = (props: Props) => {
         <button
             onClick={props.onClick}
             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
-            {/* // TODO position absolute */}
             {props.prefixIcon ? (
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3"> {props.prefixIcon} </span>
             ) : null}

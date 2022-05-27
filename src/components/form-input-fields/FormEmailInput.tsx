@@ -1,30 +1,33 @@
-import React from "react"
+import React, { ChangeEvent } from "react"
 import { Form, Input } from "antd"
 import { SizeType } from "antd/es/config-provider/SizeContext"
 
 type Props = {
-    inputText: string
-    label: string
+    email?: string
+    label?: string
     inputType: string
-    onChange: () => {}
-    value: string
+    onChange: (email: ChangeEvent<HTMLInputElement>) => void
+    value?: string
     size: SizeType
-    name: string
     placeholder: string
 }
-
-export const FormTextInput = (props: Props) => {
+export const FormEmailInput = (props: Props) => {
     return (
-        // Not FormItem, only INPUT
-
-        // Rename so its clear that its FormItemInput component
-        <Form.Item style={styles.FormItem}>
+        <Form.Item
+            style={styles.FormItem}
+            name="username"
+            rules={[
+                {
+                    required: true,
+                    message: "Please input your email!",
+                },
+            ]}>
             <label>{props.label}</label>
+
             <Input
                 onChange={props.onChange}
                 type={props.inputType}
                 value={props.value}
-                name={props.name}
                 size={props.size}
                 placeholder={props.placeholder}
             />

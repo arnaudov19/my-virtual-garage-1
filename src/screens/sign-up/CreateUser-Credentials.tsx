@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Button, Form, Input, Steps } from "antd"
 import { ProgressSteps } from "../../components/ProgressSteps"
-import { FormItemInput } from "../../components/form-input-fields/FormTextInput"
+import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 import { FormItemPasswordInput } from "../../components/form-input-fields/FormItemPasswordInput"
 
 const { Step } = Steps
@@ -52,7 +52,7 @@ const CreateUserCredentials = (props: Props) => {
                             flexDirection: "column",
                             alignItems: "center",
                         }}>
-                        <FormItemInput
+                        <FormTextInput
                             onChange={getUserEmail}
                             value={userEmail}
                             size="large"

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { WelcomePage } from "./WelcomePage"
+import { WelcomeScreen } from "./welcome-page/WelcomeScreen"
 import CreateUserCredentials from "./sign-up/CreateUser-Credentials"
 import UserProfilePage from "./user-profile/UserProfilePage"
 import { ForgottenPasswordPage } from "./ForgottenPasswordPage"
@@ -20,7 +20,7 @@ export const ChangeScreenComponent = () => {
 
     switch (currentPage) {
         case 0:
-            return <WelcomePage onSetPage={(page: number) => setCurrentPage(page)} />
+            return <WelcomeScreen onSetPage={(page: number) => setCurrentPage(page)} />
         case 1:
             return (
                 // TODO homework create back button
@@ -98,6 +98,6 @@ export const ChangeScreenComponent = () => {
         //         />
         //     )
         default:
-            return <WelcomePage onSetPage={(page: number) => setCurrentPage(page)} />
+            return <WelcomeScreen onSetPage={(page: number) => setCurrentPage(page)} />
     }
 }

@@ -4,7 +4,7 @@ import React, { SyntheticEvent, useState } from "react"
 import { LockClosedIcon, LockOpenIcon } from "@heroicons/react/outline"
 import "../../img/my-virtual-garage-logo.png"
 import { Button } from "../../components/buttons/Button"
-import { UpCircleOutlined } from "@ant-design/icons"
+import { LeftCircleOutlined, UpCircleOutlined } from "@ant-design/icons"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 import { PasswordInput } from "../../components/inputs/PasswordInput"
 import { TextInput } from "../../components/inputs/TextInput"
@@ -39,8 +39,15 @@ const LoginPage = (props: Props): any => {
     const forgottenPasswordClicked = () => {
         props.onSetPage(6)
     }
+    const backButtonClicked = () => {
+        props.onSetPage(2)
+    }
     return (
         <div className="flex justify-center items-center flex-col gap-4 h-screen">
+            <LeftCircleOutlined
+                onClick={backButtonClicked}
+                className="absolute left-10 top-10 text-4xl text-sky-600 hover:text-sky-700 focus:text-sky-500"
+            />
             <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-md w-full space-y-8">
                     <div>
