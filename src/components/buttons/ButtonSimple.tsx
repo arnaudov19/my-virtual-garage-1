@@ -2,8 +2,6 @@ import React from "react"
 
 type Props = {
     label: string
-    disabled: boolean
-    type: "primary" | "danger"
     onClick: () => void
 }
 
@@ -11,7 +9,7 @@ export const ButtonSimple = (props: Props) => {
     return (
         <button
             onClick={props.onClick}
-            className=" bg-primary hover:bg-primary-700 text-white font-bold py-4 px-6 rounded">
+            className=" bg-sky-600 hover:bg-sky-700 text-white py-3 px-7 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
             {props.label}
         </button>
     )

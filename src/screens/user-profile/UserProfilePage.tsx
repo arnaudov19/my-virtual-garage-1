@@ -1,8 +1,6 @@
 import React, { Fragment, useState } from "react"
 import { Disclosure, Menu, Transition } from "@headlessui/react"
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline"
-import MaintenanceScreen from "./MaintanaceScreen"
-import { Main } from "next/document"
 
 const user = {
     name: "Martin Arnaudov",
@@ -39,7 +37,7 @@ const UserProfilePage = (props: Props) => {
     const [currenTab, setCurrenTab] = useState("")
 
     const logOutHandler = () => {
-        props.onSetPage(0)
+        props.onSetPage(1)
     }
     const handleTab = (tabName: string) => {
         setCurrenTab(tabName)
@@ -82,18 +80,7 @@ const UserProfilePage = (props: Props) => {
                                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                     <div className="flex justify-between h-16">
                                         <div className="flex">
-                                            <div className="flex-shrink-0 flex items-center">
-                                                <img
-                                                    className="block lg:hidden h-8 w-auto"
-                                                    src={require("../img/my-virtual-garage-logo.png")}
-                                                    alt="Workflow"
-                                                />
-                                                <img
-                                                    className="hidden lg:block h-8 w-auto"
-                                                    src={require("../img/my-virtual-garage-logo.png")}
-                                                    alt="My Virtual garage"
-                                                />
-                                            </div>
+                                            <div className="flex-shrink-0 flex items-center"></div>
                                             <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                                                 {navigation.map((item) => {
                                                     return (

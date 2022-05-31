@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
 import { ButtonSmall } from "../../components/buttons/ButtonSmall"
+import LoginScreen from "../login/LoginScreen"
 import { WelcomeScreenContainer } from "./WelcomeScreenContainer"
 
 type Props = {
@@ -16,6 +17,8 @@ export const WelcomeScreen = (props: Props) => {
     }
 
     return (
-        <WelcomeScreenContainer LoginButtonClicked={onLoginBtnClicked} CreateNewButtonClicked={onCreateNewBtnClicked} />
+        <div>
+            <WelcomeScreenContainer />
+        </div>
     )
 }

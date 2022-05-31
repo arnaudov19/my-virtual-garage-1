@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps, Checkbox } from "antd"
-import { WelcomePage } from "../welcome-page/WelcomeScreen"
+import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps } from "antd"
+import { WelcomeScreen } from "../welcome-page/WelcomeScreen"
 import { ProgressSteps } from "../../components/ProgressSteps"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 
@@ -62,7 +62,7 @@ const CreateUserGeneralCarInfo = (props: Props) => {
                         </Form.Item>
                         <FormTextInput
                             value={carModel}
-                            onChange={getCarModel}
+                            onChange={() => getCarModel}
                             name="model"
                             label="Model"
                             size="large"

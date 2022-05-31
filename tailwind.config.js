@@ -9,6 +9,16 @@ module.exports = {
                     ...colors.sky,
                     DEFAULT: colors.sky["500"],
                 },
+                screens: {
+                    xs: "300px",
+                    sm: "480px",
+                    md: "768px",
+                    lg: "976px",
+                    xl: "1440px",
+                },
+                spacing: {
+                    128: "32rem",
+                },
             },
         },
     },

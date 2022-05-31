@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps, Checkbox } from "antd"
 import { Option } from "antd/es/mentions"
-import { WelcomePage } from "../welcome-page/WelcomeScreen"
+import { WelcomeScreen } from "../welcome-page/WelcomeScreen"
 import { ProgressSteps } from "../../components/ProgressSteps"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 import { FormItemNumberInput } from "../../components/form-input-fields/FormItemNumberInput"
@@ -75,7 +75,7 @@ const CreateUserDetailedCarInfo = (props: Props) => {
 
                                 <FormItemNumberInput size="large" label="Price" placeholder="4000$" />
                                 <FormTextInput
-                                    onChange={getFuelType}
+                                    onChange={() => getFuelType}
                                     size="large"
                                     label="Fuel Type"
                                     placeholder="Diesel, Gasoline.."
@@ -85,7 +85,7 @@ const CreateUserDetailedCarInfo = (props: Props) => {
                                 <FormItemNumberInput size="large" label="Displacement" placeholder="1998cc" />
                                 <FormItemNumberInput size="large" label="Power" placeholder="170hp" />
                                 <FormTextInput
-                                    onChange={getOilType}
+                                    onChange={() => getOilType}
                                     size="large"
                                     label="Oil type"
                                     placeholder="SAE 10W-40"

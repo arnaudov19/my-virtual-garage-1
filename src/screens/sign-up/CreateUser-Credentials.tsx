@@ -1,8 +1,10 @@
 import React, { useState } from "react"
-import { Button, Form, Input, Steps } from "antd"
+import { Button as AntBtn, Form, Input, Steps } from "antd"
 import { ProgressSteps } from "../../components/ProgressSteps"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 import { FormItemPasswordInput } from "../../components/form-input-fields/FormItemPasswordInput"
+import { Button } from "../../components/buttons/Button"
+import { ButtonSimple } from "../../components/buttons/ButtonSimple"
 
 const { Step } = Steps
 
@@ -27,7 +29,7 @@ const CreateUserCredentials = (props: Props) => {
     const getConfirmUserPassword = (event: any) => {
         setConfirmUserPassword(event.target.value)
     }
-    const nextPageHandler = (event: any) => {
+    const onNextBtnClicked = (event: any) => {
         event.preventDefault()
         props.onSetPage(4)
         props.userEmail(userEmail)
@@ -36,13 +38,13 @@ const CreateUserCredentials = (props: Props) => {
         // storeToRedux()
         // store to inner state
     }
-    const backPageHandler = (event: any) => {
+    const onBackBtnClicked = (event: any) => {
         event.preventDefault()
-        props.onSetPage(0)
+        props.onSetPage(1)
     }
     return (
-        <div className="signup-form-container flex flex-col items-center justify-center">
-            <div className="h-5/6 w-4/6 flex flex-col items-center justify-evenly pt-4 rounded-lg shadow-2xl">
+        <div className="signup-form-container bg-gray-200 flex flex-col items-center justify-center">
+            <div className="bg-white h-5/6 w-4/6 flex flex-col items-center justify-evenly pt-4 rounded-lg shadow-2xl">
                 <ProgressSteps currentStep={0} />
                 <div className="input-fields-signup-container">
                     <Form
@@ -79,17 +81,9 @@ const CreateUserCredentials = (props: Props) => {
                         />
                     </Form>
                 </div>
-                <div style={{ width: "300px", display: "flex", justifyContent: "space-around" }}>
-                    <button
-                        onClick={backPageHandler}
-                        className="group relative flex justify-center py-2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
-                        Back
-                    </button>
-                    <button
-                        onClick={nextPageHandler}
-                        className="group relative flex justify-center py-2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
-                        Next
-                    </button>
+                <div className="w-96 flex justify-around">
+                    <ButtonSimple onClick={onBackBtnClicked} label="Back" />
+                    <ButtonSimple onClick={onNextBtnClicked} label="Next" />
                 </div>
             </div>
         </div>

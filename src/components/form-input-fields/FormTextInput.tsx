@@ -3,21 +3,18 @@ import { Form, Input } from "antd"
 import { SizeType } from "antd/es/config-provider/SizeContext"
 
 type Props = {
-    inputText: string
-    label: string
-    inputType: string
+    inputText?: string
+    label?: string
+    inputType?: string
     onChange: () => {}
-    value: string
-    size: SizeType
-    name: string
-    placeholder: string
+    value?: string
+    size?: SizeType
+    name?: string
+    placeholder?: string
 }
 
 export const FormTextInput = (props: Props) => {
     return (
-        // Not FormItem, only INPUT
-
-        // Rename so its clear that its FormItemInput component
         <Form.Item style={styles.FormItem}>
             <label>{props.label}</label>
             <Input
