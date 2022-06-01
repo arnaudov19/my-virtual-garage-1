@@ -3,12 +3,11 @@ import { Form, Input, InputNumber } from "antd"
 
 export const NumberInput = (props: any) => {
     return (
-        <div style={styles.inputContainer}>
-            <label>{props.label}</label>
-            <InputNumber
-                style={styles.inputField}
+        <div className="flex bg-transparent flex-col justify-center w-96 pb-6">
+            <input
+                className="w-full"
                 onChange={props.onChange}
-                type={props.inputType}
+                type="number"
                 value={props.value}
                 name={props.name}
                 size={props.size}
@@ -16,14 +15,4 @@ export const NumberInput = (props: any) => {
             />
         </div>
     )
-}
-const styles = {
-    inputContainer: {
-        display: "flex",
-        justifyContent: "center",
-        width: "300px",
-    },
-    inputField: {
-        width: "100%",
-    },
 }

@@ -3,9 +3,10 @@ import { Form, Input } from "antd"
 
 export const FormItemPasswordInput = (props: any) => {
     return (
-        <Form.Item style={styles.FormItem}>
+        <Form.Item className="flex justify-center w-96">
             <label>{props.label}</label>
             <Input.Password
+                className="w-full"
                 onChange={props.onChange}
                 type={props.inputType}
                 value={props.value}
@@ -15,11 +16,4 @@ export const FormItemPasswordInput = (props: any) => {
             />
         </Form.Item>
     )
-}
-const styles = {
-    FormItem: {
-        display: "flex",
-        justifyContent: "center",
-        width: "300px",
-    },
 }

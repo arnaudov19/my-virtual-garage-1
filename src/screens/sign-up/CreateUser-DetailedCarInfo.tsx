@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps, Checkbox } from "antd"
 import { Option } from "antd/es/mentions"
 import { WelcomeScreen } from "../welcome-page/WelcomeScreen"
-import { ProgressSteps } from "../../components/ProgressSteps"
+import { ProgressSteps } from "../../components/progress-steps/ProgressSteps"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 import { FormItemNumberInput } from "../../components/form-input-fields/FormItemNumberInput"
 
@@ -58,7 +58,7 @@ const CreateUserDetailedCarInfo = (props: Props) => {
     }
 
     return (
-        <div className="signup-form-container flex flex-col items-center justify-center">
+        <div className="w-screen h-screen flex flex-col items-center justify-center">
             <div className="h-5/6 w-4/6 flex flex-col items-center justify-evenly pt-4 rounded-lg shadow-2xl">
                 <ProgressSteps currentStep={2} />
                 <div className="input-fields-signup-container">

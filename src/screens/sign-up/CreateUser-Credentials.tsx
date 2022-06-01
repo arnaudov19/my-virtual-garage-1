@@ -1,10 +1,12 @@
 import React, { useState } from "react"
 import { Button as AntBtn, Form, Input, Steps } from "antd"
-import { ProgressSteps } from "../../components/ProgressSteps"
+import { ProgressSteps } from "../../components/progress-steps/ProgressSteps"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 import { FormItemPasswordInput } from "../../components/form-input-fields/FormItemPasswordInput"
 import { Button } from "../../components/buttons/Button"
 import { ButtonSimple } from "../../components/buttons/ButtonSimple"
+import { TextInput } from "../../components/inputs/TextInput"
+import { PasswordInput } from "../../components/inputs/PasswordInput"
 
 const { Step } = Steps
 
@@ -20,30 +22,29 @@ const CreateUserCredentials = (props: Props) => {
     const [userPassword, setUserPassword] = useState("")
     const [confirmUserPassword, setConfirmUserPassword] = useState("")
 
-    const getUserEmail = (event: any) => {
+    const getUserEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserEmail(event.target.value)
     }
-    const getUserPassword = (event: any) => {
+    const getUserPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserPassword(event.target.value)
     }
-    const getConfirmUserPassword = (event: any) => {
+    const getConfirmUserPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
         setConfirmUserPassword(event.target.value)
     }
-    const onNextBtnClicked = (event: any) => {
+    const onNextBtnClicked = (event: MouseEvent) => {
         event.preventDefault()
         props.onSetPage(4)
         props.userEmail(userEmail)
         props.password(userPassword)
-
         // storeToRedux()
         // store to inner state
     }
-    const onBackBtnClicked = (event: any) => {
+    const onBackBtnClicked = (event: MouseEvent) => {
         event.preventDefault()
         props.onSetPage(1)
     }
     return (
-        <div className="signup-form-container bg-gray-200 flex flex-col items-center justify-center">
+        <div className="w-screen h-screen bg-gray-200 flex flex-col items-center justify-center">
             <div className="bg-white h-5/6 w-4/6 flex flex-col items-center justify-evenly pt-4 rounded-lg shadow-2xl">
                 <ProgressSteps currentStep={0} />
                 <div className="input-fields-signup-container">
@@ -54,36 +55,30 @@ const CreateUserCredentials = (props: Props) => {
                             flexDirection: "column",
                             alignItems: "center",
                         }}>
-                        <FormTextInput
+                        <TextInput
                             onChange={getUserEmail}
                             value={userEmail}
                             size="large"
                             inputType="text"
                             label="Email"
+                            type="email"
                             placeholder="Enter Your Email"
                         />
-                        <FormItemPasswordInput
-                            onChange={getUserPassword}
+                        <PasswordInput
                             value={userPassword}
-                            size="large"
-                            type="password"
-                            label="Password"
+                            onChange={getUserPassword}
                             placeholder="Enter Your Password"
-                            name="password"
                         />
-                        <FormItemPasswordInput
+                        <PasswordInput
                             onChange={getConfirmUserPassword}
                             value={confirmUserPassword}
-                            size="large"
-                            label="Confirm Password"
-                            placeholder="Confirm Your Password"
-                            name="confirm-password"
+                            placeholder="Confirm Your Passwor"
                         />
                     </Form>
                 </div>
                 <div className="w-96 flex justify-around">
-                    <ButtonSimple onClick={onBackBtnClicked} label="Back" />
-                    <ButtonSimple onClick={onNextBtnClicked} label="Next" />
+                    <ButtonSimple onClick={() => onBackBtnClicked(event as MouseEvent)} label="Back" />
+                    <ButtonSimple onClick={() => onNextBtnClicked(event as MouseEvent)} label="Next" />
                 </div>
             </div>
         </div>

@@ -3,27 +3,15 @@ import { Form, Input, InputNumber } from "antd"
 
 export const PasswordInput = (props: any) => {
     return (
-        <div style={styles.inputContainer}>
-            <label>{props.label}</label>
-            <Input.Password
-                style={styles.inputField}
+        <div className="flex flex-col justify-center w-96 pb-6">
+            <input
+                className="w-full bg-transparent invalid:border-red-500 h-12 border-b-2 text-xl hover:border-b-sky-500 focus:outline-none"
                 onChange={props.onChange}
-                type={props.inputType}
+                type="password"
                 value={props.value}
                 name={props.name}
-                size={props.size}
                 placeholder={props.placeholder}
             />
         </div>
     )
-}
-const styles = {
-    inputContainer: {
-        display: "flex",
-        justifyContent: "center",
-        width: "300px",
-    },
-    inputField: {
-        width: "100%",
-    },
 }

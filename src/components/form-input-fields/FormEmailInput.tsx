@@ -14,7 +14,7 @@ type Props = {
 export const FormEmailInput = (props: Props) => {
     return (
         <Form.Item
-            style={styles.FormItem}
+            className="flex justify-center w-96 pb-6"
             name="username"
             rules={[
                 {
@@ -22,9 +22,8 @@ export const FormEmailInput = (props: Props) => {
                     message: "Please input your email!",
                 },
             ]}>
-            <label>{props.label}</label>
-
             <Input
+                className="w-full"
                 onChange={props.onChange}
                 type={props.inputType}
                 value={props.value}
@@ -33,11 +32,4 @@ export const FormEmailInput = (props: Props) => {
             />
         </Form.Item>
     )
-}
-const styles = {
-    FormItem: {
-        display: "flex",
-        justifyContent: "center",
-        width: "300px",
-    },
 }

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps } from "antd"
 import { WelcomeScreen } from "../welcome-page/WelcomeScreen"
-import { ProgressSteps } from "../../components/ProgressSteps"
+import { ProgressSteps } from "../../components/progress-steps/ProgressSteps"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 
 const { Step } = Steps
@@ -45,7 +45,7 @@ const CreateUserGeneralCarInfo = (props: Props) => {
         props.onSetPage(3)
     }
     return (
-        <div className="signup-form-container flex flex-col items-center justify-center">
+        <div className="w-screen h-screen flex flex-col items-center justify-center">
             <div className="h-5/6 w-4/6 flex flex-col items-center justify-evenly pt-4 rounded-lg shadow-2xl">
                 <ProgressSteps currentStep={1} />
                 <div className="input-fields-signup-container">

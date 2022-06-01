@@ -15,9 +15,10 @@ type Props = {
 
 export const FormTextInput = (props: Props) => {
     return (
-        <Form.Item style={styles.FormItem}>
+        <Form.Item className="flex justify-center w-96">
             <label>{props.label}</label>
             <Input
+                className="w-full"
                 onChange={props.onChange}
                 type={props.inputType}
                 value={props.value}

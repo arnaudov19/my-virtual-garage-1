@@ -1,16 +1,16 @@
 import React, { useState } from "react"
-import { WelcomeScreen } from "./welcome-page/WelcomeScreen"
-import UserProfilePage from "./user-profile/UserProfilePage"
-import { ForgottenPasswordPage } from "./ForgottenPasswordPage"
-import LoginScreen from "./login/LoginScreen"
-import DetailedCarInfoPage from "./sign-up/CreateUser-DetailedCarInfo"
-import CreateUserGeneralCarInfo from "./sign-up/CreateUser-GeneralCarInfo"
-import MaintenanceScreen from "./user-profile/MaintanaceScreen"
+import { WelcomeScreen } from "../../screens/welcome-page/WelcomeScreen"
+import UserProfilePage from "../../screens/user-profile/UserProfilePage"
+import { ForgottenPasswordPage } from "../../screens/forgotten-password/ForgottenPasswordPage"
+import LoginScreen from "../../screens/login/LoginScreen"
+import DetailedCarInfoPage from "../../screens/sign-up/CreateUser-DetailedCarInfo"
+import CreateUserGeneralCarInfo from "../../screens/sign-up/CreateUser-GeneralCarInfo"
+import MaintenanceScreen from "../../screens/user-profile/MaintanaceScreen"
 
-import CreateUserDetailedCarInfo from "./sign-up/CreateUser-DetailedCarInfo"
-import MaintanaceScreen from "./user-profile/MaintanaceScreen"
-import CreateUserCredentials from "./sign-up/CreateUser-Credentials"
-import { DetailedCarInfoScreen } from "./user-profile/DetailedCarInfoScreen"
+import CreateUserDetailedCarInfo from "../../screens/sign-up/CreateUser-DetailedCarInfo"
+import MaintanaceScreen from "../../screens/user-profile/MaintanaceScreen"
+import CreateUserCredentials from "../../screens/sign-up/CreateUser-Credentials"
+import { DetailedCarInfoScreen } from "../../screens/user-profile/DetailedCarInfoScreen"
 
 export const ChangeScreenComponent = () => {
     const [currentPage, setCurrentPage] = useState(1)
@@ -34,8 +34,7 @@ export const ChangeScreenComponent = () => {
 
             const [newPurchase, setNewPurchase] = useState("")
             const [carModel, setCarModel] = useState("")
-            const [kmOnPurchase, setKmOnPurchase] = useState(0)
-
+        // const [kmOnPurchase, setKmOnPurchase] = useState(0)
         // case 2:
         //     return (
         //         <UserProfilePage
@@ -57,16 +56,16 @@ export const ChangeScreenComponent = () => {
                     onSetPage={(page: number) => setCurrentPage(page)}
                 />
             )
-        // case 4:
-        //     return (
-        //         <CreateUserGeneralCarInfo
-        //             newPurchasedCar={(newCar: string) => setNewPurchase(newCar)}
-        //             currentPage={currentPage}
-        //             carModel={(model: string) => setCarModel(model)}
-        //             registrationDate={(regDate: string) => regDate}
-        //             onSetPage={(page: number) => setCurrentPage(page)}
-        //         />
-        //     )
+        case 4:
+            return (
+                <CreateUserGeneralCarInfo
+                    newPurchasedCar={(newCar: string) => setNewPurchase(newCar)}
+                    currentPage={currentPage}
+                    carModel={(model: string) => setCarModel(model)}
+                    registrationDate={(regDate: string) => regDate}
+                    onSetPage={(page: number) => setCurrentPage(page)}
+                />
+            )
         // case 5:
         //     return (
         //         <CreateUserDetailedCarInfo
