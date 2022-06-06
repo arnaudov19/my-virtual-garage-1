@@ -5,6 +5,8 @@ import { WelcomeScreen } from "../welcome-page/WelcomeScreen"
 import { ProgressSteps } from "../../components/progress-steps/ProgressSteps"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 import { FormItemNumberInput } from "../../components/form-input-fields/FormItemNumberInput"
+import { CreateUserContainer } from "./CreateUserContainer"
+import { ButtonSimple } from "../../components/buttons/ButtonSimple"
 
 const { Step } = Steps
 
@@ -22,10 +24,10 @@ const CreateUserDetailedCarInfo = (props: Props) => {
     const [power, setPower] = useState("")
     const [oilType, setOilType] = useState("")
 
-    const getKmOnPurchase = (event: Event) => {
-        // setKmOnPurchase((event.target as HTMLInputElement).value)
-        console.log(kmOnPurchase)
-    }
+    // const getKmOnPurchase = (event: Event) => {
+    //     setKmOnPurchase((event.target as HTMLInputElement).value)
+    //     console.log(kmOnPurchase)
+    // }
     const getPrice = (event: any) => {
         setPrice(event.target.value)
         console.log(price)
@@ -47,67 +49,57 @@ const CreateUserDetailedCarInfo = (props: Props) => {
         console.log(oilType)
     }
 
-    const nextPageHandler = (event: any) => {
+    const onNextBtnClicked = (event: any) => {
         event.preventDefault()
         props.onSetKmOnPurchase(kmOnPurchase)
         props.onSetPage(1)
     }
-    const backPageHandler = (event: any) => {
+    const onBackBtnClicked = (event: any) => {
         event.preventDefault()
         props.onSetPage(4)
     }
 
     return (
-        <div className="w-screen h-screen flex flex-col items-center justify-center">
-            <div className="h-5/6 w-4/6 flex flex-col items-center justify-evenly pt-4 rounded-lg shadow-2xl">
-                <ProgressSteps currentStep={2} />
-                <div className="input-fields-signup-container">
-                    <Form className="w-4/6 flex flex-col items-center">
-                        <div className="flex h-5/6 gap-6 pb-12">
-                            <div>
-                                <FormItemNumberInput
-                                    onChange={(value: number) => setKmOnPurchase(value)}
-                                    value={kmOnPurchase}
-                                    size="large"
-                                    label="Kilometres on Purchase"
-                                    placeholder="59000km"
-                                />
+        <CreateUserContainer>
+            <ProgressSteps currentStep={2} />
+            <div className="w-full flex justify-center gap-6">
+                <Form className="w-4/6 flex flex-col items-center">
+                    <div className="flex h-5/6 gap-6 pb-12">
+                        <div>
+                            <FormItemNumberInput
+                                onChange={(value: number) => setKmOnPurchase(value)}
+                                value={kmOnPurchase}
+                                size="large"
+                                label="Kilometres on Purchase"
+                                placeholder="59000km"
+                            />
 
-                                <FormItemNumberInput size="large" label="Price" placeholder="4000$" />
-                                <FormTextInput
-                                    onChange={() => getFuelType}
-                                    size="large"
-                                    label="Fuel Type"
-                                    placeholder="Diesel, Gasoline.."
-                                />
-                            </div>
-                            <div>
-                                <FormItemNumberInput size="large" label="Displacement" placeholder="1998cc" />
-                                <FormItemNumberInput size="large" label="Power" placeholder="170hp" />
-                                <FormTextInput
-                                    onChange={() => getOilType}
-                                    size="large"
-                                    label="Oil type"
-                                    placeholder="SAE 10W-40"
-                                />
-                            </div>
+                            <FormItemNumberInput size="large" label="Price" placeholder="4000$" />
+                            <FormTextInput
+                                onChange={() => getFuelType}
+                                size="large"
+                                label="Fuel Type"
+                                placeholder="Diesel, Gasoline.."
+                            />
                         </div>
-                    </Form>
-                </div>
-                <div style={{ width: "300px", display: "flex", justifyContent: "space-around" }}>
-                    <button
-                        onClick={backPageHandler}
-                        className="group relative flex justify-center py-2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
-                        Back
-                    </button>
-                    <button
-                        onClick={nextPageHandler}
-                        className="group relative flex justify-center py-2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
-                        Create Account
-                    </button>
-                </div>
+                        <div>
+                            <FormItemNumberInput size="large" label="Displacement" placeholder="1998cc" />
+                            <FormItemNumberInput size="large" label="Power" placeholder="170hp" />
+                            <FormTextInput
+                                onChange={() => getOilType}
+                                size="large"
+                                label="Oil type"
+                                placeholder="SAE 10W-40"
+                            />
+                        </div>
+                    </div>
+                </Form>
             </div>
-        </div>
+            <div className="w-96 flex justify-around">
+                <ButtonSimple onClick={() => onBackBtnClicked(event as MouseEvent)} label="Back" />
+                <ButtonSimple onClick={() => onNextBtnClicked(event as MouseEvent)} label="Next" />
+            </div>
+        </CreateUserContainer>
     )
 }
 

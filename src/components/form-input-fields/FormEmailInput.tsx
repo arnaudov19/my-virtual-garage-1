@@ -11,6 +11,7 @@ type Props = {
     size: SizeType
     placeholder: string
 }
+
 export const FormEmailInput = (props: Props) => {
     return (
         <Form.Item

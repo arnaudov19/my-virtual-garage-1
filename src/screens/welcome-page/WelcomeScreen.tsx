@@ -1,6 +1,4 @@
-import React, { useState } from "react"
-import { ButtonSmall } from "../../components/buttons/ButtonSmall"
-import LoginScreen from "../login/LoginScreen"
+import React from "react"
 import { WelcomeScreenContainer } from "./WelcomeScreenContainer"
 
 type Props = {

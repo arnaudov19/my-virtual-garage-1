@@ -7,6 +7,7 @@ type Props = {
     label: string
     onClick: () => void
     size: ButtonSize
+    htmlType?: any
     prefixIcon?: Maybe<React.ReactNode>
 }
 

@@ -6,11 +6,11 @@ import LoginScreen from "../../screens/login/LoginScreen"
 import DetailedCarInfoPage from "../../screens/sign-up/CreateUser-DetailedCarInfo"
 import CreateUserGeneralCarInfo from "../../screens/sign-up/CreateUser-GeneralCarInfo"
 import MaintenanceScreen from "../../screens/user-profile/MaintanaceScreen"
-
 import CreateUserDetailedCarInfo from "../../screens/sign-up/CreateUser-DetailedCarInfo"
 import MaintanaceScreen from "../../screens/user-profile/MaintanaceScreen"
 import CreateUserCredentials from "../../screens/sign-up/CreateUser-Credentials"
 import { DetailedCarInfoScreen } from "../../screens/user-profile/DetailedCarInfoScreen"
+import { LoginFormValues } from "../../screens/login/LoginForm"
 
 export const ChangeScreenComponent = () => {
     const [currentPage, setCurrentPage] = useState(1)
@@ -18,6 +18,11 @@ export const ChangeScreenComponent = () => {
     // TODO this should live in some other component/place
     const [currentEmail, setCurrentEmail] = useState("")
     const [currentPass, setCurrentPass] = useState("")
+    const [confirmPass, setConfirmPass] = useState("")
+
+    const collectLoginData = (values: LoginFormValues) => {
+        setCurrentEmail(values.email)
+    }
 
     switch (currentPage) {
         case 0:
@@ -29,11 +34,15 @@ export const ChangeScreenComponent = () => {
                     customerPassword={currentPass}
                     currentPageLogin={currentPage}
                     onSetPage={(page: number) => setCurrentPage(page)}
+                    onCollectLoginData={collectLoginData}
                 />
             )
 
-            const [newPurchase, setNewPurchase] = useState("")
-            const [carModel, setCarModel] = useState("")
+        case 2:
+            return <div>EMAIL {currentEmail}</div>
+
+        // const [newPurchase, setNewPurchase] = useState("")
+        // const [carModel, setCarModel] = useState("")
         // const [kmOnPurchase, setKmOnPurchase] = useState(0)
         // case 2:
         //     return (
@@ -50,30 +59,24 @@ export const ChangeScreenComponent = () => {
         case 3:
             return (
                 <CreateUserCredentials
-                    userEmail={(email: string) => setCurrentEmail(email)}
+                    email={(email: string) => setCurrentEmail(email)}
                     password={(password: string) => setCurrentPass(password)}
+                    confirmPassword={(confirmPass: string) => setConfirmPass(confirmPass)}
                     currentPage={currentPage}
                     onSetPage={(page: number) => setCurrentPage(page)}
                 />
             )
-        case 4:
-            return (
-                <CreateUserGeneralCarInfo
-                    newPurchasedCar={(newCar: string) => setNewPurchase(newCar)}
-                    currentPage={currentPage}
-                    carModel={(model: string) => setCarModel(model)}
-                    registrationDate={(regDate: string) => regDate}
-                    onSetPage={(page: number) => setCurrentPage(page)}
-                />
-            )
-        // case 5:
+        // case 4:
         //     return (
-        //         <CreateUserDetailedCarInfo
+        //         <CreateUserGeneralCarInfo
+        //             newPurchasedCar={(newCar: string) => setNewPurchase(newCar)}
         //             currentPage={currentPage}
+        //             carModel={(model: string) => setCarModel(model)}
+        //             registrationDate={(regDate: string) => regDate}
         //             onSetPage={(page: number) => setCurrentPage(page)}
-        //             onSetKmOnPurchase={(kiloOnPurch: number) => setKmOnPurchase(kiloOnPurch)}
         //         />
         //     )
+
         // case 6:
         //     return (
         //         <ForgottenPasswordPage

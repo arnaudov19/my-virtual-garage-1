@@ -38,13 +38,6 @@ body {
 }
 
 /*--------- SIGN UP FORM CONTAINER --------*/
-
-.input-fields-signup-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-}
 .login-container {
     border: 2px solid #444;
     background-color: rgb(255, 255, 255, 0.5);
@@ -60,26 +53,5 @@ body {
     display: flex;
     justify-content: space-between;
 }
-.user-garage-container {
-    width: 1440px;
-    height: 690px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-}
-.align-center-container {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-.tab-container {
-    display: flex;
-    gap: 1rem;
-    width: 60%;
-    height: 100vh;
-    background-color: white;
-}
+
+

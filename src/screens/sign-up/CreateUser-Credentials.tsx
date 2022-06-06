@@ -7,13 +7,15 @@ import { Button } from "../../components/buttons/Button"
 import { ButtonSimple } from "../../components/buttons/ButtonSimple"
 import { TextInput } from "../../components/inputs/TextInput"
 import { PasswordInput } from "../../components/inputs/PasswordInput"
+import { CreateUserContainer } from "./CreateUserContainer"
 
 const { Step } = Steps
 
 type Props = {
     onSetPage: (page: number) => void
-    userEmail: (email: string) => void
+    email: (email: string) => void
     password: (password: string) => void
+    confirmPassword: (confPassword: string) => void
     currentPage: number
 }
 
@@ -34,54 +36,44 @@ const CreateUserCredentials = (props: Props) => {
     const onNextBtnClicked = (event: MouseEvent) => {
         event.preventDefault()
         props.onSetPage(4)
-        props.userEmail(userEmail)
+        props.email(userEmail)
         props.password(userPassword)
+        props.confirmPassword(confirmUserPassword)
         // storeToRedux()
         // store to inner state
+        console.log(userEmail)
     }
     const onBackBtnClicked = (event: MouseEvent) => {
         event.preventDefault()
         props.onSetPage(1)
     }
     return (
-        <div className="w-screen h-screen bg-gray-200 flex flex-col items-center justify-center">
-            <div className="bg-white h-5/6 w-4/6 flex flex-col items-center justify-evenly pt-4 rounded-lg shadow-2xl">
-                <ProgressSteps currentStep={0} />
-                <div className="input-fields-signup-container">
-                    <Form
-                        style={{
-                            width: "60%",
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                        }}>
-                        <TextInput
-                            onChange={getUserEmail}
-                            value={userEmail}
-                            size="large"
-                            inputType="text"
-                            label="Email"
-                            type="email"
-                            placeholder="Enter Your Email"
-                        />
-                        <PasswordInput
-                            value={userPassword}
-                            onChange={getUserPassword}
-                            placeholder="Enter Your Password"
-                        />
-                        <PasswordInput
-                            onChange={getConfirmUserPassword}
-                            value={confirmUserPassword}
-                            placeholder="Confirm Your Passwor"
-                        />
-                    </Form>
-                </div>
-                <div className="w-96 flex justify-around">
-                    <ButtonSimple onClick={() => onBackBtnClicked(event as MouseEvent)} label="Back" />
-                    <ButtonSimple onClick={() => onNextBtnClicked(event as MouseEvent)} label="Next" />
-                </div>
+        <CreateUserContainer>
+            <ProgressSteps currentStep={0} />
+            <div className="input-fields-signup-container">
+                <Form className="w-4/6 flex flex-col items-center">
+                    <TextInput
+                        onChange={getUserEmail}
+                        value={userEmail}
+                        size="large"
+                        inputType="text"
+                        label="Email"
+                        type="email"
+                        placeholder="Enter Your Email"
+                    />
+                    <PasswordInput onChange={getUserPassword} placeholder="Enter Your Password" value={userPassword} />
+                    <PasswordInput
+                        onChange={getConfirmUserPassword}
+                        placeholder="Confirm Your Password"
+                        value={confirmUserPassword}
+                    />
+                </Form>
             </div>
-        </div>
+            <div className="w-96 flex justify-around">
+                <ButtonSimple onClick={() => onBackBtnClicked(event as MouseEvent)} label="Back" />
+                <ButtonSimple onClick={() => onNextBtnClicked(event as MouseEvent)} label="Next" />
+            </div>
+        </CreateUserContainer>
     )
 }
 export default CreateUserCredentials
