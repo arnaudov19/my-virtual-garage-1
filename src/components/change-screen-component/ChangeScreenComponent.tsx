@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { WelcomeScreen } from "../../screens/welcome-page/WelcomeScreen"
 import UserProfilePage from "../../screens/user-profile/UserProfilePage"
 import { ForgottenPasswordPage } from "../../screens/forgotten-password/ForgottenPasswordPage"
 import LoginScreen from "../../screens/login/LoginScreen"
@@ -8,26 +7,41 @@ import CreateUserGeneralCarInfo from "../../screens/sign-up/CreateUser-GeneralCa
 import MaintenanceScreen from "../../screens/user-profile/MaintanaceScreen"
 import CreateUserDetailedCarInfo from "../../screens/sign-up/CreateUser-DetailedCarInfo"
 import MaintanaceScreen from "../../screens/user-profile/MaintanaceScreen"
-import CreateUserCredentials from "../../screens/sign-up/CreateUser-Credentials"
+import { CreateUserCredentials } from "../../screens/sign-up/CreateUser-Credentials"
 import { DetailedCarInfoScreen } from "../../screens/user-profile/DetailedCarInfoScreen"
 import { LoginFormValues } from "../../screens/login/LoginForm"
+import { SignupFormValues } from "../../screens/sign-up/forms/CredentialsForm"
+import { GeneralCarInfoValues } from "../../screens/sign-up/forms/GeneralCarInfoForm"
 
 export const ChangeScreenComponent = () => {
-    const [currentPage, setCurrentPage] = useState(1)
-
-    // TODO this should live in some other component/place
+    const [currentPage, setCurrentPage] = useState(0)
     const [currentEmail, setCurrentEmail] = useState("")
     const [currentPass, setCurrentPass] = useState("")
     const [confirmPass, setConfirmPass] = useState("")
 
+    const [carModel, setCarModel] = useState("")
+    const [carBrand, setCarBrand] = useState("")
+    const [purchaseDate, setPurchaseDate] = useState("")
+    const [registrationDate, setRegistrationDate] = useState("")
+
     const collectLoginData = (values: LoginFormValues) => {
         setCurrentEmail(values.email)
+        setCurrentPass(values.password)
+    }
+    const collectSignUpData = (values: SignupFormValues) => {
+        setCurrentEmail(values.email)
+        setCurrentPass(values.password)
+        setConfirmPass(values.confirmPassword)
+    }
+    const collectGeneralCarInfoData = (values: GeneralCarInfoValues) => {
+        setCarModel(values.model)
+        setCarBrand(values.brand)
+        setPurchaseDate(values.purchaseDate)
+        setRegistrationDate(values.registrationDate)
     }
 
     switch (currentPage) {
         case 0:
-            return <WelcomeScreen onSetPage={(page: number) => setCurrentPage(page)} />
-        case 1:
             return (
                 <LoginScreen
                     customerEmail={currentEmail}
@@ -38,13 +52,7 @@ export const ChangeScreenComponent = () => {
                 />
             )
 
-        case 2:
-            return <div>EMAIL {currentEmail}</div>
-
-        // const [newPurchase, setNewPurchase] = useState("")
-        // const [carModel, setCarModel] = useState("")
-        // const [kmOnPurchase, setKmOnPurchase] = useState(0)
-        // case 2:
+        // case 1:
         //     return (
         //         <UserProfilePage
         //             customerEmail={currentEmail}
@@ -56,28 +64,39 @@ export const ChangeScreenComponent = () => {
         //         />
         //     )
 
-        case 3:
+        case 2:
             return (
                 <CreateUserCredentials
-                    email={(email: string) => setCurrentEmail(email)}
-                    password={(password: string) => setCurrentPass(password)}
-                    confirmPassword={(confirmPass: string) => setConfirmPass(confirmPass)}
+                    email={currentEmail}
+                    password={currentPass}
+                    confirmPassword={confirmPass}
+                    currentPage={currentPage}
+                    onSetPage={(page: number) => setCurrentPage(page)}
+                    onCollectSignupData={collectSignUpData}
+                />
+            )
+        case 3:
+            return (
+                <CreateUserGeneralCarInfo
+                    brand={carBrand}
+                    model={carModel}
+                    purchaseDate={purchaseDate}
+                    registrationDate={registrationDate}
+                    onCollectGeneralCarInfoValues={collectGeneralCarInfoData}
                     currentPage={currentPage}
                     onSetPage={(page: number) => setCurrentPage(page)}
                 />
             )
+        case 9:
+            return (
+                <div>
+                    <p>{carBrand}</p>
+                    <p>{carModel}</p>
+                    <p>{purchaseDate}</p>
+                    <p>{registrationDate}</p>
+                </div>
+            )
         // case 4:
-        //     return (
-        //         <CreateUserGeneralCarInfo
-        //             newPurchasedCar={(newCar: string) => setNewPurchase(newCar)}
-        //             currentPage={currentPage}
-        //             carModel={(model: string) => setCarModel(model)}
-        //             registrationDate={(regDate: string) => regDate}
-        //             onSetPage={(page: number) => setCurrentPage(page)}
-        //         />
-        //     )
-
-        // case 6:
         //     return (
         //         <ForgottenPasswordPage
         //             currentPage={currentPage}
@@ -86,11 +105,11 @@ export const ChangeScreenComponent = () => {
         //             newPassword={1}
         //         />
         //     )
-        // case 7:
+        // case 5:
         //     return (
         //         <DetailedCarInfoScreen currentPage={currentPage} onSetPage={(page: number) => setCurrentPage(page)} />
         //     )
-        // case 8:
+        // case 6:
         //     return (
         //         <MaintenanceScreen
         //             kmOnPurchase={kmOnPurchase}
@@ -99,6 +118,14 @@ export const ChangeScreenComponent = () => {
         //         />
         //     )
         default:
-            return <WelcomeScreen onSetPage={(page: number) => setCurrentPage(page)} />
+            return (
+                <LoginScreen
+                    customerEmail={currentEmail}
+                    customerPassword={currentPass}
+                    currentPageLogin={currentPage}
+                    onSetPage={(page: number) => setCurrentPage(page)}
+                    onCollectLoginData={collectLoginData}
+                />
+            )
     }
 }

@@ -1,16 +1,26 @@
-import React, { useState } from "react"
-import { Form, Input } from "antd"
+import React from "react"
+import { Form, Input, message } from "antd"
+import { SizeType } from "antd/lib/config-provider/SizeContext"
 
-export const FormItemPasswordInput = (props: any) => {
+type Props = {
+    name?: string
+    className?: string
+    label?: string
+    size?: SizeType
+    placeholder?: string
+    rules?: any[]
+    styles?: {}
+}
+
+export const FormItemPasswordInput = (props: Props) => {
     return (
-        <Form.Item className="flex justify-center w-96">
-            <label>{props.label}</label>
+        <Form.Item
+            name={props.name}
+            style={props.styles}
+            rules={[{ required: true, message: "Please input your password!" }]}>
             <Input.Password
-                className="w-full"
-                onChange={props.onChange}
-                type={props.inputType}
-                value={props.value}
-                name={props.name}
+                className={`w-full ${props.className}`}
+                type="password"
                 size={props.size}
                 placeholder={props.placeholder}
             />

@@ -1,16 +1,17 @@
-import { Form, Input } from "antd"
+import { Checkbox, Form, Input } from "antd"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 import React from "react"
 import { Button } from "../../components/buttons/Button"
 import { LockClosedIcon } from "@heroicons/react/solid"
+import { FormItemPasswordInput } from "../../components/form-input-fields/FormItemPasswordInput"
 
 type Props = {
     onSumbit: (values: LoginFormValues) => void
 }
 
 export type LoginFormValues = {
-    name: string
     email: string
+    password: string
 }
 
 export const LoginForm = (props: Props) => {
@@ -20,9 +21,6 @@ export const LoginForm = (props: Props) => {
 
         console.log("Success:", values)
         props.onSumbit(values)
-
-        // STORE LOGIN INFO
-        // dispatch(storeLoginInfoRequested(values))
     }
     const handleSubmitFailed = (errorInfo: any) => {
         console.log("Fail", errorInfo)
@@ -31,20 +29,33 @@ export const LoginForm = (props: Props) => {
     return (
         <Form
             className="mt-8 space-y-6"
-            autoComplete="off"
+            autoComplete="on"
             onFinish={handleSubmit}
             validateTrigger={"onBlur"}
             onFinishFailed={handleSubmitFailed}>
-            <FormTextInput name="username" placeholder="name" />
-            <FormTextInput name="phone" placeholder="phone" />
             <FormTextInput
-                placeholder="email"
+                className="w-96"
+                placeholder="Enter Your Email"
                 name="email"
+                size="large"
                 rules={[
                     {
                         required: true,
                         type: "email",
                         message: "The input is not valid E-mail!",
+                    },
+                ]}
+            />
+            <FormItemPasswordInput
+                className="w-96"
+                placeholder="Enter Your Password"
+                size="large"
+                name="password"
+                rules={[
+                    {
+                        required: true,
+                        type: "password",
+                        message: "The input is not valid password!",
                     },
                 ]}
             />

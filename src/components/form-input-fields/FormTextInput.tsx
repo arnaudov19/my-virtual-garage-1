@@ -15,8 +15,8 @@ type Props = {
 export const FormTextInput = (props: Props) => {
     return (
         <Form.Item noStyle>
-            {props.label ? <label>{props.label}</label> : null}
             <Form.Item name={props.name} style={props.styles} rules={props.rules}>
+                <label className="w-96 flex self">{props.label}</label>
                 <Input
                     className={`w-full ${props.className}`}
                     type="text"
@@ -26,11 +26,4 @@ export const FormTextInput = (props: Props) => {
             </Form.Item>
         </Form.Item>
     )
-}
-const styles = {
-    FormItem: {
-        display: "flex",
-        justifyContent: "center",
-        width: "300px",
-    },
 }

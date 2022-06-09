@@ -26,32 +26,3 @@ body {
     font-weight: 400;
     overflow-x: hidden;
 }
-
-/* ------------- MAIN PAGE TITLE -------------*/
-.title-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    height: 100vh;
-}
-
-/*--------- SIGN UP FORM CONTAINER --------*/
-.login-container {
-    border: 2px solid #444;
-    background-color: rgb(255, 255, 255, 0.5);
-    border-radius: 0.5rem;
-    height: 300px;
-    width: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-}
-.input-container {
-    width: 300px;
-    display: flex;
-    justify-content: space-between;
-}
-
-
