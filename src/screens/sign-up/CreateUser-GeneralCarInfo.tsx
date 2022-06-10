@@ -23,7 +23,7 @@ type Props = {
 
 const CreateUserGeneralCarInfo = (props: Props) => {
     const onNextBtnClicked = () => {
-        props.onSetPage(9)
+        props.onSetPage(4)
         console.log("btn clicked")
     }
     const onBackBtnClicked = (page: number) => {

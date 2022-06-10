@@ -4,7 +4,6 @@ import { Button } from "../../../components/buttons/Button"
 import { ButtonSimple } from "../../../components/buttons/ButtonSimple"
 import { ButtonSmall } from "../../../components/buttons/ButtonSmall"
 import { FormDatePicker } from "../../../components/form-input-fields/FormDatePicker"
-import { FormItemPasswordInput } from "../../../components/form-input-fields/FormItemPasswordInput"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
 import { BrandFormSelectInput } from "./BrandFormSelectInput"
 
@@ -33,30 +32,37 @@ export const GeneralCarInfoForm = (props: Props) => {
 
     return (
         <div className="w-4/6 flex flex-col items-center justify-between">
-            <Form
-                onFinish={handleSubmit}
-                onFinishFailed={handleSubmitFailed}
-                validateTrigger={"onBlur"}
-                className="w-4/6 flex flex-col items-center">
-                <BrandFormSelectInput label="Enter Car Brand" className="w-96" size="large" />
-                <FormTextInput
-                    name="model"
-                    label="Enter Car Model"
-                    placeholder="Enter Car Model"
-                    size="large"
+            <Form onFinish={handleSubmit} onFinishFailed={handleSubmitFailed} validateTrigger={"onBlur"}>
+                <BrandFormSelectInput
+                    name="brand"
+                    label="Enter Car Brand"
                     className="w-96"
+                    size="large"
                     rules={[
                         {
                             required: true,
-                            type: "text",
-                            message: "Please, fill the input",
+                            message: "Please, enter your car brand",
+                        },
+                    ]}
+                />
+                <FormTextInput
+                    label="Car Brand"
+                    placeholder="Enter Your Car Brand"
+                    className="w-96"
+                    size="large"
+                    name="model"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please, enter your car brand",
                         },
                     ]}
                 />
                 <FormDatePicker
+                    name="registration-date"
                     placeholder="Select First Registration Date"
                     size="large"
-                    className="w-96 mb-3"
+                    className="w-96"
                     label="First Registration Date"
                 />
                 <FormDatePicker
@@ -65,7 +71,7 @@ export const GeneralCarInfoForm = (props: Props) => {
                     className="w-96"
                     label="Purchase Date"
                 />
-                <div className="w-96 flex justify-around">
+                <div className="w-96 pt-6 flex justify-around">
                     <ButtonSmall onClick={onBackBtnClicked} label="Back" />
                     <ButtonSmall label="Next" />
                 </div>

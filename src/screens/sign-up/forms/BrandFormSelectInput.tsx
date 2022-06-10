@@ -11,20 +11,18 @@ type Props = {
     size?: SizeType
     placeholder?: string
     styles?: {}
+    name?: string
+    rules?: any[]
 }
 
 export const BrandFormSelectInput = (props: Props) => {
-    const handleChange = (value: string) => {
+    const handleChange = (value: any) => {
         console.log(`change ${value}`)
     }
     return (
         <Form.Item noStyle>
             <label className="w-96 flex self">{props.label}</label>
-            <Form.Item
-                className={`${props.className}`}
-                name={props.value}
-                style={props.styles}
-                rules={[{ required: true, message: "Please input " }]}>
+            <Form.Item className={`${props.className}`} name={props.name} style={props.styles} rules={props.rules}>
                 <Select size={props.size} placeholder="Select Car Brand" onChange={handleChange}>
                     <Option value="skoda">Skoda</Option>
                     <Option value="vw">VW</Option>

@@ -22,7 +22,7 @@ const LoginPage = (props: Props): any => {
         props.onSetPage(6)
     }
     const createAccBtnClicked = () => {
-        props.onSetPage(3)
+        props.onSetPage(4)
     }
 
     const collectLoginData = (values: LoginFormValues) => {

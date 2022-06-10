@@ -5,8 +5,9 @@ import Moment from "react-moment"
 type Props = {
     className?: string
     placeholder?: string
-    size: SizeType
-    label: string
+    size?: SizeType
+    label?: string
+    name?: string
 }
 
 export const FormDatePicker = (props: Props) => {
@@ -16,7 +17,7 @@ export const FormDatePicker = (props: Props) => {
     return (
         <Form.Item noStyle>
             <label className="w-96 flex self">{props.label}</label>
-            <Form.Item>
+            <Form.Item name={props.name}>
                 <DatePicker
                     className={`${props.className}`}
                     size={props.size}

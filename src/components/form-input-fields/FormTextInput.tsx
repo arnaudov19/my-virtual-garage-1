@@ -15,8 +15,8 @@ type Props = {
 export const FormTextInput = (props: Props) => {
     return (
         <Form.Item noStyle>
+            <label className="w-96 flex self">{props.label}</label>
             <Form.Item name={props.name} style={props.styles} rules={props.rules}>
-                <label className="w-96 flex self">{props.label}</label>
                 <Input
                     className={`w-full ${props.className}`}
                     type="text"
