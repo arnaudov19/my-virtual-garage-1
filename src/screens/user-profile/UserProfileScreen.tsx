@@ -1,4 +1,5 @@
 import { CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from "@heroicons/react/outline"
+import { useState } from "react"
 import { ButtonSmall } from "../../components/buttons/ButtonSmall"
 
 type Props = {
@@ -16,20 +17,34 @@ type Props = {
     power?: string
     oilType?: string
 }
-const navigation = [
-    { name: "Dashboard", icon: HomeIcon, href: "#", current: true },
-    { name: "Team", icon: UsersIcon, href: "#", count: 3, current: false },
-    { name: "Projects", icon: FolderIcon, href: "#", count: 4, current: false },
-    { name: "Calendar", icon: CalendarIcon, href: "#", current: false },
-    { name: "Documents", icon: InboxIcon, href: "#", count: 12, current: false },
-    { name: "Reports", icon: ChartBarIcon, href: "#", current: false },
-]
 
-function classNames(...classes: any) {
+const classNames = (...classes: any) => {
     return classes.filter(Boolean).join(" ")
 }
 
 export const UserProfileScreen = (props: Props) => {
+    const navigation = [
+        { name: "Detailed Info", icon: HomeIcon, href: "#", current: false },
+        { name: "General Info", icon: UsersIcon, href: "#", count: 3, current: false },
+        { name: "Change Pasword", icon: FolderIcon, href: "#", count: 4, current: false },
+        { name: "Log Out", icon: CalendarIcon, href: "#", current: false },
+    ]
+
+    const [isNavBarSelected, setIsNavBarSelected] = useState(navigation)
+
+    const onNavigationBarSelected = () => {
+        setIsNavBarSelected((prevState) => {
+            const newState = prevState.map((myCurrent) => {
+                if (myCurrent.name === "Detailed Info") {
+                    return { ...myCurrent, current: true }
+                }
+                return myCurrent
+            })
+            return newState
+        })
+        console.log(isNavBarSelected)
+    }
+
     const onBackBtnClicked = () => {
         props.onSetPage(0)
     }
@@ -46,26 +61,27 @@ export const UserProfileScreen = (props: Props) => {
                     </div>
                     <div className="mt-5 flex-grow flex flex-col">
                         <nav className="flex-1 bg-white space-y-1" aria-label="Sidebar">
-                            {navigation.map((item) => (
+                            {isNavBarSelected.map((myCurrent) => (
                                 <a
-                                    key={item.name}
-                                    href={item.href}
+                                    key={myCurrent.name}
+                                    href={myCurrent.href}
+                                    onClick={onNavigationBarSelected}
                                     className={classNames(
-                                        item.current
+                                        isNavBarSelected
                                             ? "bg-indigo-50 border-indigo-600 text-indigo-600"
                                             : "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                                         "group flex items-center px-3 py-2 text-sm font-medium border-l-4"
                                     )}>
-                                    <item.icon
+                                    <myCurrent.icon
                                         className={classNames(
-                                            item.current
+                                            isNavBarSelected
                                                 ? "text-indigo-500"
                                                 : "text-gray-400 group-hover:text-gray-500",
                                             "mr-3 flex-shrink-0 h-6 w-6"
                                         )}
                                         aria-hidden="true"
                                     />
-                                    {item.name}
+                                    {myCurrent.name}
                                 </a>
                             ))}
                         </nav>
