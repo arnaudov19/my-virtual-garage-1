@@ -1,7 +1,5 @@
 import { Form } from "antd"
 import React from "react"
-import { Button } from "../../../components/buttons/Button"
-import { ButtonSimple } from "../../../components/buttons/ButtonSimple"
 import { ButtonSmall } from "../../../components/buttons/ButtonSmall"
 import { FormItemPasswordInput } from "../../../components/form-input-fields/FormItemPasswordInput"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"

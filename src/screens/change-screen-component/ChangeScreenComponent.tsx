@@ -10,7 +10,6 @@ import { GeneralCarInfoValues } from "../sign-up/forms/GeneralCarInfoForm"
 
 import { Steps } from "antd"
 import { DetailedCarInfoValues } from "../sign-up/forms/DetailedCarInfoForm"
-const { Step } = Steps
 export const ChangeScreenComponent = () => {
     const [currentPage, setCurrentPage] = useState(0)
     const [currentEmail, setCurrentEmail] = useState("")

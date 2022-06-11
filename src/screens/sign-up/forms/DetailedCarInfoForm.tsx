@@ -29,13 +29,13 @@ export const DetailedCarInfoForm = (props: Props) => {
     }
     return (
         <Form onFinish={handleSubmit} onFinishFailed={handleSubmitFailed} className="w-4/6 flex flex-col items-center">
-            <div className="flex h-5/6 gap-6 pb-12">
+            <div className="flex flex-col md:flex-row h-fit md:h-5/6 md:gap-6 pb-12">
                 <div>
                     <FormTextInput
                         name="kmOnPurchase"
                         size="large"
                         label="Kilometres on Purchase"
-                        placeholder="59000km"
+                        placeholder="59000"
                     />
                     <FormTextInput name="price" size="large" label="Price" placeholder="4000$" />
                     <FormTextInput name="fuelType" size="large" label="Fuel Type" placeholder="Diesel, Gasoline.." />

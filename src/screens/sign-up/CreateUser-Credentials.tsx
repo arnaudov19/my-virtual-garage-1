@@ -1,14 +1,7 @@
-import React, { useState } from "react"
-import { Button as AntBtn, Form, Input, Steps } from "antd"
+import React from "react"
 import { ProgressSteps } from "../../components/progress-steps/ProgressSteps"
-import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
-import { FormItemPasswordInput } from "../../components/form-input-fields/FormItemPasswordInput"
-import { Button } from "../../components/buttons/Button"
-import { ButtonSimple } from "../../components/buttons/ButtonSimple"
 import { CreateUserContainer } from "./CreateUserContainer"
 import { CreateUserForm, SignupFormValues } from "./forms/CredentialsForm"
-
-const { Step } = Steps
 
 type Props = {
     onSetPage: (page: number) => void

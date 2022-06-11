@@ -1,15 +1,7 @@
-import React, { useState } from "react"
-import { Button, DatePicker, Form, Input, InputNumber, Select, Switch, Steps } from "antd"
+import React from "react"
 import { ProgressSteps } from "../../components/progress-steps/ProgressSteps"
-import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 import { CreateUserContainer } from "./CreateUserContainer"
-import { ButtonSimple } from "../../components/buttons/ButtonSimple"
-import { BrandFormSelectInput } from "./forms/BrandFormSelectInput"
-import { FormDatePicker } from "../../components/form-input-fields/FormDatePicker"
 import { GeneralCarInfoForm, GeneralCarInfoValues } from "./forms/GeneralCarInfoForm"
-
-const { Step } = Steps
-const { Option } = Select
 
 type Props = {
     onSetPage: (page: number) => void

@@ -1,5 +1,5 @@
 import React from "react"
-import { Form, Input, Select } from "antd"
+import { Form, Select } from "antd"
 import { SizeType } from "antd/es/config-provider/SizeContext"
 
 const { Option } = Select
