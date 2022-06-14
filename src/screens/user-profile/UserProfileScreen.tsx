@@ -1,6 +1,9 @@
 import { CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from "@heroicons/react/outline"
+import Item from "antd/lib/list/Item"
 import { useState } from "react"
 import { ButtonSmall } from "../../components/buttons/ButtonSmall"
+import { ConfirmationModal } from "../../components/modal/ConfirmationModal"
+import { UserProfileForm } from "./UserProfileForm"
 
 type Props = {
     onSetPage: (page: number) => void
@@ -16,6 +19,7 @@ type Props = {
     displacement?: string
     power?: string
     oilType?: string
+    children?: React.ReactNode
 }
 
 const classNames = (...classes: any) => {
@@ -23,65 +27,77 @@ const classNames = (...classes: any) => {
 }
 
 export const UserProfileScreen = (props: Props) => {
-    const navigation = [
-        { name: "Detailed Info", icon: HomeIcon, href: "#", current: false },
-        { name: "General Info", icon: UsersIcon, href: "#", count: 3, current: false },
-        { name: "Change Pasword", icon: FolderIcon, href: "#", count: 4, current: false },
-        { name: "Log Out", icon: CalendarIcon, href: "#", current: false },
-    ]
+    const [sideBarOptions, setSideBarOptions] = useState([
+        { name: "Detailed Info", icon: HomeIcon, current: true, id: 1 },
+        { name: "General Info", icon: UsersIcon, current: false, id: 2 },
+        { name: "Change Pasword", icon: FolderIcon, current: false, id: 3 },
+        { name: "Log Out", icon: CalendarIcon, current: false, id: 4 },
+    ])
 
-    const [isNavBarSelected, setIsNavBarSelected] = useState(navigation)
-
-    const onNavigationBarSelected = () => {
-        setIsNavBarSelected((prevState) => {
-            const newState = prevState.map((myCurrent) => {
-                if (myCurrent.name === "Detailed Info") {
-                    return { ...myCurrent, current: true }
-                }
-                return myCurrent
-            })
-            return newState
-        })
-        console.log(isNavBarSelected)
+    const onSideBarOptionClicked = (index: any) => {
+        const newCurrentValue = [...sideBarOptions]
+        if (newCurrentValue[index].id === 1) {
+            newCurrentValue[index].current = true
+            newCurrentValue[1].current = false
+            newCurrentValue[2].current = false
+            newCurrentValue[3].current = false
+            setSideBarOptions(newCurrentValue)
+        } else if (newCurrentValue[index].id === 2) {
+            newCurrentValue[index].current = true
+            newCurrentValue[0].current = false
+            newCurrentValue[2].current = false
+            newCurrentValue[3].current = false
+            setSideBarOptions(newCurrentValue)
+        } else if (newCurrentValue[index].id === 3) {
+            newCurrentValue[index].current = true
+            newCurrentValue[0].current = false
+            newCurrentValue[1].current = false
+            newCurrentValue[3].current = false
+            setSideBarOptions(newCurrentValue)
+        } else if (newCurrentValue[index].id === 4) {
+            newCurrentValue[index].current = true
+            newCurrentValue[0].current = false
+            newCurrentValue[1].current = false
+            newCurrentValue[2].current = false
+            setSideBarOptions(newCurrentValue)
+            console.log(sideBarOptions)
+        }
     }
-
     const onBackBtnClicked = () => {
-        props.onSetPage(0)
+        props.onSetPage(4)
     }
+
     return (
         <div className="flex flex-row">
             <div className="flex flex-row w-96 h-screen">
                 <div className="flex flex-col flex-grow border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto">
                     <div className="flex items-center flex-shrink-0 px-4 space-y-5">
                         <img
-                            className="h-8 w-auto"
-                            src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
+                            className="h-16 w-auto"
+                            src="https://files.123freevectors.com/wp-content/uploads/new/transport/171-bmw-car-vector-art.png"
                             alt="Workflow"
                         />
                     </div>
                     <div className="mt-5 flex-grow flex flex-col">
                         <nav className="flex-1 bg-white space-y-1" aria-label="Sidebar">
-                            {isNavBarSelected.map((myCurrent) => (
+                            {sideBarOptions.map((item, index) => (
                                 <a
-                                    key={myCurrent.name}
-                                    href={myCurrent.href}
-                                    onClick={onNavigationBarSelected}
+                                    onClick={() => onSideBarOptionClicked(index)}
+                                    key={item.name}
                                     className={classNames(
-                                        isNavBarSelected
-                                            ? "bg-indigo-50 border-indigo-600 text-indigo-600"
+                                        item.current
+                                            ? "bg-indigo-50 border-sky-600 text-sky-600"
                                             : "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                                         "group flex items-center px-3 py-2 text-sm font-medium border-l-4"
                                     )}>
-                                    <myCurrent.icon
+                                    <item.icon
                                         className={classNames(
-                                            isNavBarSelected
-                                                ? "text-indigo-500"
-                                                : "text-gray-400 group-hover:text-gray-500",
+                                            item.current ? "text-sky-500" : "text-gray-400 group-hover:text-gray-500",
                                             "mr-3 flex-shrink-0 h-6 w-6"
                                         )}
                                         aria-hidden="true"
                                     />
-                                    {myCurrent.name}
+                                    {item.name}
                                 </a>
                             ))}
                         </nav>
@@ -89,7 +105,7 @@ export const UserProfileScreen = (props: Props) => {
                 </div>
             </div>
             <div>
-                <ButtonSmall label="Back" onClick={onBackBtnClicked} size="lg" />
+                {props.children}
                 <p>{props.email}</p>
                 <p>{props.password}</p>
                 <p>{props.confirmPassword}</p>
@@ -101,6 +117,7 @@ export const UserProfileScreen = (props: Props) => {
                 <p>{props.displacement}</p>
                 <p>{props.power}</p>
                 <p>{props.oilType}</p>
+                <ButtonSmall label="Back" onClick={onBackBtnClicked} size="lg" />
             </div>
         </div>
     )

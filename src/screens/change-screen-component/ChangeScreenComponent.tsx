@@ -10,6 +10,7 @@ import { GeneralCarInfoValues } from "../sign-up/forms/GeneralCarInfoForm"
 
 import { Steps } from "antd"
 import { DetailedCarInfoValues } from "../sign-up/forms/DetailedCarInfoForm"
+import { UserProfileForm } from "../user-profile/UserProfileForm"
 export const ChangeScreenComponent = () => {
     const [currentPage, setCurrentPage] = useState(0)
     const [currentEmail, setCurrentEmail] = useState("")
@@ -77,8 +78,13 @@ export const ChangeScreenComponent = () => {
                     power={power}
                     oilType={oilType}
                     onSetPage={(page: number) => setCurrentPage(page)}
-                    currentPage={currentPage}
-                />
+                    currentPage={currentPage}>
+                    <UserProfileForm
+                        onSetPage={(page: number) => setCurrentPage(page)}
+                        currentPage={currentPage}
+                        value={currentEmail}
+                    />
+                </UserProfileScreen>
             )
 
         case 2:

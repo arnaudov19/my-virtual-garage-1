@@ -10,6 +10,7 @@ type Props = {
     placeholder?: string
     rules?: any[]
     styles?: {}
+    value?: string
 }
 
 export const FormTextInput = (props: Props) => {
@@ -22,6 +23,7 @@ export const FormTextInput = (props: Props) => {
                     type="text"
                     size={props.size}
                     placeholder={props.placeholder}
+                    value={props.value}
                 />
             </Form.Item>
         </Form.Item>
