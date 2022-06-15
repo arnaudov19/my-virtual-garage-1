@@ -11,6 +11,7 @@ type Props = {
     rules?: any[]
     styles?: {}
     value?: string
+    disabled?: boolean
 }
 
 export const FormTextInput = (props: Props) => {
@@ -19,6 +20,7 @@ export const FormTextInput = (props: Props) => {
             <label className="w-96 flex self">{props.label}</label>
             <Form.Item name={props.name} style={props.styles} rules={props.rules}>
                 <Input
+                    disabled={props.disabled}
                     className={`w-full ${props.className}`}
                     type="text"
                     size={props.size}

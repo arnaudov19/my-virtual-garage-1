@@ -52,7 +52,7 @@ export const CreateUserForm = (props: Props) => {
                     className="w-96"
                     placeholder="Confirm Your Password"
                     size="large"
-                    name="conf-password"
+                    name="confirmPassword"
                 />
                 <div className="flex justify-around w-96 pt-14">
                     <ButtonSmall onClick={onBackBtnClicked} label="Back" />

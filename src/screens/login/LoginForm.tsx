@@ -28,14 +28,15 @@ export const LoginForm = (props: Props) => {
 
     return (
         <Form
-            className="mt-8 space-y-6"
+            className="mt-8"
             autoComplete="on"
             onFinish={handleSubmit}
             validateTrigger={"onBlur"}
             onFinishFailed={handleSubmitFailed}>
             <FormTextInput
-                className="w-96"
+                className="w-96 mt-1"
                 placeholder="Enter Your Email"
+                label="Email"
                 name="email"
                 size="large"
                 rules={[
@@ -47,8 +48,9 @@ export const LoginForm = (props: Props) => {
                 ]}
             />
             <FormItemPasswordInput
-                className="w-96"
+                className="w-96 mt-1"
                 placeholder="Enter Your Password"
+                label="Password"
                 size="large"
                 name="password"
                 rules={[

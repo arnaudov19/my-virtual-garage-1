@@ -7,10 +7,8 @@ import { CreateUserCredentials } from "../sign-up/CreateUser-Credentials"
 import { LoginFormValues } from "../login/LoginForm"
 import { SignupFormValues } from "../sign-up/forms/CredentialsForm"
 import { GeneralCarInfoValues } from "../sign-up/forms/GeneralCarInfoForm"
-
-import { Steps } from "antd"
 import { DetailedCarInfoValues } from "../sign-up/forms/DetailedCarInfoForm"
-import { UserProfileForm } from "../user-profile/UserProfileForm"
+
 export const ChangeScreenComponent = () => {
     const [currentPage, setCurrentPage] = useState(0)
     const [currentEmail, setCurrentEmail] = useState("")
@@ -35,6 +33,7 @@ export const ChangeScreenComponent = () => {
         setCurrentEmail(values.email)
         setCurrentPass(values.password)
         setConfirmPass(values.confirmPassword)
+        console.log(values.password)
     }
     const collectGeneralCarInfoData = (values: GeneralCarInfoValues) => {
         setCarModel(values.model)
@@ -78,13 +77,7 @@ export const ChangeScreenComponent = () => {
                     power={power}
                     oilType={oilType}
                     onSetPage={(page: number) => setCurrentPage(page)}
-                    currentPage={currentPage}>
-                    <UserProfileForm
-                        onSetPage={(page: number) => setCurrentPage(page)}
-                        currentPage={currentPage}
-                        value={currentEmail}
-                    />
-                </UserProfileScreen>
+                    currentPage={currentPage}></UserProfileScreen>
             )
 
         case 2:
@@ -124,7 +117,6 @@ export const ChangeScreenComponent = () => {
                     onSetPage={(page: number) => setCurrentPage(page)}
                 />
             )
-
         case 5:
             return (
                 <div>
