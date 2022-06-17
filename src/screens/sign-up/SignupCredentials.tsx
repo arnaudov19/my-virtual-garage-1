@@ -1,6 +1,6 @@
 import React from "react"
 import { ProgressSteps } from "../../components/progress-steps/ProgressSteps"
-import { CreateUserContainer } from "./CreateUserContainer"
+import { SignupContainer } from "./SignupContainer"
 import { CreateUserForm, SignupFormValues } from "./forms/CredentialsForm"
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
     confirmPassword: string
 }
 
-export const CreateUserCredentials = (props: Props) => {
+export const SignupCredentials = (props: Props) => {
     const onNextBtnClicked = () => {
         props.onSetPage(3)
     }
@@ -25,11 +25,11 @@ export const CreateUserCredentials = (props: Props) => {
     }
 
     return (
-        <CreateUserContainer>
+        <SignupContainer>
             <ProgressSteps currentStep={0} />
             <div className="flex justify-center gap-6">
                 <CreateUserForm onSetPage={(page: number) => onBackBtnClicked(page)} onSumbit={onCollectSignupData} />
             </div>
-        </CreateUserContainer>
+        </SignupContainer>
     )
 }

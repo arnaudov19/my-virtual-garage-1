@@ -39,6 +39,7 @@ export const LoginForm = (props: Props) => {
                 label="Email"
                 name="email"
                 size="large"
+                value="martin.arnaudov19@gmail.com"
                 rules={[
                     {
                         required: true,

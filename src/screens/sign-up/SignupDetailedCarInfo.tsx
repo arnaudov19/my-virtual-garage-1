@@ -1,6 +1,6 @@
 import React from "react"
 import { ProgressSteps } from "../../components/progress-steps/ProgressSteps"
-import { CreateUserContainer } from "./CreateUserContainer"
+import { SignupContainer } from "./SignupContainer"
 import { DetailedCarInfoForm, DetailedCarInfoValues } from "./forms/DetailedCarInfoForm"
 
 type Props = {
@@ -28,7 +28,7 @@ const CreateUserDetailedCarInfo = (props: Props) => {
         onNextBtnClicked()
     }
     return (
-        <CreateUserContainer>
+        <SignupContainer>
             <ProgressSteps currentStep={2} />
             <div className="w-full flex justify-center gap-6">
                 <DetailedCarInfoForm
@@ -36,7 +36,7 @@ const CreateUserDetailedCarInfo = (props: Props) => {
                     onSumbit={collectGeneralCarInfoData}
                 />
             </div>
-        </CreateUserContainer>
+        </SignupContainer>
     )
 }
 

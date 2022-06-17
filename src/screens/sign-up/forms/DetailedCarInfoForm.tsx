@@ -25,7 +25,7 @@ export const DetailedCarInfoForm = (props: Props) => {
         console.log("Fail", errorInfo)
     }
     const onBackBtnClicked = () => {
-        props.onSetPage(2)
+        props.onSetPage(3)
     }
     return (
         <Form onFinish={handleSubmit} onFinishFailed={handleSubmitFailed} className="w-4/6 flex flex-col items-center">

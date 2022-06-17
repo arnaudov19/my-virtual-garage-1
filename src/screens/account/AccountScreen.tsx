@@ -1,14 +1,13 @@
 import { CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from "@heroicons/react/outline"
-import Item from "antd/lib/list/Item"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ButtonSmall } from "../../components/buttons/ButtonSmall"
 import { FormItemPasswordInput } from "../../components/form-input-fields/FormItemPasswordInput"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
-import { ConfirmationModal } from "../../components/modal/ConfirmationModal"
-import { BrandFormSelectInput } from "../sign-up/forms/BrandFormSelectInput"
-import { GeneralCarInfoForm } from "../sign-up/forms/GeneralCarInfoForm"
-import { UserProfileForm } from "./UserProfileForm"
-import { UserProfileFormContainer } from "./UserProfileFormContainer"
+
+import { AccountContainer } from "./AccountFormContainer"
+import { ButtonSet } from "../../components/buttons/ButtonSet"
+import { AccountDetailedCarInfo } from "./AccountDetailedCarInfo"
+import { AccountGeneralCarInfo } from "./AccountGeneralCarInfo"
 
 type Props = {
     onSetPage: (page: number) => void
@@ -26,21 +25,30 @@ type Props = {
     oilType?: string
     children?: React.ReactNode
     value?: string
+    isLoggedIn?: string
 }
 
 const classNames = (...classes: any) => {
     return classes.filter(Boolean).join(" ")
 }
 
-export const UserProfileScreen = (props: Props) => {
+export const AccountScreen = (props: Props) => {
     const [sideBarOptions, setSideBarOptions] = useState([
         { name: "Detailed Info", icon: HomeIcon, current: true, id: 1 },
         { name: "General Info", icon: UsersIcon, current: false, id: 2 },
-        { name: "Change Pasword", icon: FolderIcon, current: false, id: 3 },
-        { name: "Log Out", icon: CalendarIcon, current: false, id: 4 },
+        { name: "User Credentials", icon: FolderIcon, current: false, id: 3 },
+        { name: "Maintenance", icon: FolderIcon, current: false, id: 4 },
+        { name: "Log Out", icon: CalendarIcon, current: false, id: 5 },
     ])
-
     const [id, setId] = useState(1)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    useEffect(() => {
+        const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn")
+        if (storedUserLoggedInInformation === "1") {
+            setIsLoggedIn(true)
+        }
+    }, [])
 
     const newCurrentValue = [...sideBarOptions]
     const onSideBarOptionClicked = (index: any) => {
@@ -70,6 +78,15 @@ export const UserProfileScreen = (props: Props) => {
             newCurrentValue[0].current = false
             newCurrentValue[1].current = false
             newCurrentValue[2].current = false
+            setId(newCurrentValue[index].id)
+            setSideBarOptions(newCurrentValue)
+            console.log(sideBarOptions)
+        } else if (newCurrentValue[index].id === 5) {
+            newCurrentValue[index].current = true
+            newCurrentValue[0].current = false
+            newCurrentValue[1].current = false
+            newCurrentValue[2].current = false
+            newCurrentValue[3].current = false
             setId(newCurrentValue[index].id)
             props.onSetPage(0)
             setSideBarOptions(newCurrentValue)
@@ -118,9 +135,11 @@ export const UserProfileScreen = (props: Props) => {
                 </div>
             </div>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                {id === 1 ? (
-                    <UserProfileFormContainer>
-                        <h1 className="text-2xl">Edit your crentials</h1>
+                {id === 1 ? <AccountDetailedCarInfo /> : null}
+                {id === 2 ? <AccountGeneralCarInfo /> : null}
+                {id === 3 ? (
+                    <AccountContainer>
+                        <h1 className="text-2xl pb-6">User Credentials</h1>
                         <FormTextInput label="Email" className="w-96" disabled={true} value={props.email} />
                         <FormItemPasswordInput
                             label="Password"
@@ -138,19 +157,8 @@ export const UserProfileScreen = (props: Props) => {
                             <ButtonSmall label="Back" onClick={onBackBtnClicked} size="lg" />
                             <ButtonSmall label="Save" size="lg" />
                         </div>
-                    </UserProfileFormContainer>
+                    </AccountContainer>
                 ) : null}
-                {id === 2 ? (
-                    <UserProfileFormContainer>
-                        <BrandFormSelectInput className="w-96" label="Car Brand" value={props.carBrand} />
-                        <FormTextInput className="w-96" label="Car Model" />
-                        <div className="flex justify-around w-96 pt-14">
-                            <ButtonSmall label="Back" onClick={onBackBtnClicked} size="lg" />
-                            <ButtonSmall label="Save" size="lg" />
-                        </div>
-                    </UserProfileFormContainer>
-                ) : null}
-                {id === 3 ? <UserProfileFormContainer></UserProfileFormContainer> : null}
             </div>
         </div>
     )

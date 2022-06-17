@@ -18,7 +18,7 @@ export const LoginSreenContainer = (props: any) => {
                         </div>
                     </div>
                 </div>
-                <div className="flex rounded-r-lg  overflow-auto md:w-full md:h-full">
+                <div className="hidden xl:flex rounded-r-lg overflow-auto md:w-full md:h-full">
                     <img src="https://img.freepik.com/free-vector/car-repair-service-mechanic-work-garage-tire-service-diagnostics-replacement-spare-parts-vector-illustration-flat-design-isolated-white-background-professional-is-auto_153097-1756.jpg?w=2000" />
                 </div>
             </div>

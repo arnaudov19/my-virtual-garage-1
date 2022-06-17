@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import { UserProfileScreen } from "../user-profile/UserProfileScreen"
+import { AccountScreen } from "../account/AccountScreen"
 import LoginScreen from "../login/LoginScreen"
-import CreateUserGeneralCarInfo from "../sign-up/CreateUser-GeneralCarInfo"
-import CreateUserDetailedCarInfo from "../sign-up/CreateUser-DetailedCarInfo"
-import { CreateUserCredentials } from "../sign-up/CreateUser-Credentials"
+import CreateUserGeneralCarInfo from "../sign-up/SignupGeneralCarInfo"
+import CreateUserDetailedCarInfo from "../sign-up/SignupDetailedCarInfo"
+import { SignupCredentials } from "../sign-up/SignupCredentials"
 import { LoginFormValues } from "../login/LoginForm"
 import { SignupFormValues } from "../sign-up/forms/CredentialsForm"
 import { GeneralCarInfoValues } from "../sign-up/forms/GeneralCarInfoForm"
@@ -64,7 +64,7 @@ export const ChangeScreenComponent = () => {
 
         case 1:
             return (
-                <UserProfileScreen
+                <AccountScreen
                     email={currentEmail}
                     password={currentPass}
                     confirmPassword={confirmPass}
@@ -77,12 +77,12 @@ export const ChangeScreenComponent = () => {
                     power={power}
                     oilType={oilType}
                     onSetPage={(page: number) => setCurrentPage(page)}
-                    currentPage={currentPage}></UserProfileScreen>
+                    currentPage={currentPage}></AccountScreen>
             )
 
         case 2:
             return (
-                <CreateUserCredentials
+                <SignupCredentials
                     email={currentEmail}
                     password={currentPass}
                     confirmPassword={confirmPass}

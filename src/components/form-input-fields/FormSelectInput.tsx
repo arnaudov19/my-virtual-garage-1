@@ -13,9 +13,10 @@ type Props = {
     styles?: {}
     name?: string
     rules?: any[]
+    optionsList: any[]
 }
 
-export const BrandFormSelectInput = (props: Props) => {
+export const FormSelectInput = (props: Props) => {
     const handleChange = (value: any) => {
         console.log(`change ${value}`)
     }
@@ -24,10 +25,11 @@ export const BrandFormSelectInput = (props: Props) => {
             <label className="w-96 flex self">{props.label}</label>
             <Form.Item className={`${props.className}`} name={props.name} style={props.styles} rules={props.rules}>
                 <Select size={props.size} placeholder="Select Car Brand" onChange={handleChange}>
-                    <Option value="skoda">Skoda</Option>
-                    <Option value="vw">VW</Option>
-                    <Option value="audi">Audi</Option>
-                    <Option value="mercedes">Mercedes</Option>
+                    {props.optionsList.map((item: any) => (
+                        <Option key={item.id} value={item.brand}>
+                            {item.name}
+                        </Option>
+                    ))}
                 </Select>
             </Form.Item>
         </Form.Item>
