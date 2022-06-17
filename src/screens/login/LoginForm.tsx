@@ -34,7 +34,7 @@ export const LoginForm = (props: Props) => {
             validateTrigger={"onBlur"}
             onFinishFailed={handleSubmitFailed}>
             <FormTextInput
-                className="w-96 mt-1"
+                className="w-96 mt-2"
                 placeholder="Enter Your Email"
                 label="Email"
                 name="email"
@@ -64,6 +64,7 @@ export const LoginForm = (props: Props) => {
             />
 
             <Button
+                className="mt-2"
                 label="Sign in"
                 prefixIcon={
                     <LockClosedIcon className="h-5 w-5 text-sky-500 group-hover:text-sky-400" aria-hidden="true" />

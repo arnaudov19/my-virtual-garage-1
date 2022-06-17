@@ -31,7 +31,7 @@ export const GeneralCarInfoForm = (props: Props) => {
         console.log("Fail", errorInfo)
     }
     const onBackBtnClicked = () => {
-        props.onSetPage(2)
+        props.onSetPage(3)
     }
 
     return (

@@ -32,67 +32,23 @@ const classNames = (...classes: any) => {
     return classes.filter(Boolean).join(" ")
 }
 
+type MenuItem = {
+    id: number
+    name: string
+    icon: any
+}
+
+const menuItems: MenuItem[] = [
+    { name: "Detailed Info", icon: HomeIcon, id: 1 },
+    { name: "General Info", icon: UsersIcon, id: 2 },
+    { name: "User Credentials", icon: FolderIcon, id: 3 },
+    { name: "Maintenance", icon: FolderIcon, id: 4 },
+    { name: "Log Out", icon: CalendarIcon, id: 5 },
+]
+
 export const AccountScreen = (props: Props) => {
-    const [sideBarOptions, setSideBarOptions] = useState([
-        { name: "Detailed Info", icon: HomeIcon, current: true, id: 1 },
-        { name: "General Info", icon: UsersIcon, current: false, id: 2 },
-        { name: "User Credentials", icon: FolderIcon, current: false, id: 3 },
-        { name: "Maintenance", icon: FolderIcon, current: false, id: 4 },
-        { name: "Log Out", icon: CalendarIcon, current: false, id: 5 },
-    ])
-    const [id, setId] = useState(1)
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [activeMenuItemId, setActiveMenuItemId] = useState(1)
 
-    useEffect(() => {
-        const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn")
-        if (storedUserLoggedInInformation === "1") {
-            setIsLoggedIn(true)
-        }
-    }, [])
-
-    const newCurrentValue = [...sideBarOptions]
-    const onSideBarOptionClicked = (index: any) => {
-        if (newCurrentValue[index].id === 1) {
-            newCurrentValue[index].current = true
-            newCurrentValue[1].current = false
-            newCurrentValue[2].current = false
-            newCurrentValue[3].current = false
-            setSideBarOptions(newCurrentValue)
-            setId(newCurrentValue[index].id)
-        } else if (newCurrentValue[index].id === 2) {
-            newCurrentValue[index].current = true
-            newCurrentValue[0].current = false
-            newCurrentValue[2].current = false
-            newCurrentValue[3].current = false
-            setId(newCurrentValue[index].id)
-            setSideBarOptions(newCurrentValue)
-        } else if (newCurrentValue[index].id === 3) {
-            newCurrentValue[index].current = true
-            newCurrentValue[0].current = false
-            newCurrentValue[1].current = false
-            newCurrentValue[3].current = false
-            setId(newCurrentValue[index].id)
-            setSideBarOptions(newCurrentValue)
-        } else if (newCurrentValue[index].id === 4) {
-            newCurrentValue[index].current = true
-            newCurrentValue[0].current = false
-            newCurrentValue[1].current = false
-            newCurrentValue[2].current = false
-            setId(newCurrentValue[index].id)
-            setSideBarOptions(newCurrentValue)
-            console.log(sideBarOptions)
-        } else if (newCurrentValue[index].id === 5) {
-            newCurrentValue[index].current = true
-            newCurrentValue[0].current = false
-            newCurrentValue[1].current = false
-            newCurrentValue[2].current = false
-            newCurrentValue[3].current = false
-            setId(newCurrentValue[index].id)
-            props.onSetPage(0)
-            setSideBarOptions(newCurrentValue)
-            console.log(sideBarOptions)
-        }
-    }
     const onBackBtnClicked = () => {
         props.onSetPage(4)
     }
@@ -110,19 +66,21 @@ export const AccountScreen = (props: Props) => {
                     </div>
                     <div className="mt-5 flex-grow flex flex-col">
                         <nav className="flex-1 bg-white space-y-1" aria-label="Sidebar">
-                            {sideBarOptions.map((item, index) => (
+                            {menuItems.map((item: MenuItem) => (
                                 <a
-                                    onClick={() => onSideBarOptionClicked(index)}
+                                    onClick={() => setActiveMenuItemId(item.id)}
                                     key={item.id}
                                     className={classNames(
-                                        item.current
+                                        item.id === activeMenuItemId
                                             ? "bg-indigo-50 border-sky-600 text-sky-600"
                                             : "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                                         "group flex items-center px-3 py-2 text-sm font-medium border-l-4"
                                     )}>
                                     <item.icon
                                         className={classNames(
-                                            item.current ? "text-sky-500" : "text-gray-400 group-hover:text-gray-500",
+                                            item.id === activeMenuItemId
+                                                ? "text-sky-500"
+                                                : "text-gray-400 group-hover:text-gray-500",
                                             "mr-3 flex-shrink-0 h-6 w-6"
                                         )}
                                         aria-hidden="true"
@@ -135,9 +93,9 @@ export const AccountScreen = (props: Props) => {
                 </div>
             </div>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                {id === 1 ? <AccountDetailedCarInfo /> : null}
-                {id === 2 ? <AccountGeneralCarInfo /> : null}
-                {id === 3 ? (
+                {activeMenuItemId === 1 ? <AccountDetailedCarInfo /> : null}
+                {activeMenuItemId === 2 ? <AccountGeneralCarInfo /> : null}
+                {activeMenuItemId === 3 ? (
                     <AccountContainer>
                         <h1 className="text-2xl pb-6">User Credentials</h1>
                         <FormTextInput label="Email" className="w-96" disabled={true} value={props.email} />
