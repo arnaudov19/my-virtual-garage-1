@@ -26,7 +26,7 @@ export const SignupCredentials = (props: Props) => {
 
     return (
         <SignupContainer>
-            <ProgressSteps currentStep={0} />
+            <ProgressSteps currentStep={5} />
             <div className="flex justify-center gap-6">
                 <CreateUserForm onSetPage={(page: number) => onBackBtnClicked(page)} onSumbit={onCollectSignupData} />
             </div>

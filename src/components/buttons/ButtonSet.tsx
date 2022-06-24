@@ -9,7 +9,7 @@ type Props = {
 export const ButtonSet = (props: Props) => {
     return (
         <div className="w-96 pt-6 flex justify-around">
-            <ButtonSmall onClick={props.onNextBtnClicked} label="Back" />
+            <ButtonSmall onClick={props.onBackBtnClicked} label="Back" />
             <ButtonSmall onClick={props.onNextBtnClicked} label="Next" />
         </div>
     )

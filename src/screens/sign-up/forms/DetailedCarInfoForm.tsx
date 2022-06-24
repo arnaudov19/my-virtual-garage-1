@@ -28,7 +28,11 @@ export const DetailedCarInfoForm = (props: Props) => {
         props.onSetPage(3)
     }
     return (
-        <Form onFinish={handleSubmit} onFinishFailed={handleSubmitFailed} className="w-4/6 flex flex-col items-center">
+        <Form
+            onFinish={handleSubmit}
+            onFinishFailed={handleSubmitFailed}
+            validateTrigger={"onBlur"}
+            className="w-4/6 flex flex-col items-center">
             <div className="flex flex-col md:flex-row h-fit md:h-5/6 md:gap-6 pb-12">
                 <div>
                     <FormTextInput
