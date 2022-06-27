@@ -4,7 +4,7 @@ import { AccountDetailedCarInfo } from "./AccountDetailedCarInfo"
 import { AccountGeneralCarInfo } from "./AccountGeneralCarInfo"
 import { AccountCredentials } from "./AccountCredentials"
 import { SidebarLayout } from "../../components/side-bar-layout/SideBarLayout"
-import { on } from "events"
+import { AccountMaintenance } from "./AccountMaintenance"
 
 type Props = {
     onSetPage: (page: number) => void
@@ -46,9 +46,6 @@ const menuItems: MenuItem[] = [
 export const AccountScreen = (props: Props) => {
     const [activeMenuItemId, setActiveMenuItemId] = useState(1)
 
-    const logoutBtnClicked = () => {
-        props.onSetPage(1)
-    }
     return (
         <div className="flex flex-row items-center">
             <SidebarLayout>
@@ -78,10 +75,18 @@ export const AccountScreen = (props: Props) => {
                 </nav>
             </SidebarLayout>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                {activeMenuItemId === 1 ? <AccountDetailedCarInfo /> : null}
+                {activeMenuItemId === 1 ? (
+                    <AccountDetailedCarInfo carBrand={props.carBrand} carModel={props.carModel} />
+                ) : null}
                 {activeMenuItemId === 2 ? <AccountGeneralCarInfo /> : null}
-                {activeMenuItemId === 3 ? <AccountCredentials /> : null}
-                {activeMenuItemId === 4 ? <p>kokos</p> : null}
+                {activeMenuItemId === 3 ? (
+                    <AccountCredentials
+                        email={props.email}
+                        password={props.password}
+                        confirmPassword={props.confirmPassword}
+                    />
+                ) : null}
+                {activeMenuItemId === 4 ? <AccountMaintenance /> : null}
                 {activeMenuItemId === 5 ? <p>kokot</p> : null}
             </div>
         </div>

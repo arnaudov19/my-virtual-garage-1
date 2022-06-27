@@ -6,6 +6,7 @@ import { AccountContainer } from "./AccountFormContainer"
 
 type Props = {
     carBrand?: string
+    carModel?: string
     onBackBtnClicked?: () => void
     onSaveBtnClicked?: () => void
 }
@@ -21,7 +22,7 @@ export const AccountDetailedCarInfo = (props: Props) => {
     return (
         <AccountContainer>
             <FormSelectInput optionsList={carBrands} className="w-96" label="Car Brand" value={props.carBrand} />
-            <FormTextInput className="w-96" label="Car Model" />
+            <FormTextInput className="w-96" label="Car Model" value={props.carModel} />
             <ButtonSet onBackBtnClicked={props.onBackBtnClicked} />
         </AccountContainer>
     )
