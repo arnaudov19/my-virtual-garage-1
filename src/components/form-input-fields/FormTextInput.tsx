@@ -11,7 +11,7 @@ type Props = {
     rules?: any[]
     styles?: {}
     value?: string
-    disabled?: boolean
+    disabled?: any
 }
 
 export const FormTextInput = (props: Props) => {

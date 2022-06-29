@@ -1,5 +1,5 @@
 import React from "react"
-import { ButtonSet } from "../../components/buttons/ButtonSet"
+import { ButtonGroup } from "../../components/buttons/ButtonGroup"
 import { FormSelectInput } from "../../components/form-input-fields/FormSelectInput"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 import { AccountContainer } from "./AccountFormContainer"
@@ -21,9 +21,9 @@ const carBrands = [
 export const AccountDetailedCarInfo = (props: Props) => {
     return (
         <AccountContainer>
-            <FormSelectInput optionsList={carBrands} className="w-96" label="Car Brand" value={props.carBrand} />
-            <FormTextInput className="w-96" label="Car Model" value={props.carModel} />
-            <ButtonSet onBackBtnClicked={props.onBackBtnClicked} />
+            <FormSelectInput optionsList={carBrands} className="w-96" label="Car Brand" />
+            <FormTextInput className="w-96" label="Car Model" />
+            <ButtonGroup onBackBtnClicked={props.onBackBtnClicked} />
         </AccountContainer>
     )
 }

@@ -87,7 +87,7 @@ export const AccountScreen = (props: Props) => {
                     />
                 ) : null}
                 {activeMenuItemId === 4 ? <AccountMaintenance /> : null}
-                {activeMenuItemId === 5 ? <p>kokot</p> : null}
+                {activeMenuItemId === 5 ? props.onSetPage(5) : null}
             </div>
         </div>
     )

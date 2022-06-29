@@ -6,7 +6,7 @@ type Props = {
     onBackBtnClicked?: () => void
 }
 
-export const ButtonSet = (props: Props) => {
+export const ButtonGroup = (props: Props) => {
     return (
         <div className="w-96 pt-6 flex justify-around">
             <ButtonSmall onClick={props.onBackBtnClicked} label="Back" />

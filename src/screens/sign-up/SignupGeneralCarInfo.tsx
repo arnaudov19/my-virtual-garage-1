@@ -27,7 +27,7 @@ const CreateUserGeneralCarInfo = (props: Props) => {
     }
     return (
         <SignupContainer>
-            <ProgressSteps currentStep={1} />
+            <ProgressSteps currentStep={2} />
             <div className="w-full flex justify-center gap-6">
                 <GeneralCarInfoForm
                     onSetPage={(page: number) => onBackBtnClicked(page)}

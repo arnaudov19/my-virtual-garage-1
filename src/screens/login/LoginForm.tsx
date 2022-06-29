@@ -34,12 +34,11 @@ export const LoginForm = (props: Props) => {
             validateTrigger={"onBlur"}
             onFinishFailed={handleSubmitFailed}>
             <FormTextInput
-                className="w-96 mt-2"
+                className="w-96 mt-1"
                 placeholder="Enter Your Email"
                 label="Email"
                 name="email"
                 size="large"
-                value="martin.arnaudov19@gmail.com"
                 rules={[
                     {
                         required: true,

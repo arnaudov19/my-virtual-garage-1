@@ -22,25 +22,20 @@ export enum StepStatus {
 
 export const ProgressSteps = (props: Props) => {
     const steps: StepItem[] = [
-        { step: "Step 1", name: "Credentials", status: StepStatus.PENDING, id: 1 },
-        { step: "Step 2", name: "General Car Info", status: StepStatus.PENDING, id: 2 },
-        { step: "Step 3", name: "Detailed Car Info", status: StepStatus.PENDING, id: 3 },
+        { step: "Step 1", name: "Credentials", status: StepStatus.IN_PROGRESS, id: props.currentStep },
+        { step: "Step 2", name: "General Car Info", status: StepStatus.PENDING, id: props.currentStep },
+        { step: "Step 3", name: "Detailed Car Info", status: StepStatus.PENDING, id: props.currentStep },
     ]
     const [stepsData, setStepsData] = useState(steps)
-    // called with number 2
+
     const updateCurrentStatus = (id: number) => {
-        // id = 2
+        console.log(id)
         const currentSteps = stepsData.map((item) => {
             if (id === item.id) {
-                // we are here
-                if (item.status === StepStatus.PENDING) {
-                    return { ...item, status: StepStatus.IN_PROGRESS }
-                } else if (item.status === StepStatus.IN_PROGRESS) {
-                    return { ...item, status: StepStatus.COMPLETED }
-                }
                 return { ...item, status: StepStatus.IN_PROGRESS }
             } else return item
         })
+
         setStepsData(currentSteps)
         console.log(stepsData)
     }
@@ -48,7 +43,7 @@ export const ProgressSteps = (props: Props) => {
         <nav aria-label="Progress">
             <ol role="list" className="space-y-4 md:flex md:space-y-0 md:space-x-8">
                 {stepsData.map((step: StepItem) => (
-                    <li onClick={() => updateCurrentStatus(step.id)} key={step.id} className="md:flex-1">
+                    <li onChange={() => updateCurrentStatus(step.id)} key={step.step} className="md:flex-1">
                         {step.status === StepStatus.COMPLETED ? (
                             <a className="group pl-4 py-2 flex flex-col border-l-4 border-sky-600 hover:border-red-800 md:pl-0 md:pt-4 md:pb-0 md:border-l-0 md:border-t-4">
                                 <span className="text-md text-sky-600 font-semibold tracking-wide uppercase group-hover:text-sky-800">

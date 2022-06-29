@@ -1,5 +1,5 @@
 import React from "react"
-import { ButtonSet } from "../../components/buttons/ButtonSet"
+import { ButtonGroup } from "../../components/buttons/ButtonGroup"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 import { AccountContainer } from "./AccountFormContainer"
 
@@ -21,7 +21,7 @@ export const AccountGeneralCarInfo = (props: Props) => {
                 <FormTextInput disabled={true} name="carPower" label="Power" placeholder="170hp" />
                 <FormTextInput disabled={true} name="oilType" label="Oil type" placeholder="SAE 10W-40" />
             </div>
-            <ButtonSet onBackBtnClicked={props.onBackBtnClicked} />
+            <ButtonGroup onBackBtnClicked={props.onBackBtnClicked} />
         </AccountContainer>
     )
 }

@@ -8,6 +8,7 @@ import { LoginFormValues } from "../login/LoginForm"
 import { SignupFormValues } from "../sign-up/forms/CredentialsForm"
 import { GeneralCarInfoValues } from "../sign-up/forms/GeneralCarInfoForm"
 import { DetailedCarInfoValues } from "../sign-up/forms/DetailedCarInfoForm"
+import { ConfirmationModal } from "../../components/modal/ConfirmationModal"
 
 export const ChangeScreenComponent = () => {
     const [currentPage, setCurrentPage] = useState(0)
@@ -118,29 +119,7 @@ export const ChangeScreenComponent = () => {
                 />
             )
         case 5:
-            return (
-                <div>
-                    <div>
-                        <p>{carBrand}</p>
-                        <p>{carModel}</p>
-                        <p>{purchaseDate}</p>
-                        <p>{registrationDate}</p>
-                    </div>
-                    <div>
-                        <p>{currentEmail}</p>
-                        <p>{currentPass}</p>
-                        <p>{confirmPass}</p>
-                    </div>
-                    <div>
-                        <p>{kmOnPurchase}</p>
-                        <p>{price}</p>
-                        <p>{fuelType}</p>
-                        <p>{displacement}</p>
-                        <p>{power}</p>
-                        <p>{oilType}</p>
-                    </div>
-                </div>
-            )
+            return <ConfirmationModal currentPage={currentPage} onSetPage={(page: number) => setCurrentPage(page)} />
         default:
             return (
                 <LoginScreen
