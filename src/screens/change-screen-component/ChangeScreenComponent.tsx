@@ -11,7 +11,7 @@ import { DetailedCarInfoValues } from "../sign-up/forms/DetailedCarInfoForm"
 import { ConfirmationModal } from "../../components/modal/ConfirmationModal"
 
 export const ChangeScreenComponent = () => {
-    const [currentPage, setCurrentPage] = useState(0)
+    const [currentPage, setCurrentPage] = useState(1)
     const [currentEmail, setCurrentEmail] = useState("")
     const [currentPass, setCurrentPass] = useState("")
     const [confirmPass, setConfirmPass] = useState("")

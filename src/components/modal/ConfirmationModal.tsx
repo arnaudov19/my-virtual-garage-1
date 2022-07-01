@@ -3,6 +3,8 @@ import { Button } from "../buttons/Button"
 import { Fragment, useRef, useState } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import { ExclamationIcon } from "@heroicons/react/outline"
+import { ButtonRed } from "../buttons/ButtonRed"
+import { ButtonWhite } from "../buttons/ButtonWhite"
 
 type Props = {
     onSetPage: (page: number) => void
@@ -14,16 +16,13 @@ export const ConfirmationModal = (props: Props) => {
 
     const cancelButtonRef = useRef(null)
 
-    const changePage = (page: number) => {
+    const onLogoutBtnClicked = (page: number) => {
+        setOpen(false)
         props.onSetPage(page)
     }
-    const onLogoutBtnClicked = () => {
+    const onCancelBtnClicked = (page: number) => {
         setOpen(false)
-        changePage(0)
-    }
-    const onCancelBtnClicked = () => {
-        setOpen(false)
-        changePage(1)
+        props.onSetPage(page)
     }
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -66,19 +65,8 @@ export const ConfirmationModal = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                                    <button
-                                        type="button"
-                                        className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                                        onClick={() => onLogoutBtnClicked()}>
-                                        Log Out
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 sm:mt-0 sm:w-auto sm:text-sm"
-                                        onClick={() => onCancelBtnClicked()}
-                                        ref={cancelButtonRef}>
-                                        Cancel
-                                    </button>
+                                    <ButtonRed onClick={() => onCancelBtnClicked(0)} />
+                                    <ButtonWhite onClick={() => onCancelBtnClicked(1)} />
                                 </div>
                             </Dialog.Panel>
                         </Transition.Child>

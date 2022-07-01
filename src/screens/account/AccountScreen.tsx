@@ -46,6 +46,10 @@ const menuItems: MenuItem[] = [
 export const AccountScreen = (props: Props) => {
     const [activeMenuItemId, setActiveMenuItemId] = useState(1)
 
+    const onLogoutBtnClicked = () => {
+        props.onSetPage(5)
+    }
+
     return (
         <div className="flex flex-row items-center">
             <SidebarLayout>
@@ -87,7 +91,7 @@ export const AccountScreen = (props: Props) => {
                     />
                 ) : null}
                 {activeMenuItemId === 4 ? <AccountMaintenance /> : null}
-                {activeMenuItemId === 5 ? props.onSetPage(5) : null}
+                {activeMenuItemId === 5 ? onLogoutBtnClicked() : null}
             </div>
         </div>
     )
