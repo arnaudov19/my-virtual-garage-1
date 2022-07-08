@@ -12,6 +12,7 @@ type Props = {
     styles?: {}
     value?: string
     disabled?: any
+    onChange?: () => void
 }
 
 export const FormTextInput = (props: Props) => {
@@ -26,6 +27,7 @@ export const FormTextInput = (props: Props) => {
                     size={props.size}
                     placeholder={props.placeholder}
                     value={props.value}
+                    onChange={props.onChange}
                 />
             </Form.Item>
         </Form.Item>

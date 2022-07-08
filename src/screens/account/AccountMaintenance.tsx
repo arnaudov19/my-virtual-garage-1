@@ -1,30 +1,41 @@
+import { List } from "antd"
+import FormItemInput from "antd/lib/form/FormItemInput"
 import React, { useState } from "react"
-import { EmptyStateComponent } from "../../components/empty-state/EmptyStateComponent"
-import ListContainer from "../../components/list-container/list-container"
+import { ButtonSmall } from "../../components/buttons/ButtonSmall"
+import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
+import { AddList } from "../../components/lists/AddList"
+import { ListContainer } from "../../components/lists/ListContainer"
 import { FormModal } from "../../components/modal/FormModal"
 import { AccountContainer } from "./AccountFormContainer"
 
-const Records = { id: 0 }
-
 type Props = {
-    isEmptyState: boolean
+    isEmptyState?: boolean
+    inputValue: string
 }
 
 export const AccountMaintenance = (props: Props) => {
+    const [isNewRecord, setIsNewRecord] = useState(true)
+    const [isAddedToList, setIsAddToList] = useState(false)
+    const [listUpdated, setListUpdated] = useState(false)
+
+    const addNewRecordBtnClicked = () => {
+        setIsNewRecord(false)
+        setIsAddToList(true)
+    }
+    const addListRecordClicked = () => {
+        setIsAddToList(false)
+        setListUpdated(true)
+    }
+
     return (
         <>
-            {props.isEmptyState === true ? (
+            {isNewRecord ? <AddList btnName="Add" onClick={() => addNewRecordBtnClicked()} /> : null}
+            {isAddedToList === true ? (
                 <AccountContainer>
-                    <EmptyStateComponent
-                        isEmptyState={true}
-                        title="No records yet"
-                        description="Add your first record."
-                        btnName="New record"
-                    />
+                    <FormModal inputValue={props.inputValue} onClick={() => addListRecordClicked()} />
                 </AccountContainer>
-            ) : (
-                <FormModal />
-            )}
+            ) : null}
+            {listUpdated === true ? <ListContainer listValue="tapak" /> : null}
         </>
     )
 }
