@@ -4,7 +4,7 @@ import { AccountDetailedCarInfo } from "./AccountDetailedCarInfo"
 import { AccountGeneralCarInfo } from "./AccountGeneralCarInfo"
 import { AccountCredentials } from "./AccountCredentials"
 import { SidebarLayout } from "../../components/side-bar-layout/SideBarLayout"
-import { AccountMaintenance } from "./AccountMaintenance"
+import { AccountMaintenance } from "./Maintenance/AccountMaintenance"
 
 type Props = {
     onSetPage: (page: number) => void

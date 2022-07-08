@@ -8,7 +8,7 @@ import { LoginFormValues } from "../login/LoginForm"
 import { SignupFormValues } from "../sign-up/forms/CredentialsForm"
 import { GeneralCarInfoValues } from "../sign-up/forms/GeneralCarInfoForm"
 import { DetailedCarInfoValues } from "../sign-up/forms/DetailedCarInfoForm"
-import { ConfirmationModal } from "../../components/modal/ConfirmationModal"
+import { ConfirmationModal } from "../../components/modals/ConfirmationModal"
 
 export const ChangeScreenComponent = () => {
     const [currentPage, setCurrentPage] = useState(1)
@@ -78,7 +78,8 @@ export const ChangeScreenComponent = () => {
                     power={power}
                     oilType={oilType}
                     onSetPage={(page: number) => setCurrentPage(page)}
-                    currentPage={currentPage}></AccountScreen>
+                    currentPage={currentPage}
+                />
             )
 
         case 2:

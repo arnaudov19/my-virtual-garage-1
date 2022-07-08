@@ -73,13 +73,4 @@ export const ProgressSteps = (props: Props) => {
             </ol>
         </nav>
     )
-    // return (
-    //     <div className="flex w-5/6 ">
-    //         <Steps className="border-sky-600" current={props.currentStep}>
-    //             <Step title="User Credentials" />
-    //             <Step title={"General Car Info"} />
-    //             <Step title={"Detailed Car Info"} />
-    //         </Steps>
-    //     </div>
-    // )
 }

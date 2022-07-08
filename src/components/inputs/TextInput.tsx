@@ -4,6 +4,7 @@ type Props = {
     type?: string
     placeholder?: string
     size: string
+    listInputData: any
 }
 
 export const TextInput = (props: Props) => {
@@ -11,8 +12,7 @@ export const TextInput = (props: Props) => {
     const getInputValue = (event: any) => {
         setInputValue(event.target.value)
     }
-
-    console.log(inputValue)
+    props.listInputData(inputValue)
 
     return (
         <div className="flex flex-col justify-center w-96 pb-6">
@@ -23,7 +23,6 @@ export const TextInput = (props: Props) => {
                 value={inputValue}
                 placeholder={props.placeholder}
             />
-            {inputValue}
         </div>
     )
 }

@@ -9,7 +9,7 @@ type Props = {
     btnName?: string
 }
 
-export const AddList = (props: Props) => {
+export const EmptyListPopover = (props: Props) => {
     return (
         <div className="text-center ease-out duration-200">
             <p>No new records yet, click 'Add' to add new one.</p>
