@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { EmptyListPopover } from "../../../components/lists/EmptyListPopover"
-import { ItemsList } from "../../../components/lists/ItemsList"
-import { AddNewItem } from "../../../components/lists/AddNewItem"
-import { AccountContainer } from "../AccountFormContainer"
+import { EmptyListPopover } from "../../../components/items-list/EmptyListPopover"
+import { ItemsList } from "../../../components/items-list/ItemsList"
+import { AddNewItemModal } from "../../../components/items-list/AddNewItemModal"
+import { ButtonSimple } from "../../../components/buttons/ButtonSimple"
 
 type Props = {
     isEmptyState?: boolean
@@ -34,11 +34,17 @@ export const AccountMaintenance = (props: Props) => {
         <>
             {isNewRecord ? <EmptyListPopover btnName="Add" onClick={() => addNewRecordBtnClicked()} /> : null}
             {isAddedToList ? (
-                <AddNewItem
+                <AddNewItemModal
                     listDataValue={inputData}
                     onClick={() => addListRecordClicked()}
                     isModalOpened={isModalOpened}
                 />
+            ) : null}
+            {listUpdated ? (
+                <>
+                    <ItemsList />
+                    <ButtonSimple label="Add New" onClick={addListRecordClicked} />
+                </>
             ) : null}
         </>
     )

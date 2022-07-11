@@ -11,7 +11,7 @@ type Props = {
     currentPage: number
 }
 
-export const ConfirmationModal = (props: Props) => {
+export const LogOutModal = (props: Props) => {
     const [open, setOpen] = useState(true)
 
     const cancelButtonRef = useRef(null)
@@ -58,9 +58,7 @@ export const ConfirmationModal = (props: Props) => {
                                             Logout
                                         </Dialog.Title>
                                         <div className="mt-2">
-                                            <p className="text-sm text-gray-500">
-                                                Are you sure you want to Logout your account?
-                                            </p>
+                                            <p className="text-sm text-gray-500">Are you sure you want to Logout?</p>
                                         </div>
                                     </div>
                                 </div>

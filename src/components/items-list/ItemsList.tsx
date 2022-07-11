@@ -1,11 +1,6 @@
 import { useState, useCallback } from "react"
-import { ButtonSmall } from "../buttons/ButtonSmall"
+import { AddNewItemModal } from "../items-list/AddNewItemModal"
 import { ButtonSimple } from "../buttons/ButtonSimple"
-import { AccountContainer } from "../../screens/account/AccountFormContainer"
-import { TextInput } from "../inputs/TextInput"
-import { CustomModal } from "../modals/CustomModal"
-import { Modal } from "antd"
-import { AddNewItem } from "./AddNewItem"
 
 type Props = {
     listValue?: string
@@ -17,10 +12,9 @@ export const ItemsList = (props: Props) => {
     const [isAddBtnClicked, setIsAddBtnClicked] = useState(false)
 
     const updateItemsList = () => {
-        setListItems([...listItems, { id: listItems.length + 1, listItem: props.listValue }])
-    }
-    const addNewItem = () => {
         setIsModalOpened(true)
+        setIsAddBtnClicked(true)
+        setListItems([...listItems, { id: listItems.length + 1, listItem: props.listValue }])
     }
 
     console.log("clicked", isAddBtnClicked)
@@ -34,13 +28,14 @@ export const ItemsList = (props: Props) => {
                     </li>
                 ))}
             </ul>
-            {isModalOpened ? (
-                <AddNewItem onClick={updateItemsList} listDataValue={props.listValue} isModalOpened={isModalOpened} />
-            ) : (
-                <p>KOkot</p>
-            )}
-
-            <ButtonSimple label="Add New" onClick={addNewItem} />
+            {isAddBtnClicked ? (
+                <AddNewItemModal
+                    onClick={updateItemsList}
+                    listDataValue={props.listValue}
+                    isModalOpened={isModalOpened}
+                />
+            ) : null}
+            <ButtonSimple label={"Add new"} onClick={updateItemsList} />
         </div>
     )
 }
