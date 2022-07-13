@@ -3,10 +3,12 @@ import { ButtonGroup } from "../../components/buttons/ButtonGroup"
 import { FormSelectInput } from "../../components/form-input-fields/FormSelectInput"
 import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
 import { AccountContainer } from "./AccountFormContainer"
+import { SCREEN_NAME } from "../../router/rooterReducer"
 
 type Props = {
     carBrand?: string
     carModel?: string
+    screenName: SCREEN_NAME
     onBackBtnClicked?: () => void
     onSaveBtnClicked?: () => void
 }
@@ -21,6 +23,7 @@ const carBrands = [
 export const AccountDetailedCarInfo = (props: Props) => {
     return (
         <AccountContainer>
+            <span>{props.screenName}</span>
             <FormSelectInput optionsList={carBrands} className="w-96" label="Car Brand" />
             <FormTextInput className="w-96" label="Car Model" />
             <ButtonGroup onBackBtnClicked={props.onBackBtnClicked} />

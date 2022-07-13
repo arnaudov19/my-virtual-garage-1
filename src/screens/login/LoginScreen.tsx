@@ -1,14 +1,10 @@
 import React from "react"
 import "../../img/my-virtual-garage-logo.png"
-import { LoginForm, LoginFormValues } from "./LoginForm"
+import LoginForm, { LoginFormValues } from "./LoginForm"
 import { LoginSreenContainer } from "./LoginScreenContainer"
 
 type Props = {
-    currentPageLogin: number
     onSetPage: (page: number) => void
-    customerEmail?: string
-    customerPassword?: string
-    image?: HTMLImageElement
     onCollectLoginData: (values: any) => void
 }
 

@@ -54,13 +54,7 @@ export const ChangeScreenComponent = () => {
     switch (currentPage) {
         case 0:
             return (
-                <LoginScreen
-                    customerEmail={currentEmail}
-                    customerPassword={currentPass}
-                    currentPageLogin={currentPage}
-                    onSetPage={(page: number) => setCurrentPage(page)}
-                    onCollectLoginData={collectLoginData}
-                />
+                <LoginScreen onSetPage={(page: number) => setCurrentPage(page)} onCollectLoginData={collectLoginData} />
             )
 
         case 1:
@@ -123,13 +117,7 @@ export const ChangeScreenComponent = () => {
             return <LogOutModal currentPage={currentPage} onSetPage={(page: number) => setCurrentPage(page)} />
         default:
             return (
-                <LoginScreen
-                    customerEmail={currentEmail}
-                    customerPassword={currentPass}
-                    currentPageLogin={currentPage}
-                    onSetPage={(page: number) => setCurrentPage(page)}
-                    onCollectLoginData={collectLoginData}
-                />
+                <LoginScreen onSetPage={(page: number) => setCurrentPage(page)} onCollectLoginData={collectLoginData} />
             )
     }
 }
