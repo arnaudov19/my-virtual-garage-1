@@ -63,7 +63,7 @@ export const LogOutModal = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                                    <ButtonRed onClick={() => onCancelBtnClicked(0)} />
+                                    <ButtonRed label="Log Out" onClick={() => onCancelBtnClicked(0)} />
                                     <ButtonWhite onClick={() => onCancelBtnClicked(1)} />
                                 </div>
                             </Dialog.Panel>
