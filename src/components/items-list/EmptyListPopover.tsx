@@ -12,7 +12,7 @@ type Props = {
 export const EmptyListPopover = (props: Props) => {
     return (
         <div className="text-center ease-out duration-200">
-            <p>No new records yet, click 'Add' to add new one.</p>
+            <p>{props.description}</p>
             <svg
                 className="mx-auto h-12 w-12 text-gray-400"
                 fill="none"
@@ -28,7 +28,6 @@ export const EmptyListPopover = (props: Props) => {
                 />
             </svg>
             <h3 className="mt-2 text-md font-medium text-gray-900">{props.title}</h3>
-            <p className="mt-1 text-md text-gray-500">{props.description}</p>
             <div className="mt-6">
                 <button
                     onClick={props.onClick}

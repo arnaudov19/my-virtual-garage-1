@@ -15,7 +15,7 @@ export const Item = (props: Props) => {
             <p>{props.id}</p>
             <p>{props.listItem}</p>
             <TextInput size="md" />
-            {/* <ButtonRed label="Delete" onClick={props.deleteItem} /> */}
+             <ButtonRed label="Delete" onClick={props.deleteItem} />
         </li>
     )
 }
