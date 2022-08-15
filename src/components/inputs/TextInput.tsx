@@ -5,6 +5,7 @@ type Props = {
     placeholder?: string
     size: string
     listInputData?: any
+    disabled?: boolean
 }
 
 export const TextInput = (props: Props) => {
@@ -21,6 +22,7 @@ export const TextInput = (props: Props) => {
                 type={props.type}
                 value={inputValue}
                 placeholder={props.placeholder}
+                disabled={props.disabled}
             />
         </div>
     )

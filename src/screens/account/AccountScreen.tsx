@@ -1,10 +1,11 @@
-import { CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from "@heroicons/react/outline"
+import { CalendarIcon, FolderIcon, HomeIcon, UsersIcon } from "@heroicons/react/outline"
 import { useState } from "react"
 import { AccountDetailedCarInfo } from "./AccountDetailedCarInfo"
 import { AccountGeneralCarInfo } from "./AccountGeneralCarInfo"
 import { AccountCredentials } from "./AccountCredentials"
 import { SidebarLayout } from "../../components/side-bar-layout/SideBarLayout"
 import { AccountMaintenance } from "./Maintenance/AccountMaintenance"
+import { SCREEN_NAME } from "../../router/rooterReducer"
 
 type Props = {
     onSetPage: (page: number) => void
@@ -49,7 +50,6 @@ export const AccountScreen = (props: Props) => {
     const onLogoutBtnClicked = () => {
         props.onSetPage(5)
     }
-
     return (
         <div className="flex flex-row items-center">
             <>
@@ -82,7 +82,11 @@ export const AccountScreen = (props: Props) => {
                 {/*//@ts-ignore*/}
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     {activeMenuItemId === 1 ? (
-                        <AccountDetailedCarInfo carBrand={props.carBrand} carModel={props.carModel} />
+                        <AccountDetailedCarInfo
+                            carBrand={props.carBrand}
+                            carModel={props.carModel}
+                            screenName={SCREEN_NAME.INFO}
+                        />
                     ) : null}
                     {activeMenuItemId === 2 ? <AccountGeneralCarInfo /> : null}
                     {activeMenuItemId === 3 ? (

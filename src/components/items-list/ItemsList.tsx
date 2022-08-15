@@ -1,66 +1,82 @@
 import { useState } from "react"
-
+import * as uuid from "uuid"
 import { ButtonSimple } from "../buttons/ButtonSimple"
-import { Item } from "./Item"
-import { AddItemPopover } from "./AddItem"
-import { id } from "postcss-selector-parser"
+import { Item, MaintenanceListItem } from "./Item"
 import { EmptyListPopover } from "./EmptyListPopover"
+import { Maybe } from "../../types"
+import { Form } from "antd"
+import { SCREEN_NAME } from "../../router/rooterReducer"
+import { LoginFormValues } from "../../screens/login/LoginForm"
 
 type Props = {
     listValue?: string
 }
 
 export const ItemsList = (props: Props) => {
-    const [listItems, setListItems] = useState([{ id: 0, listItem: props.listValue }])
+    const [listItems, setListItems] = useState<MaintenanceListItem[]>([])
     const [isAddBtnClicked, setIsAddBtnClicked] = useState(false)
-    const [currentId, setCurrentId] = useState(0)
+    const [isSaveBtnClicked, setIsSaveBtnClicked] = useState(false)
+    const [isEditBtnClicked, setIsEditBtnClicked] = useState(false)
 
-    const incrementId = () => {
-        setCurrentId(listItems.length + 1)
+    const handleSubmit = (values: any) => {
+        // TODO MOST IMPORTANTEST EVER IN THE WORLD
+        //  DO WHATEVER YOU WANT WITH DATA
+
+        console.log("Success:", values)
     }
 
     const addItem = () => {
+        setListItems([...listItems, { id: uuid.v4(), name: null }])
         setIsAddBtnClicked(true)
-        setListItems([...listItems, { id: listItems.length, listItem: props.listValue }])
-        setCurrentId(listItems.length + 1)
-        console.log(currentId)
     }
 
-    const deleteItem = (id: number) => {
+    const deleteItem = (id: string) => {
         const newList = listItems.filter((listItems) => listItems.id !== id)
-        setCurrentId(listItems.length - 1)
-        console.log(currentId)
         setListItems(newList)
     }
 
-    console.log("Is Add Btn Clicked", isAddBtnClicked)
-    console.log(listItems.length)
+    const handleSaveItem = () => {
+        setIsSaveBtnClicked(true)
+    }
+    const handleEditItem = () => {
+        setIsEditBtnClicked(true)
+        setIsSaveBtnClicked(false)
+    }
+
+    console.log(isSaveBtnClicked)
 
     return (
         <div>
-            {currentId <= 0 ? (
-                <EmptyListPopover
-                    description="No new records yet, click 'Add' to add new one."
-                    btnName="Add"
-                    onClick={incrementId} //adds new item
-                />
-            ) : (
-                <>
-                    <ul role="list" className="space-y-3">
-                        {listItems.map((item) => (
-                            <>
-                                <Item
-                                    key={item.id}
-                                    id={item.id}
-                                    listItem={item.listItem}
-                                    deleteItem={() => deleteItem(item.id)}
-                                />
-                            </>
-                        ))}
-                        <ButtonSimple label="Add item" onClick={addItem} />
-                    </ul>
-                </>
-            )}
+            <Form>
+                {listItems.length === 0 ? (
+                    <EmptyListPopover
+                        description="No new records yet, click 'Add' to add new one."
+                        btnName="Add"
+                        onClick={addItem}
+                    />
+                ) : (
+                    <>
+                        <ul role="list" className="space-y-3">
+                            {listItems.map((item) => (
+                                <>
+                                    <Item
+                                        key={item.id}
+                                        item={{
+                                            id: item.id,
+                                            name: item.name,
+                                            disabled: isSaveBtnClicked,
+                                        }}
+                                        saveItem={() => handleSaveItem()}
+                                        editItem={() => handleEditItem()}
+                                        deleteItem={() => deleteItem(item.id)}
+                                    />
+                                </>
+                            ))}
+                            <ButtonSimple label="Add item" onClick={addItem} />
+                        </ul>
+                    </>
+                )}
+            </Form>
         </div>
     )
 }
