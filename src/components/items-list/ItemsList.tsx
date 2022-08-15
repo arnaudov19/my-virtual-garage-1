@@ -43,8 +43,6 @@ export const ItemsList = (props: Props) => {
         setIsSaveBtnClicked(false)
     }
 
-    console.log(isSaveBtnClicked)
-
     return (
         <div>
             <Form>
