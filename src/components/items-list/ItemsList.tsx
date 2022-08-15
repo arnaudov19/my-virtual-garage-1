@@ -70,7 +70,7 @@ export const ItemsList = (props: Props) => {
                                     />
                                 </>
                             ))}
-                            <ButtonSimple label="Add item" onClick={addItem} />
+                            <ButtonSimple label="Add an item" onClick={addItem} />
                         </ul>
                     </>
                 )}
