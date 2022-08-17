@@ -3,16 +3,9 @@ import * as uuid from "uuid"
 import { ButtonSimple } from "../buttons/ButtonSimple"
 import { Item, MaintenanceListItem } from "./Item"
 import { EmptyListPopover } from "./EmptyListPopover"
-import { Maybe } from "../../types"
 import { Form } from "antd"
-import { SCREEN_NAME } from "../../router/rooterReducer"
-import { LoginFormValues } from "../../screens/login/LoginForm"
 
-type Props = {
-    listValue?: string
-}
-
-export const ItemsList = (props: Props) => {
+export const ItemsList = () => {
     const [listItems, setListItems] = useState<MaintenanceListItem[]>([])
     const [isAddBtnClicked, setIsAddBtnClicked] = useState(false)
     const [isSaveBtnClicked, setIsSaveBtnClicked] = useState(false)
@@ -24,24 +17,34 @@ export const ItemsList = (props: Props) => {
 
         console.log("Success:", values)
     }
-
     const addItem = () => {
-        setListItems([...listItems, { id: uuid.v4(), name: null }])
+        setListItems([...listItems, { id: uuid.v4(), name: Math.random().toString(), disabled: false }])
         setIsAddBtnClicked(true)
     }
-
     const deleteItem = (id: string) => {
         const newList = listItems.filter((listItems) => listItems.id !== id)
         setListItems(newList)
     }
-
     const handleSaveItem = () => {
         setIsSaveBtnClicked(true)
+        handleInputDisabling()
     }
+
     const handleEditItem = () => {
         setIsEditBtnClicked(true)
         setIsSaveBtnClicked(false)
     }
+    const handleInputDisabling = () => {
+        const newArr = listItems.map((item) => {
+            if (item.disabled! !== isSaveBtnClicked) {
+                return { ...item, disabled: true }
+            }
+            return item
+        })
+        setListItems(newArr)
+    }
+
+    console.log("isSaveBtnClicked", isSaveBtnClicked)
 
     return (
         <div>
@@ -62,7 +65,7 @@ export const ItemsList = (props: Props) => {
                                         item={{
                                             id: item.id,
                                             name: item.name,
-                                            disabled: isSaveBtnClicked,
+                                            disabled: item.disabled,
                                         }}
                                         saveItem={() => handleSaveItem()}
                                         editItem={() => handleEditItem()}

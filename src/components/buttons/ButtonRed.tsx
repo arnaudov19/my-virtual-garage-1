@@ -4,6 +4,7 @@ type Props = {
     onClick: () => void
     label?: string
 }
+
 export const ButtonRed = (props: Props) => {
     return (
         <button
