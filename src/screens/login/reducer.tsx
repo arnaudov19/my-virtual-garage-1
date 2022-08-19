@@ -1,4 +1,4 @@
-import { LOGIN_BTN_CLICKED } from "../screens/login/actions"
+import { LOGIN_BTN_CLICKED } from "./actions"
 
 export type AuthState = {
     signedInUser: {
@@ -15,7 +15,7 @@ export const createDefaultAuthState = () => ({
 })
 
 // SUPLIK WITH THE DATA
-export function authReducer(state: AuthState, action: Object): AuthState {
+export function loginReducer(state: AuthState, action: Object): AuthState {
     if (!state) {
         return createDefaultAuthState()
     }
