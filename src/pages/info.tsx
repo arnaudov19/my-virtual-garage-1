@@ -2,20 +2,29 @@ import { AccountDetailedCarInfo } from "../screens/account/AccountDetailedCarInf
 import { loginBtnClicked } from "../screens/login/actions"
 import { routerScreenChanged } from "../router/actions"
 import { connect } from "react-redux"
-import { getRooterScreen } from "../router/selectors"
+import { getCurrentScreenName } from "../router/selectors"
 import { SCREEN_NAME } from "../router/rooterReducer"
+import { BasicLayout } from "../components/layouts/BasicLayout"
 
 type Props = {
     screen: SCREEN_NAME
 }
 
+// TODO Homework
+// Get email from selector
+// Show it in AccountDetailCardInfo screen
+
 const Info = (props: Props) => {
-    return <AccountDetailedCarInfo carBrand={"Skoda"} carModel={"Octavia"} screenName={props.screen} />
+    return (
+        <BasicLayout>
+            <AccountDetailedCarInfo carBrand={"Skoda"} carModel={"Octavia"} screenName={props.screen} />
+        </BasicLayout>
+    )
 }
 
 // CONECTING TO REDUX
 const mapStateToProps = (state: any) => ({
-    screen: getRooterScreen(state),
+    screen: getCurrentScreenName(state),
 })
 
 const mapDispatchToProps = {

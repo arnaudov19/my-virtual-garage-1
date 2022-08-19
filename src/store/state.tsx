@@ -1,7 +1,7 @@
-import { AuthState } from "../auth/authReducer"
+import { LoginState } from "../screens/login/reducer"
 import { RooterState } from "../router/rooterReducer"
 
 export type StateObject = {
-    auth: AuthState
+    login: LoginState
     rooter: RooterState
 }

@@ -3,9 +3,10 @@ import { useState } from "react"
 import { AccountDetailedCarInfo } from "../AccountDetailedCarInfo/AccountDetailedCarInfo"
 import { AccountGeneralCarInfo } from "../AccountGeneralCarInfo/AccountGeneralCarInfo"
 import { AccountCredentials } from "../AccountCredentials/AccountCredentials"
-import { SidebarLayout } from "../../../components/side-bar-layout/SideBarLayout"
+import { SideBarLayout } from "../../../components/layouts/SideBarLayout"
 import { AccountMaintenance } from "../Maintenance/AccountMaintenance"
 import { SCREEN_NAME } from "../../../router/rooterReducer"
+import { classNames } from "../../../utils/utils"
 
 type Props = {
     onSetPage: (page: number) => void
@@ -24,10 +25,6 @@ type Props = {
     children?: React.ReactNode
     value?: string
     isLoggedIn?: string
-}
-
-const classNames = (...classes: any) => {
-    return classes.filter(Boolean).join(" ")
 }
 
 type MenuItem = {
@@ -53,7 +50,7 @@ export const AccountScreen = (props: Props) => {
     return (
         <div className="flex flex-row items-center">
             <>
-                <SidebarLayout>
+                <SideBarLayout>
                     <nav className="flex-1 bg-white space-y-1" aria-label="Sidebar">
                         {menuItems.map((item: MenuItem) => (
                             <a
@@ -78,7 +75,7 @@ export const AccountScreen = (props: Props) => {
                             </a>
                         ))}
                     </nav>
-                </SidebarLayout>
+                </SideBarLayout>
 
                 {/*//@ts-ignore*/}
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">

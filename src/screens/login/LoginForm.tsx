@@ -4,16 +4,9 @@ import React from "react"
 import { Button } from "../../components/buttons/Button"
 import { LockClosedIcon } from "@heroicons/react/solid"
 import { FormItemPasswordInput } from "../../components/form-input-fields/FormItemPasswordInput"
-import { connect } from "react-redux"
-import { loginBtnClicked } from "./actions"
-import { routerScreenChanged } from "../../router/actions"
-import { SCREEN_NAME } from "../../router/rooterReducer"
-import { useRouter } from "next/router"
 
 type Props = {
-    onSumbit: (values: LoginFormValues) => void
-    onLoginBtnClicked: (email: string, password: string) => void
-    screenChange: (screen: SCREEN_NAME) => void
+    onSubmitBtnClicked: (values: LoginFormValues) => void
 }
 
 export type LoginFormValues = {
@@ -21,19 +14,9 @@ export type LoginFormValues = {
     password: string
 }
 
-const LoginForm = (props: Props) => {
-    const router = useRouter()
-
+export const LoginForm = (props: Props) => {
     const handleSubmit = (values: LoginFormValues) => {
-        // TODO MOST IMPORTANTEST EVER IN THE WORLD
-        //  DO WHATEVER YOU WANT WITH DATA
-
-        console.log("Success:", values)
-        props.onSumbit(values)
-        props.onLoginBtnClicked(values.email, values.password)
-        props.screenChange(SCREEN_NAME.INFO)
-
-        router.push("/info")
+        props.onSubmitBtnClicked(values)
     }
     const handleSubmitFailed = (errorInfo: any) => {
         console.log("Fail", errorInfo)
@@ -85,13 +68,3 @@ const LoginForm = (props: Props) => {
         </Form>
     )
 }
-
-// CONECTING TO REDUX
-const mapStateToProps = (state: any) => ({})
-
-const mapDispatchToProps = {
-    onLoginBtnClicked: loginBtnClicked,
-    screenChange: routerScreenChanged,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)

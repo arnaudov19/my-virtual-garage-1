@@ -3,4 +3,4 @@ import { RooterState, SCREEN_NAME } from "./rooterReducer"
 
 export const getRooterStateObject = (state: StateObject): RooterState => state.rooter
 
-export const getRooterScreen = (state: StateObject): SCREEN_NAME => getRooterStateObject(state).currentScreen
+export const getCurrentScreenName = (state: StateObject): SCREEN_NAME => getRooterStateObject(state).currentScreen

@@ -2,15 +2,15 @@
 
 import { combineReducers } from "redux"
 import type { StateObject } from "./state"
-import { authReducer, createDefaultAuthState } from "../auth/authReducer"
+import { loginReducer, createDefaultLoginState } from "../screens/login/reducer"
 import { createDefaultRooterState, rooterReducer } from "../router/rooterReducer"
 
 export const initialState: StateObject = {
-    auth: createDefaultAuthState(),
+    login: createDefaultLoginState(),
     rooter: createDefaultRooterState(),
 }
 
 export const reducer = combineReducers({
-    auth: authReducer,
+    login: loginReducer,
     rooter: rooterReducer,
 })

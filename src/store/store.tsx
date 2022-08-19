@@ -6,14 +6,14 @@ import { initialState, reducer } from "./reducer"
 import { createWrapper } from "next-redux-wrapper"
 
 // initial states here
-const initalState = initialState
+const currentState = initialState
 
 // middleware
 const middleware = [thunk]
 
 // creating store
 //@ts-ignore
-export const store = createStore(reducer, initalState, composeWithDevTools(applyMiddleware(...middleware)))
+export const store = createStore(reducer, currentState, composeWithDevTools(applyMiddleware(...middleware)))
 
 // assigning store to next wrapper
 const makeStore = () => store

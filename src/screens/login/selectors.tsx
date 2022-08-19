@@ -1,6 +1,6 @@
-import { StateObject } from "../store/state"
-import { RooterState, SCREEN_NAME } from "./rooterReducer"
+import { StateObject } from "../../store/state"
+import { LoginState } from "./reducer"
 
-export const getRooterStateObject = (state: StateObject): RooterState => state.rooter
+export const getLoginStateObject = (state: StateObject): LoginState => state.login
 
-export const getRooterScreen = (state: StateObject): SCREEN_NAME => getRooterStateObject(state).currentScreen
+export const getLoggedInUser = (state: StateObject): any => getLoginStateObject(state).loggedInUser

@@ -13,7 +13,6 @@ type Props = {
     onSaveBtnClicked?: () => void
     email?: string
     password?: string
-    confirmPassword?: string
 }
 
 export const AccountCredentials = (props: Props) => {
