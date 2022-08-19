@@ -4,6 +4,7 @@ import { ROUTER__SCREEN_CHANGED } from "./actions"
 export enum SCREEN_NAME {
     LOGIN = "login",
     INFO = "info",
+    MAINTENANCE = "maintenance",
 }
 
 export type RooterState = {
@@ -28,7 +29,6 @@ export function rooterReducer(state: RooterState, action: Object): RooterState {
                 currentScreen: action.payload.screenName,
             }
         }
-
         default:
             return state
     }

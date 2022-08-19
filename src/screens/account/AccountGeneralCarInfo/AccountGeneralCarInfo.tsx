@@ -1,7 +1,7 @@
 import React from "react"
-import { ButtonGroup } from "../../components/buttons/ButtonGroup"
-import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
-import { AccountContainer } from "./AccountFormContainer"
+import { ButtonGroup } from "../../../components/buttons/ButtonGroup"
+import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
+import { AccountContainer } from "../AccountFormContainer/AccountFormContainer"
 
 type Props = {
     onBackBtnClicked?: () => void

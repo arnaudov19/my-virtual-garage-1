@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { TextInput } from "../inputs/TextInput"
-import { AccountContainer } from "../../screens/account/AccountFormContainer"
+import { AccountContainer } from "../../screens/account/AccountFormContainer/AccountFormContainer"
 import { Modal } from "antd"
 
 type Props = {

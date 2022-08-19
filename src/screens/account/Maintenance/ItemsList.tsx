@@ -1,15 +1,13 @@
 import { useState } from "react"
 import * as uuid from "uuid"
-import { ButtonSimple } from "../buttons/ButtonSimple"
+import { ButtonSimple } from "../../../components/buttons/ButtonSimple"
 import { Item, MaintenanceListItem } from "./Item"
-import { EmptyListPopover } from "./EmptyListPopover"
+import { EmptyListPopover } from "../../../components/items-list/EmptyListPopover"
 import { Form } from "antd"
 
 export const ItemsList = () => {
     const [listItems, setListItems] = useState<MaintenanceListItem[]>([])
     const [isAddBtnClicked, setIsAddBtnClicked] = useState(false)
-    const [isSaveBtnClicked, setIsSaveBtnClicked] = useState(false)
-    const [isEditBtnClicked, setIsEditBtnClicked] = useState(false)
 
     const handleSubmit = (values: any) => {
         // TODO MOST IMPORTANTEST EVER IN THE WORLD
@@ -25,26 +23,24 @@ export const ItemsList = () => {
         const newList = listItems.filter((listItems) => listItems.id !== id)
         setListItems(newList)
     }
-    const handleSaveItem = () => {
-        setIsSaveBtnClicked(true)
-        handleInputDisabling()
-    }
-
-    const handleEditItem = () => {
-        setIsEditBtnClicked(true)
-        setIsSaveBtnClicked(false)
-    }
-    const handleInputDisabling = () => {
+    const handleInputDisabling = (id: string) => {
         const newArr = listItems.map((item) => {
-            if (item.disabled! !== isSaveBtnClicked) {
+            if (item.id! === id) {
                 return { ...item, disabled: true }
             }
             return item
         })
         setListItems(newArr)
     }
-
-    console.log("isSaveBtnClicked", isSaveBtnClicked)
+    const handleInputEnabling = (id: string) => {
+        const newArr = listItems.map((item) => {
+            if (item.id! === id) {
+                return { ...item, disabled: false }
+            }
+            return item
+        })
+        setListItems(newArr)
+    }
 
     return (
         <div>
@@ -67,8 +63,8 @@ export const ItemsList = () => {
                                             name: item.name,
                                             disabled: item.disabled,
                                         }}
-                                        saveItem={() => handleSaveItem()}
-                                        editItem={() => handleEditItem()}
+                                        saveItem={() => handleInputDisabling(item.id)}
+                                        editItem={() => handleInputEnabling(item.id)}
                                         deleteItem={() => deleteItem(item.id)}
                                     />
                                 </>

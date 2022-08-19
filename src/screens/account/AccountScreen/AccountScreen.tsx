@@ -1,11 +1,11 @@
 import { CalendarIcon, FolderIcon, HomeIcon, UsersIcon } from "@heroicons/react/outline"
 import { useState } from "react"
-import { AccountDetailedCarInfo } from "./AccountDetailedCarInfo"
-import { AccountGeneralCarInfo } from "./AccountGeneralCarInfo"
-import { AccountCredentials } from "./AccountCredentials"
-import { SidebarLayout } from "../../components/side-bar-layout/SideBarLayout"
-import { AccountMaintenance } from "./Maintenance/AccountMaintenance"
-import { SCREEN_NAME } from "../../router/rooterReducer"
+import { AccountDetailedCarInfo } from "../AccountDetailedCarInfo/AccountDetailedCarInfo"
+import { AccountGeneralCarInfo } from "../AccountGeneralCarInfo/AccountGeneralCarInfo"
+import { AccountCredentials } from "../AccountCredentials/AccountCredentials"
+import { SidebarLayout } from "../../../components/side-bar-layout/SideBarLayout"
+import { AccountMaintenance } from "../Maintenance/AccountMaintenance"
+import { SCREEN_NAME } from "../../../router/rooterReducer"
 
 type Props = {
     onSetPage: (page: number) => void
@@ -79,6 +79,7 @@ export const AccountScreen = (props: Props) => {
                         ))}
                     </nav>
                 </SidebarLayout>
+
                 {/*//@ts-ignore*/}
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     {activeMenuItemId === 1 ? (

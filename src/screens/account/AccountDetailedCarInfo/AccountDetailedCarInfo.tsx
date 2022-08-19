@@ -1,9 +1,9 @@
 import React from "react"
-import { ButtonGroup } from "../../components/buttons/ButtonGroup"
-import { FormSelectInput } from "../../components/form-input-fields/FormSelectInput"
-import { FormTextInput } from "../../components/form-input-fields/FormTextInput"
-import { AccountContainer } from "./AccountFormContainer"
-import { SCREEN_NAME } from "../../router/rooterReducer"
+import { ButtonGroup } from "../../../components/buttons/ButtonGroup"
+import { FormSelectInput } from "../../../components/form-input-fields/FormSelectInput"
+import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
+import { AccountContainer } from "../AccountFormContainer/AccountFormContainer"
+import { SCREEN_NAME } from "../../../router/rooterReducer"
 
 type Props = {
     carBrand?: string

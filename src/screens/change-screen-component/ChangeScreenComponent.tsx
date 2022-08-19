@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { AccountScreen } from "../account/AccountScreen"
+import { AccountScreen } from "../account/AccountScreen/AccountScreen"
 import LoginScreen from "../login/LoginScreen"
 import CreateUserGeneralCarInfo from "../sign-up/SignupGeneralCarInfo"
 import CreateUserDetailedCarInfo from "../sign-up/SignupDetailedCarInfo"

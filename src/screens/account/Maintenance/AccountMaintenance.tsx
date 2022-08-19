@@ -1,12 +1,10 @@
 import React, { useState } from "react"
-import { ItemsList } from "../../../components/items-list/ItemsList"
+import { ItemsList } from "./ItemsList"
 
 export const AccountMaintenance = () => {
-
-
     return (
         <>
-            <ItemsList/>
+            <ItemsList />
         </>
     )
 }

@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import { TextInput } from "../inputs/TextInput"
-import { ItemsList } from "./ItemsList"
-import { AccountContainer } from "../../screens/account/AccountFormContainer"
+import { ItemsList } from "../../screens/account/Maintenance/ItemsList"
+import { AccountContainer } from "../../screens/account/AccountFormContainer/AccountFormContainer"
 import { Modal } from "antd"
 import { AccountMaintenance } from "../../screens/account/Maintenance/AccountMaintenance"
 import { EmptyListPopover } from "./EmptyListPopover"
-import { Item } from "./Item"
+import { Item } from "../../screens/account/Maintenance/Item"
 
 type Props = {
     isModalOpened: boolean
