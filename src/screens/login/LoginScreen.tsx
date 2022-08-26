@@ -8,6 +8,7 @@ import { connect } from "react-redux"
 import { useRouter } from "next/router"
 import { LoginForm, LoginFormValues } from "./LoginForm"
 import { SCREEN_NAME } from "../../router/rooterReducer"
+import { getLoggedInUser } from "./selectors"
 
 type Props = {
     onLoginBtnClicked: (email: string, password: string) => void
@@ -20,7 +21,7 @@ const LoginScreen = (props: Props): any => {
 
     const collectLoginData = (values: LoginFormValues) => {
         props.onLoginBtnClicked(values.email, values.password)
-
+        console.log(values)
         props.screenChange(SCREEN_NAME.INFO)
         router.push("/info")
     }
@@ -42,7 +43,9 @@ const LoginScreen = (props: Props): any => {
 }
 
 // getDataFromRedux
-const mapStateToProps = (state: any) => ({})
+const mapStateToProps = (state: any) => ({
+    onLoginBtnClicked: getLoggedInUser(state),
+})
 
 const mapDispatchToProps = {
     onLoginBtnClicked: loginBtnClicked,

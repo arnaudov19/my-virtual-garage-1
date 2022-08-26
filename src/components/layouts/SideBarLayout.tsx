@@ -26,7 +26,7 @@ type Props = {
     setActiveMenuItemId: (id: SCREEN_NAME) => void
 }
 
-const SideBarLayout = (props: Props) => {
+export const SideBarLayout = (props: Props) => {
     const router = useRouter()
 
     const onMenuItemClicked = (id: SCREEN_NAME) => {
@@ -35,8 +35,8 @@ const SideBarLayout = (props: Props) => {
     }
 
     return (
-        <div className="flex flex-row w-96 h-screen">
-            <div className="flex flex-col flex-grow border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto">
+        <div className="flex flex-row w-96 h-screen relative">
+            <div className="fixed flex flex-col flex-grow w-80 border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto">
                 <div className="flex items-center flex-shrink-0 px-4 space-y-5">
                     <img
                         className="h-16 w-auto"

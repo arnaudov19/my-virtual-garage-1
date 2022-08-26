@@ -17,6 +17,7 @@ export type LoginFormValues = {
 export const LoginForm = (props: Props) => {
     const handleSubmit = (values: LoginFormValues) => {
         props.onSubmitBtnClicked(values)
+        console.log("values", values)
     }
     const handleSubmitFailed = (errorInfo: any) => {
         console.log("Fail", errorInfo)

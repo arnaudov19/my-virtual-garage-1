@@ -5,12 +5,12 @@ import { GeneralCarInfoForm, GeneralCarInfoValues } from "./forms/GeneralCarInfo
 
 type Props = {
     onSetPage: (page: number) => void
-    currentPage: number
+    currentPage?: number
     onCollectGeneralCarInfoValues: (values: any) => void
-    brand: string
-    model: string
-    purchaseDate: string
-    registrationDate: string
+    brand?: string
+    model?: string
+    purchaseDate?: string
+    registrationDate?: string
 }
 
 const CreateUserGeneralCarInfo = (props: Props) => {

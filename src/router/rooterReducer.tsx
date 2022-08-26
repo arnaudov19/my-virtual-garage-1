@@ -7,7 +7,7 @@ export enum SCREEN_NAME {
     GENERAL = "general",
     CREDENTIALS = "credentials",
     MAINTENANCE = "maintenance",
-    LOG_OUT = "logOut",
+    LOG_OUT = "login",
 }
 
 export type RooterState = {

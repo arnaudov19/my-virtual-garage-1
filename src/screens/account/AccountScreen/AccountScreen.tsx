@@ -50,7 +50,7 @@ export const AccountScreen = (props: Props) => {
     return (
         <div className="flex flex-row items-center">
             <>
-                <SideBarLayout>
+                {/*                <SideBarLayout>
                     <nav className="flex-1 bg-white space-y-1" aria-label="Sidebar">
                         {menuItems.map((item: MenuItem) => (
                             <a
@@ -75,7 +75,7 @@ export const AccountScreen = (props: Props) => {
                             </a>
                         ))}
                     </nav>
-                </SideBarLayout>
+                </SideBarLayout>*/}
 
                 {/*//@ts-ignore*/}
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,11 +88,7 @@ export const AccountScreen = (props: Props) => {
                     ) : null}
                     {activeMenuItemId === 2 ? <AccountGeneralCarInfo /> : null}
                     {activeMenuItemId === 3 ? (
-                        <AccountCredentials
-                            email={props.email}
-                            password={props.password}
-                            confirmPassword={props.confirmPassword}
-                        />
+                        <AccountCredentials email={props.email} password={props.password} />
                     ) : null}
                     {activeMenuItemId === 4 ? <AccountMaintenance /> : null}
                     {activeMenuItemId === 5 ? onLogoutBtnClicked() : null}
