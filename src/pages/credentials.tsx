@@ -1,12 +1,12 @@
-import { loginBtnClicked } from "../../screens/login/actions"
-import { routerScreenChanged } from "../../router/actions"
+import { loginBtnClicked } from "../screens/login/actions"
+import { routerScreenChanged } from "../router/actions"
 import { connect } from "react-redux"
 
-import { SCREEN_NAME } from "../../router/rooterReducer"
-import { BasicLayout } from "../../components/layouts/BasicLayout"
-import { getCurrentScreenName } from "../../router/selectors"
-import { AccountCredentials } from "../../screens/account/AccountCredentials/AccountCredentials"
-import { LoginState } from "../../screens/login/reducer"
+import { SCREEN_NAME } from "../router/rooterReducer"
+import { BasicLayout } from "../components/layouts/BasicLayout"
+import { getCurrentScreenName } from "../router/selectors"
+import { AccountCredentials } from "../screens/account/AccountCredentials/AccountCredentials"
+import { LoginState } from "../screens/login/reducer"
 
 type Props = {
     screen: SCREEN_NAME
