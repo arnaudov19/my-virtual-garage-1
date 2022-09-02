@@ -1,6 +1,6 @@
 import { Form } from "antd"
 import React from "react"
-import { ButtonSmall } from "../../../components/buttons/ButtonSmall"
+import { ButtonMedium } from "../../../components/buttons/ButtonSmall"
 import { FormDatePicker } from "../../../components/form-input-fields/FormDatePicker"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
 import { FormSelectInput } from "../../../components/form-input-fields/FormSelectInput"
@@ -77,8 +77,8 @@ export const GeneralCarInfoForm = (props: Props) => {
                     label="Purchase Date"
                 />
                 <div className="w-96 pt-6 flex justify-around">
-                    <ButtonSmall onClick={onBackBtnClicked} label="Back" />
-                    <ButtonSmall label="Next" />
+                    <ButtonMedium onClick={onBackBtnClicked} label="Back" />
+                    <ButtonMedium label="Next" />
                 </div>
             </Form>
         </div>

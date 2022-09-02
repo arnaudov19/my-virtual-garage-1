@@ -1,12 +1,8 @@
 import { CalendarIcon, FolderIcon, HomeIcon, UsersIcon } from "@heroicons/react/outline"
 import { useState } from "react"
-import { AccountDetailedCarInfo } from "../AccountDetailedCarInfo/AccountDetailedCarInfo"
 import { AccountGeneralCarInfo } from "../AccountGeneralCarInfo/AccountGeneralCarInfo"
 import { AccountCredentials } from "../AccountCredentials/AccountCredentials"
-import { SideBarLayout } from "../../../components/layouts/SideBarLayout"
 import { AccountMaintenance } from "../Maintenance/AccountMaintenance"
-import { SCREEN_NAME } from "../../../router/rooterReducer"
-import { classNames } from "../../../utils/utils"
 
 type Props = {
     onSetPage: (page: number) => void
@@ -79,13 +75,13 @@ export const AccountScreen = (props: Props) => {
 
                 {/*//@ts-ignore*/}
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    {activeMenuItemId === 1 ? (
-                        <AccountDetailedCarInfo
-                            carBrand={props.carBrand}
-                            carModel={props.carModel}
-                            screenName={SCREEN_NAME.INFO}
-                        />
-                    ) : null}
+                    {/*{activeMenuItemId === 1 ? (*/}
+                    {/*    <AccountDetailedCarInfo*/}
+                    {/*        carBrand={props.carBrand}*/}
+                    {/*        carModel={props.carModel}*/}
+                    {/*        screenName={SCREEN_NAME.INFO}*/}
+                    {/*    />*/}
+                    {/*) : null}*/}
                     {activeMenuItemId === 2 ? <AccountGeneralCarInfo /> : null}
                     {activeMenuItemId === 3 ? (
                         <AccountCredentials email={props.email} password={props.password} />

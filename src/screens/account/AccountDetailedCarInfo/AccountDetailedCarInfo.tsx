@@ -4,20 +4,23 @@ import { FormSelectInput } from "../../../components/form-input-fields/FormSelec
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
 import { AccountContainer } from "../AccountFormContainer/AccountFormContainer"
 import { SCREEN_NAME } from "../../../router/rooterReducer"
-import { SimpleNotification } from "../../../components/notifications/SimpleNotifications"
-import { LoginState } from "../../login/reducer"
-import { notification } from "antd"
+import { Button, notification } from "antd"
+import { connect } from "react-redux"
+import { isAccountDetailNotificationClosed } from "./selectors"
+import { notificationCloseBtnClicked } from "./actions"
 
 type Props = {
     carBrand?: string
     carModel?: string
     userEmail?: string
     screenName: SCREEN_NAME
-    isCustomerLoggedIn: boolean
+    onScreenChange: (screen: SCREEN_NAME) => void
+    onNotificationBtnClicked: () => void
+    isNotificationClosed: boolean
+    isCustomerLoggedIn?: boolean
     onBackBtnClicked?: () => void
     onSaveBtnClicked?: () => void
 }
-
 const carBrands = [
     { brand: "skoda", name: "Skoda", id: 1 },
     { brand: "audi", name: "Audi", id: 2 },
@@ -25,21 +28,21 @@ const carBrands = [
     { brand: "mercedes", name: "Mercedes", id: 4 },
 ]
 
-export const AccountDetailedCarInfo = (props: Props) => {
+const AccountDetailedCarInfo = (props: Props) => {
     const openNotification = () => {
-        const args = {
+        notification.open({
             message: "Welcome, ",
             description: props.userEmail,
-            duration: 4.5,
-        }
-        notification.open(args)
+            duration: 10,
+            //calling the function from dispatch
+            onClose: () => props.onNotificationBtnClicked(),
+        })
     }
 
     return (
         <AccountContainer>
             <>
-                {props.isCustomerLoggedIn && props.screenName === "info" ? openNotification() : null}
-                {/*<SimpleNotification userEmail={props.userEmail} />*/}
+                {!props.isNotificationClosed && props.screenName === "info" ? openNotification() : null}
                 <span>{props.screenName}</span>
                 <FormSelectInput optionsList={carBrands} className="w-96" label="Car Brand" />
                 <FormTextInput className="w-96" label="Car Model" />
@@ -48,3 +51,15 @@ export const AccountDetailedCarInfo = (props: Props) => {
         </AccountContainer>
     )
 }
+
+// REDUX BOILERPLATE
+const mapStateToProps = (state: any) => ({
+    isNotificationClosed: isAccountDetailNotificationClosed(state),
+})
+
+const mapDispatchToProps = {
+    //Prop is calling the function
+    onNotificationBtnClicked: notificationCloseBtnClicked,
+}
+
+export default connect<any, any, any>(mapStateToProps, mapDispatchToProps)(AccountDetailedCarInfo)

@@ -3,7 +3,7 @@ import { Button } from "../buttons/Button"
 import { Fragment, useRef, useState } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import { ExclamationIcon } from "@heroicons/react/outline"
-import { ButtonRed } from "../buttons/ButtonRed"
+import { ButtonSmall } from "../buttons/ButtonSmall"
 import { ButtonWhite } from "../buttons/ButtonWhite"
 
 type Props = {
@@ -63,7 +63,7 @@ export const LogOutModal = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                                    <ButtonRed label="Log Out" onClick={() => onCancelBtnClicked(0)} />
+                                    <ButtonSmall label="Log Out" onClick={() => onCancelBtnClicked(0)} />
                                     <ButtonWhite onClick={() => onCancelBtnClicked(1)} />
                                 </div>
                             </Dialog.Panel>

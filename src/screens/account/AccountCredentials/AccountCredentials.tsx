@@ -1,7 +1,7 @@
 import React from "react"
 import { ButtonDisabled } from "../../../components/buttons/ButtonDisabled"
 import { ButtonGroup } from "../../../components/buttons/ButtonGroup"
-import { ButtonSmall } from "../../../components/buttons/ButtonSmall"
+import { ButtonMedium } from "../../../components/buttons/ButtonSmall"
 import { FormItemPasswordInput } from "../../../components/form-input-fields/FormItemPasswordInput"
 import { FormSelectInput } from "../../../components/form-input-fields/FormSelectInput"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
@@ -31,7 +31,7 @@ export const AccountCredentials = (props: Props) => {
                 {btnDisabled ? (
                     <ButtonDisabled disabled={true} label="Save" />
                 ) : (
-                    <ButtonSmall onClick={props.onSaveBtnClicked} label="Save" />
+                    <ButtonMedium onClick={props.onSaveBtnClicked} label="Save" />
                 )}
             </div>
         </AccountContainer>
