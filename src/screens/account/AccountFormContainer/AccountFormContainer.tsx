@@ -3,7 +3,7 @@ import React from "react"
 type Props = {
     className?: string
     nestedClassName?: string
-    children?: React.ReactNode
+    children?: React.ReactNode | React.ReactElement
 }
 
 export const AccountContainer = (props: Props) => {

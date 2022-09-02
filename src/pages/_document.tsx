@@ -5,7 +5,6 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <title>My Virtual Garage</title>
                     <link
                         href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&display=swap"
                         rel="stylesheet"

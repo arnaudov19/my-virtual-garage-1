@@ -1,6 +1,6 @@
 import React from "react"
 
-export const LoginSreenContainer = (props: any) => {
+export const LoginScreenContainer = (props: any) => {
     return (
         <div className="bg-gray-200 h-screen w-screen flex flex-col justify-center items-center">
             <div className="bg-white rounded-xl shadow-lg shadow-slate-500 flex flex-col w-full h-full overflow-auto lg:w-5/6 lg:h-5/6 lg:flex-row">

@@ -1,6 +1,6 @@
 import { Form } from "antd"
 import React from "react"
-import { ButtonSmall } from "../../../components/buttons/ButtonSmall"
+import { ButtonMedium } from "../../../components/buttons/ButtonSmall"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
 
 type Props = {
@@ -51,8 +51,8 @@ export const DetailedCarInfoForm = (props: Props) => {
                 </div>
             </div>
             <div className="w-96 pt-6 flex justify-around">
-                <ButtonSmall onClick={onBackBtnClicked} label="Back" />
-                <ButtonSmall label="Create Account" />
+                <ButtonMedium onClick={onBackBtnClicked} label="Back" />
+                <ButtonMedium label="Create Account" />
             </div>
         </Form>
     )

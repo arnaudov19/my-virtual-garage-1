@@ -1,34 +1,30 @@
-import { LOGIN_BTN_CLICKED } from "../screens/login/actions"
+import { LOGIN_BTN_CLICKED } from "./actions"
 
-export type AuthState = {
-    signedInUser: {
+export type LoginState = {
+    loggedInUser: {
         email: string | null | undefined
         password: string | null | undefined
     }
 }
 
-export const createDefaultAuthState = () => ({
-    signedInUser: {
+export const createDefaultLoginState = () => ({
+    loggedInUser: {
         email: null,
         password: null,
     },
 })
 
-// SUPLIK WITH THE DATA
-export function authReducer(state: AuthState, action: Object): AuthState {
+export function loginReducer(state: LoginState, action: Record<string, any>): LoginState {
     if (!state) {
-        return createDefaultAuthState()
+        return createDefaultLoginState()
     }
 
-    //@ts-ignore
     switch (action.type) {
         case LOGIN_BTN_CLICKED:
             return {
                 ...state,
-                signedInUser: {
-                    //@ts-ignore
+                loggedInUser: {
                     email: action.payload.email,
-                    //@ts-ignore
                     password: action.payload.password,
                 },
             }

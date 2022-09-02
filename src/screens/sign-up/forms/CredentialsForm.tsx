@@ -1,6 +1,6 @@
 import { Form } from "antd"
 import React from "react"
-import { ButtonSmall } from "../../../components/buttons/ButtonSmall"
+import { ButtonMedium } from "../../../components/buttons/ButtonSmall"
 import { FormItemPasswordInput } from "../../../components/form-input-fields/FormItemPasswordInput"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
 
@@ -55,8 +55,8 @@ export const CreateUserForm = (props: Props) => {
                     name="confirmPassword"
                 />
                 <div className="flex justify-around w-96 pt-14">
-                    <ButtonSmall onClick={onBackBtnClicked} label="Back" />
-                    <ButtonSmall label="Next" />
+                    <ButtonMedium onClick={onBackBtnClicked} label="Back" />
+                    <ButtonMedium label="Next" />
                 </div>
             </Form>
         </div>

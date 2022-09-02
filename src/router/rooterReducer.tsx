@@ -4,7 +4,10 @@ import { ROUTER__SCREEN_CHANGED } from "./actions"
 export enum SCREEN_NAME {
     LOGIN = "login",
     INFO = "info",
+    GENERAL = "general",
+    CREDENTIALS = "credentials",
     MAINTENANCE = "maintenance",
+    LOG_OUT = "login",
 }
 
 export type RooterState = {

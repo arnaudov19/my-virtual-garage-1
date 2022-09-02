@@ -1,7 +1,9 @@
-import { AuthState } from "../auth/authReducer"
+import { LoginState } from "../screens/login/reducer"
 import { RooterState } from "../router/rooterReducer"
+import { InfoState } from "../screens/account/AccountDetailedCarInfo/reducer"
 
 export type StateObject = {
-    auth: AuthState
+    login: LoginState
+    info: InfoState
     rooter: RooterState
 }

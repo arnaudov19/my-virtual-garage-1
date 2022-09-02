@@ -1,5 +1,5 @@
 import React from "react"
-import { ButtonSmall } from "./ButtonSmall"
+import { ButtonMedium } from "./ButtonMedium"
 
 type Props = {
     onNextBtnClicked?: () => void
@@ -9,8 +9,8 @@ type Props = {
 export const ButtonGroup = (props: Props) => {
     return (
         <div className="w-96 pt-6 flex justify-around">
-            <ButtonSmall onClick={props.onBackBtnClicked} label="Back" />
-            <ButtonSmall onClick={props.onNextBtnClicked} label="Next" />
+            <ButtonMedium onClick={props.onBackBtnClicked} label="Back" />
+            <ButtonMedium onClick={props.onNextBtnClicked} label="Next" />
         </div>
     )
 }

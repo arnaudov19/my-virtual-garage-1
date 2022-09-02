@@ -1,6 +1,8 @@
 import React from "react"
-import { ButtonRed } from "../../../components/buttons/ButtonRed"
+import { ButtonSmall } from "../../../components/buttons/ButtonSmall"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
+import { ButtonMedium } from "../../../components/buttons/ButtonMedium"
+import { Button } from "../../../components/buttons/Button"
 
 export type MaintenanceListItem = {
     id: string
@@ -21,9 +23,22 @@ export const Item = (props: Props) => {
             <p>{props.item.id}</p>
             <FormTextInput value={props.item.name} name="item" disabled={props.item.disabled} />
             <div className="flex w-12 items-center">
-                <ButtonRed label="Delete" onClick={props.deleteItem} />
-                <ButtonRed disabled={props.item.disabled} label="Save" onClick={props.saveItem} />
-                <ButtonRed disabled={!props.item.disabled} label="Edit" onClick={props.editItem} />
+                {!props.item.disabled ? (
+                    <ButtonSmall
+                        className={"bg-green-600 hover:bg-green-700 focus:ring-green-500"}
+                        disabled={props.item.disabled}
+                        label="Save"
+                        onClick={props.saveItem}
+                    />
+                ) : (
+                    <ButtonSmall disabled={!props.item.disabled} label="Edit" onClick={props.editItem} />
+                )}
+
+                <ButtonSmall
+                    className={"bg-red-600 hover:bg-red-700 focus:ring-red-500"}
+                    label="Delete"
+                    onClick={props.deleteItem}
+                />
             </div>
         </li>
     )
