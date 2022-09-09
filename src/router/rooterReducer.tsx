@@ -1,4 +1,3 @@
-import { LOGIN_BTN_CLICKED } from "../screens/login/actions"
 import { ROUTER__SCREEN_CHANGED } from "./actions"
 
 export enum SCREEN_NAME {

@@ -17,7 +17,7 @@ const menuItems: MenuItem[] = [
     { name: "General Info", icon: UsersIcon, id: SCREEN_NAME.GENERAL },
     { name: "User Credentials", icon: FolderIcon, id: SCREEN_NAME.CREDENTIALS },
     { name: "Maintenance", icon: FolderIcon, id: SCREEN_NAME.MAINTENANCE },
-    { name: "Log Out", icon: CalendarIcon, id: SCREEN_NAME.LOG_OUT },
+    // { name: "Log Out", icon: CalendarIcon, id: SCREEN_NAME.LOG_OUT },
 ]
 
 type Props = {
@@ -35,7 +35,7 @@ export const SideBarLayout = (props: Props) => {
     }
 
     return (
-        <div className="flex flex-row w-96 h-screen relative">
+        <div className="flex-row w-96 h-screen relative">
             <div className="fixed flex flex-col flex-grow w-80 border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto">
                 <div className="flex items-center flex-shrink-0 px-4 space-y-5">
                     <img

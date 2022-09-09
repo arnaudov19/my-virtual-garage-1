@@ -1,8 +1,6 @@
 import React from "react"
 import { ButtonSmall } from "../../../components/buttons/ButtonSmall"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
-import { ButtonMedium } from "../../../components/buttons/ButtonMedium"
-import { Button } from "../../../components/buttons/Button"
 
 export type MaintenanceListItem = {
     id: string

@@ -1,10 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { ButtonGroup } from "../../../components/buttons/ButtonGroup"
 import { FormSelectInput } from "../../../components/form-input-fields/FormSelectInput"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
 import { AccountContainer } from "../AccountFormContainer/AccountFormContainer"
 import { SCREEN_NAME } from "../../../router/rooterReducer"
-import { Button, notification } from "antd"
+import { notification } from "antd"
 import { connect } from "react-redux"
 import { isAccountDetailNotificationClosed } from "./selectors"
 import { notificationCloseBtnClicked } from "./actions"
@@ -39,6 +39,10 @@ const AccountDetailedCarInfo = (props: Props) => {
         })
     }
 
+    // useEffect(() => {
+    //     props.screenName === "info" ? openNotification() : null
+    // }, [props.isNotificationClosed])
+
     return (
         <AccountContainer>
             <>
@@ -53,13 +57,12 @@ const AccountDetailedCarInfo = (props: Props) => {
 }
 
 // REDUX BOILERPLATE
-const mapStateToProps = (state: any) => ({
-    isNotificationClosed: isAccountDetailNotificationClosed(state),
-})
 
 const mapDispatchToProps = {
     //Prop is calling the function
     onNotificationBtnClicked: notificationCloseBtnClicked,
 }
-
+const mapStateToProps = (state: any) => ({
+    isNotificationClosed: isAccountDetailNotificationClosed(state),
+})
 export default connect<any, any, any>(mapStateToProps, mapDispatchToProps)(AccountDetailedCarInfo)

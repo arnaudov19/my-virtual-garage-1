@@ -1,5 +1,3 @@
-import { AccountDetailedCarInfo } from "../screens/account/AccountDetailedCarInfo/AccountDetailedCarInfo"
-import { loginBtnClicked } from "../screens/login/actions"
 import { routerScreenChanged } from "../router/actions"
 import { connect } from "react-redux"
 import { getCurrentScreenName } from "../router/selectors"

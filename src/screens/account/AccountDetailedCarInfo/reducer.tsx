@@ -1,4 +1,5 @@
 import { NOTIFICATION_CLOSE_BTN_CLICKED } from "./actions"
+import { LOG_OUT_REQUESTED } from "../../login/actions"
 
 export type InfoState = {
     notificationBar: {
@@ -24,6 +25,11 @@ export function infoReducer(state: InfoState, action: Record<string, any>): Info
                 notificationBar: {
                     isNotificationClosed: true,
                 },
+            }
+
+        case LOG_OUT_REQUESTED:
+            return {
+                ...createDefaultInfoState(),
             }
 
         default:

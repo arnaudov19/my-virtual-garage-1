@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { AccountScreen } from "../account/AccountScreen/AccountScreen"
 import LoginScreen from "../login/LoginScreen"
 import CreateUserGeneralCarInfo from "../sign-up/SignupGeneralCarInfo"
 import CreateUserDetailedCarInfo from "../sign-up/SignupDetailedCarInfo"
@@ -58,23 +57,23 @@ export const ChangeScreenComponent = () => {
             )
 
         case 1:
-            return (
-                <AccountScreen
-                    email={currentEmail}
-                    password={currentPass}
-                    confirmPassword={confirmPass}
-                    carBrand={carBrand}
-                    carModel={carModel}
-                    kmOnPurchase={kmOnPurchase}
-                    price={price}
-                    fuelType={fuelType}
-                    displacement={displacement}
-                    power={power}
-                    oilType={oilType}
-                    onSetPage={(page: number) => setCurrentPage(page)}
-                    currentPage={currentPage}
-                />
-            )
+        // return (
+        //     <AccountScreen
+        //         email={currentEmail}
+        //         password={currentPass}
+        //         confirmPassword={confirmPass}
+        //         carBrand={carBrand}
+        //         carModel={carModel}
+        //         kmOnPurchase={kmOnPurchase}
+        //         price={price}
+        //         fuelType={fuelType}
+        //         displacement={displacement}
+        //         power={power}
+        //         oilType={oilType}
+        //         onSetPage={(page: number) => setCurrentPage(page)}
+        //         currentPage={currentPage}
+        //     />
+        // )
 
         case 2:
             return (

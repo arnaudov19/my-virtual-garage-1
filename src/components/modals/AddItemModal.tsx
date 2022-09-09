@@ -3,7 +3,7 @@ import { Button } from "../buttons/Button"
 import { Fragment, useRef, useState } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import { ExclamationIcon } from "@heroicons/react/outline"
-import { ButtonSmall } from "../buttons/ButtonRed"
+import { ButtonSmall } from "../buttons/ButtonSmall"
 import { ButtonWhite } from "../buttons/ButtonWhite"
 
 type Props = {
