@@ -1,9 +1,9 @@
 import { Form } from "antd"
 import React from "react"
-import { ButtonMedium } from "../../../components/buttons/ButtonSmall"
 import { FormDatePicker } from "../../../components/form-input-fields/FormDatePicker"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
 import { FormSelectInput } from "../../../components/form-input-fields/FormSelectInput"
+import { ButtonMedium } from "../../../components/buttons/ButtonMedium"
 
 type Props = {
     onSumbit: (values: GeneralCarInfoValues) => void

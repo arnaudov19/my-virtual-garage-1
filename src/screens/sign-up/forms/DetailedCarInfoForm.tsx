@@ -1,7 +1,7 @@
 import { Form } from "antd"
 import React from "react"
-import { ButtonMedium } from "../../../components/buttons/ButtonSmall"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
+import { ButtonMedium } from "../../../components/buttons/ButtonMedium"
 
 type Props = {
     onSumbit: (values: DetailedCarInfoValues) => void

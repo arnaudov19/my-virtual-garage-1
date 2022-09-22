@@ -7,7 +7,7 @@ export const loginBtnClicked = (email: string, password: string) => ({
     },
 })
 
-export const LOG_OUT_REQUESTED = "login/logout/requested"
-export const loginLogoutRequested = () => ({
+export const LOG_OUT_REQUESTED = "logout/requested"
+export const logoutRequested = () => ({
     type: LOG_OUT_REQUESTED,
 })

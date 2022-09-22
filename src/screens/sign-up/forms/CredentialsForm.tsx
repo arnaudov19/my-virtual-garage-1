@@ -1,13 +1,14 @@
 import { Form } from "antd"
 import React from "react"
-import { ButtonMedium } from "../../../components/buttons/ButtonSmall"
 import { FormItemPasswordInput } from "../../../components/form-input-fields/FormItemPasswordInput"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
+import { ButtonMedium } from "../../../components/buttons/ButtonMedium";
 
 type Props = {
     onSumbit: (values: SignupFormValues) => void
     onSetPage: (page: number) => void
 }
+
 export type SignupFormValues = {
     email: string
     password: string
