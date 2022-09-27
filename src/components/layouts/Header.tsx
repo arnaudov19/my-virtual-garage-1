@@ -3,6 +3,7 @@ import { logoutRequested } from "../../screens/login/actions"
 import { useRouter } from "next/router"
 import { SCREEN_NAME } from "../../router/rooterReducer"
 import { routerScreenChanged } from "../../router/actions"
+import { LogoutOutlined } from "@ant-design/icons"
 
 type Props = {
     children?: React.ReactNode
@@ -10,13 +11,10 @@ type Props = {
     onScreenChange: (screen: SCREEN_NAME) => void
 }
 
-
 const Header = (props: Props) => {
-
     const router = useRouter()
 
     const onLogOutRequestClicked = () => {
-
         // TODO refactor using Redux Thunk
         // Separate to different component, so Header does not know about redirect or any additional logic
         // Redirect to login
@@ -28,8 +26,10 @@ const Header = (props: Props) => {
 
     return (
         <div className="flex flex-col fixed items-end p-5 w-[calc(100%_-_16rem)] shadow-sm">
-            <div className="">
-                <a onClick={() => onLogOutRequestClicked()}>Logout</a>
+            <div>
+                <a onClick={() => onLogOutRequestClicked()}>
+                    <LogoutOutlined className={"text-3xl"} />
+                </a>
             </div>
         </div>
     )

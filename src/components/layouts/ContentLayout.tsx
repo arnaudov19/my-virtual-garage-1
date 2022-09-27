@@ -4,7 +4,7 @@ type Props = {
 
 export const ContentLayout = (props: Props) => {
     return (
-        <div className="flex w-full h-5/6 items-center justify-center pb-4 pt-16">
+        <div className="flex w-full h-full items-center justify-center pb-4 pt-16">
             <div>{props.children}</div>
         </div>
     )

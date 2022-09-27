@@ -4,6 +4,7 @@ import React from "react"
 import { Button } from "../../components/buttons/Button"
 import { LockClosedIcon } from "@heroicons/react/solid"
 import { FormItemPasswordInput } from "../../components/form-input-fields/FormItemPasswordInput"
+import { getConsoleOutput } from "@jest/console"
 
 type Props = {
     onSubmitBtnClicked: (values: LoginFormValues) => void
