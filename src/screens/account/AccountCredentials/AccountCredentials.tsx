@@ -13,12 +13,6 @@ type Props = {
 }
 
 export const AccountCredentials = (props: Props) => {
-    //enable button, if there is some input
-    const shouldDisableSaveButton = (): boolean => {
-        return false
-    }
-
-    console.log("logged in email: ", props.loggedEmail)
     return (
         <AccountContainer>
             <h1 className="text-2xl pb-6">User Credentials</h1>
@@ -28,11 +22,7 @@ export const AccountCredentials = (props: Props) => {
             <FormItemPasswordInput label="Confirm New Password" disabled={false} className="w-96" />
 
             <div className="w-96 pt-6 flex justify-around">
-                {shouldDisableSaveButton() ? (
-                    <ButtonDisabled disabled={true} label="Save" />
-                ) : (
-                    <ButtonMedium onClick={() => props.onSaveBtnClicked} label="Save" />
-                )}
+                <ButtonMedium onClick={() => props.onSaveBtnClicked} label="Save" />
             </div>
         </AccountContainer>
     )

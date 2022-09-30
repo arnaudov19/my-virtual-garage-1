@@ -10,7 +10,7 @@ export const BasicLayout = (props: Props) => {
     return (
         <div className="flex h-screen">
             <SideBarLayout />
-            <div className="flex-col w-full overflow-x-hidden">
+            <div className="w-full h-full overflow-x-hidden">
                 <Header />
                 <ContentLayout>{props.children}</ContentLayout>
             </div>

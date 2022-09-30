@@ -1,9 +1,6 @@
-import React, { useState } from "react"
+import React from "react"
 import { ButtonSmall } from "../../../components/buttons/ButtonSmall"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
-import { FormTextArea } from "../../../components/form-input-fields/FormTextArea"
-import { Maybe } from "../../../types"
-import { getUserEmail } from "../../login/selectors"
 
 export type MaintenanceListItem = {
     id: string
@@ -23,7 +20,6 @@ export const Item = (props: Props) => {
         <li className="bg-white shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md">
             <p>{props.item.name}</p>
             <FormTextInput disabled={props.item.disabled} />
-            <FormTextArea />
             <div className="flex w-12 items-center">
                 {!props.item.disabled ? (
                     <ButtonSmall

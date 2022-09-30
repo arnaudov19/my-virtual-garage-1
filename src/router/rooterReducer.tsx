@@ -6,6 +6,9 @@ export enum SCREEN_NAME {
     GENERAL = "general",
     CREDENTIALS = "credentials",
     MAINTENANCE = "maintenance",
+    SIGN_UP_CREDENTIALS = "signup-credentials",
+    SIGN_UP_INFO = "signup-info",
+    SIGN_UP_GENERAL = "signup-general",
 }
 
 export type RooterState = {

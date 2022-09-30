@@ -4,8 +4,10 @@ type Props = {
 
 export const ContentLayout = (props: Props) => {
     return (
-        <div className="flex w-full h-full items-center justify-center pb-4 pt-16">
-            <div>{props.children}</div>
+        <div className={"w-full h-full"}>
+            <div className="flex w-full h-full items-center justify-center pt-16">
+                <div>{props.children}</div>
+            </div>
         </div>
     )
 }

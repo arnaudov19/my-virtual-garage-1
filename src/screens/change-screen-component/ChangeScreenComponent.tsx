@@ -1,8 +1,5 @@
 import React, { useState } from "react"
 import LoginScreen from "../login/LoginScreen"
-import CreateUserGeneralCarInfo from "../sign-up/SignupGeneralCarInfo"
-import CreateUserDetailedCarInfo from "../sign-up/SignupDetailedCarInfo"
-import { SignupCredentials } from "../sign-up/SignupCredentials"
 import { LoginFormValues } from "../login/LoginForm"
 import { SignupFormValues } from "../sign-up/forms/CredentialsForm"
 import { GeneralCarInfoValues } from "../sign-up/forms/GeneralCarInfoForm"
@@ -75,43 +72,40 @@ export const ChangeScreenComponent = () => {
         //     />
         // )
 
-        case 2:
-            return (
-                <SignupCredentials
-                    email={currentEmail}
-                    password={currentPass}
-                    confirmPassword={confirmPass}
-                    currentPage={currentPage}
-                    onSetPage={(page: number) => setCurrentPage(page)}
-                    onCollectSignupData={collectSignUpData}
-                />
-            )
-        case 3:
-            return (
-                <CreateUserGeneralCarInfo
-                    brand={carBrand}
-                    model={carModel}
-                    purchaseDate={purchaseDate}
-                    registrationDate={registrationDate}
-                    onCollectGeneralCarInfoValues={collectGeneralCarInfoData}
-                    currentPage={currentPage}
-                    onSetPage={(page: number) => setCurrentPage(page)}
-                />
-            )
-        case 4:
-            return (
-                <CreateUserDetailedCarInfo
-                    kilometresOnPurchase={kmOnPurchase}
-                    price={price}
-                    fuel={fuelType}
-                    displacement={displacement}
-                    power={power}
-                    oilType={oilType}
-                    onCollectDetailedCarInfoValues={collectDetailedCarInfoData}
-                    currentPage={currentPage}
-                    onSetPage={(page: number) => setCurrentPage(page)}
-                />
-            )
+        // case 2:
+        //     return (
+        //         <SignupCredentials
+        //             email={currentEmail}
+        //             password={currentPass}
+        //             confirmPassword={confirmPass}
+        //             currentPage={currentPage}
+        //             onSetPage={(page: number) => setCurrentPage(page)}
+        //             onCollectSignupData={collectSignUpData}
+        //         />
+        //     )
+        // case 3:
+        //     return (
+        //         <CreateUserGeneralCarInfo
+        //             purchaseDate={purchaseDate}
+        //             registrationDate={registrationDate}
+        //             onCollectGeneralCarInfoValues={collectGeneralCarInfoData}
+        //             onSetPage={(page: number) => setCurrentPage(page)}
+        //             currentPage={currentPage}
+        //         />
+        //     )
+        // case 4:
+        //     return (
+        //         <CreateUserDetailedCarInfo
+        //             price={price}
+        //             fuel={fuelType}
+        //             displacement={displacement}
+        //             power={power}
+        //             oilType={oilType}
+        //             onCollectDetailedCarInfoValues={collectDetailedCarInfoData}
+        //             currentPage={currentPage}
+        //             onSetPage={(page: number) => setCurrentPage(page)}
+        //         />
+        //     )
         case 5:
             return <LogOutModal currentPage={currentPage} onSetPage={(page: number) => setCurrentPage(page)} />
         default:

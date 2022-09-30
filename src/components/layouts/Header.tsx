@@ -25,7 +25,7 @@ const Header = (props: Props) => {
     }
 
     return (
-        <div className="flex flex-col fixed items-end p-5 w-[calc(100%_-_16rem)] shadow-sm">
+        <div className="flex flex-col fixed items-end p-5 w-[calc(100%_-_16rem)] shadow-sm bg-white">
             <div>
                 <a onClick={() => onLogOutRequestClicked()}>
                     <LogoutOutlined className={"text-3xl"} />

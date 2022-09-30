@@ -54,6 +54,9 @@ export const ItemsList = () => {
                 ) : (
                     <>
                         <ul role="list" className="space-y-3">
+                            <div className="absolute right-4 top-28">
+                                <ButtonSimple label="Add an item" onClick={addItem} />
+                            </div>
                             {listItems.map((item) => (
                                 <>
                                     <Item
@@ -69,7 +72,6 @@ export const ItemsList = () => {
                                     />
                                 </>
                             ))}
-                            <ButtonSimple label="Add an item" onClick={addItem} />
                         </ul>
                     </>
                 )}

@@ -2,10 +2,11 @@ import { Form } from "antd"
 import React from "react"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
 import { ButtonMedium } from "../../../components/buttons/ButtonMedium"
+import { backBtnClicked } from "../actions"
 
 type Props = {
     onSumbit: (values: DetailedCarInfoValues) => void
-    onSetPage: (page: number) => void
+    onBackBtnClicked: () => void
 }
 export type DetailedCarInfoValues = {
     kmOnPurchase: string
@@ -25,7 +26,7 @@ export const DetailedCarInfoForm = (props: Props) => {
         console.log("Fail", errorInfo)
     }
     const onBackBtnClicked = () => {
-        props.onSetPage(3)
+        props.onBackBtnClicked()
     }
     return (
         <Form
