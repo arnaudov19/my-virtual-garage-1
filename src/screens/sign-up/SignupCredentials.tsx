@@ -2,56 +2,34 @@ import React from "react"
 import { ProgressSteps } from "../../components/progress-steps/ProgressSteps"
 import { SignupContainer } from "./SignupContainer"
 import { CreateUserForm, SignupFormValues } from "./forms/CredentialsForm"
-import { SCREEN_NAME } from "../../router/rooterReducer"
-import { getCurrentScreenName } from "../../router/selectors"
-import { connect } from "react-redux"
-import { useRouter } from "next/router"
-import { routerScreenChanged } from "../../router/actions"
-import { backBtnClicked, nextBtnClickedCredentials } from "./actions"
-import { getSignedUnCredentialsData } from "./selectors"
 
 type Props = {
-    screenChange: (screenName: SCREEN_NAME) => void
-    onCollectSignUpData: (values: any) => void
-    onNextBtnClicked: (email: string, password: string) => void
-    onBackBtnClicked: () => void
+    onSetPage: (page: number) => void
+    currentPage: number
+    onCollectSignupData: (values: any) => void
+    email: string
+    password: string
+    confirmPassword: string
 }
 
-const SignupCredentials = (props: Props) => {
-    const router = useRouter()
-
+export const SignupCredentials = (props: Props) => {
     const onNextBtnClicked = () => {
-        props.screenChange(SCREEN_NAME.SIGN_UP_GENERAL)
-        router.push("./signup-general")
+        props.onSetPage(3)
     }
-    const onBackBtnClicked = () => {
-        props.screenChange(SCREEN_NAME.LOGIN)
-        props.onBackBtnClicked()
-        router.push("./login")
+    const onBackBtnClicked = (page: number) => {
+        props.onSetPage(page)
     }
     const onCollectSignupData = (values: SignupFormValues) => {
-        props.onNextBtnClicked(values.email, values.password)
+        props.onCollectSignupData(values)
         onNextBtnClicked()
     }
+
     return (
         <SignupContainer>
             <ProgressSteps currentStep={1} />
             <div className="flex justify-center gap-6">
-                <CreateUserForm onSumbit={onCollectSignupData} onBackBtnClicked={onBackBtnClicked} />
+                <CreateUserForm onSetPage={(page: number) => onBackBtnClicked(page)} onSumbit={onCollectSignupData} />
             </div>
         </SignupContainer>
     )
 }
-
-const mapStateToProps = (state: any) => ({
-    screenChange: getCurrentScreenName(state),
-    onCollectSignUpData: getSignedUnCredentialsData(state),
-})
-
-const mapDispatchToProps = {
-    screenChange: routerScreenChanged,
-    onNextBtnClicked: nextBtnClickedCredentials,
-    onBackBtnClicked: backBtnClicked,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignupCredentials)

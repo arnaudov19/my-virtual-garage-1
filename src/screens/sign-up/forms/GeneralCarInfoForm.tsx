@@ -7,8 +7,7 @@ import { ButtonMedium } from "../../../components/buttons/ButtonMedium"
 
 type Props = {
     onSumbit: (values: GeneralCarInfoValues) => void
-    onBackBtnClicked: () => void
-    // onSetPage: (page: number) => void
+    onSetPage: (page: number) => void
 }
 export type GeneralCarInfoValues = {
     brand: string
@@ -32,7 +31,7 @@ export const GeneralCarInfoForm = (props: Props) => {
         console.log("Fail", errorInfo)
     }
     const onBackBtnClicked = () => {
-        props.onBackBtnClicked()
+        props.onSetPage(2)
     }
 
     return (
