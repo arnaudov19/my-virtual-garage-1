@@ -7,16 +7,19 @@ import { BasicLayout } from "../components/layouts/BasicLayout"
 import { getCurrentScreenName } from "../router/selectors"
 import { AccountCredentials } from "../screens/account/AccountCredentials/AccountCredentials"
 import { LoginState } from "../screens/login/reducer"
+import { getLoggedInUser, getUserEmail } from "../screens/login/selectors"
 
 type Props = {
     screen: SCREEN_NAME
-    userEmail: LoginState
+    userEmail: string
+    loggedInEmail: string
 }
 
 const Credentials = (props: Props) => {
+    console.log("email?:  ", props.userEmail)
     return (
         <BasicLayout>
-            <AccountCredentials />
+            <AccountCredentials loggedEmail={props.userEmail} />
         </BasicLayout>
     )
 }
@@ -24,12 +27,10 @@ const Credentials = (props: Props) => {
 // SELECTORS
 const mapStateToProps = (state: any) => ({
     screen: getCurrentScreenName(state),
+    userEmail: getUserEmail(state),
 })
 
 // DISPATCH ACTIONS
-const mapDispatchToProps = {
-    onLoginBtnClicked: loginBtnClicked,
-    screenChange: routerScreenChanged,
-}
+const mapDispatchToProps = {}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Credentials)

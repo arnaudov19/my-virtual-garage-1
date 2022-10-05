@@ -14,7 +14,7 @@ type Props = {
 }
 
 const Info = (props: Props) => {
-    console.log(props.screen)
+    console.log(props.userEmail)
     return (
         <BasicLayout>
             <AccountDetailedCarInfo

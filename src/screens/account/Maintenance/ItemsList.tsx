@@ -16,7 +16,7 @@ export const ItemsList = () => {
         console.log("Success:", values)
     }
     const addItem = () => {
-        setListItems([...listItems, { id: uuid.v4(), name: Math.random().toString(), disabled: false }])
+        setListItems([...listItems, { id: uuid.v4(), name: "Item name: ", disabled: false }])
         setIsAddBtnClicked(true)
     }
     const deleteItem = (id: string) => {
