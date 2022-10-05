@@ -17,7 +17,6 @@ const General = (props: Props) => {
     )
 }
 
-// CONECTING TO REDUX git
 const mapStateToProps = (state: any) => ({
     screen: getCurrentScreenName(state),
 })

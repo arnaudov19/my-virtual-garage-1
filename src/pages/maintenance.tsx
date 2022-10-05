@@ -9,10 +9,6 @@ type Props = {
     screen: SCREEN_NAME
 }
 
-// TODO Homework
-// Get email from selector
-// Show it in AccountDetailCardInfo screen
-
 const Maintenance = (props: Props) => {
     return (
         <BasicLayout>
@@ -21,7 +17,6 @@ const Maintenance = (props: Props) => {
     )
 }
 
-// CONECTING TO REDUX
 const mapStateToProps = (state: any) => ({
     screen: getCurrentScreenName(state),
 })
