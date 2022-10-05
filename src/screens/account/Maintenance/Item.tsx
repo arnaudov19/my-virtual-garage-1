@@ -18,8 +18,7 @@ type Props = {
 export const Item = (props: Props) => {
     return (
         <li className="bg-white shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md">
-            <p>{props.item.name}</p>
-            <FormTextInput disabled={props.item.disabled} />
+            <FormTextInput label={props.item.name} disabled={props.item.disabled} />
             <div className="flex w-12 items-center">
                 {!props.item.disabled ? (
                     <ButtonSmall

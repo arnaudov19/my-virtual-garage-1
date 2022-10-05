@@ -8,9 +8,9 @@ type Props = {
 
 export const BasicLayout = (props: Props) => {
     return (
-        <div className="flex h-screen">
+        <div className="flex w-full h-screen">
             <SideBarLayout />
-            <div className="w-full h-full overflow-x-hidden">
+            <div className="flex flex-col items-center w-full h-full overflow-x-hidden">
                 <Header />
                 <ContentLayout>{props.children}</ContentLayout>
             </div>

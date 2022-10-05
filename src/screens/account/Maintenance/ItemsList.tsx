@@ -16,7 +16,7 @@ export const ItemsList = () => {
         console.log("Success:", values)
     }
     const addItem = () => {
-        setListItems([...listItems, { id: uuid.v4(), name: "Item name: ", disabled: false }])
+        setListItems([...listItems, { id: uuid.v4(), name: "Activity type: ", disabled: false }])
         setIsAddBtnClicked(true)
     }
     const deleteItem = (id: string) => {
@@ -54,9 +54,6 @@ export const ItemsList = () => {
                 ) : (
                     <>
                         <ul role="list" className="space-y-3">
-                            <div className="absolute right-4 top-28">
-                                <ButtonSimple label="Add an item" onClick={addItem} />
-                            </div>
                             {listItems.map((item) => (
                                 <>
                                     <Item
@@ -72,6 +69,7 @@ export const ItemsList = () => {
                                     />
                                 </>
                             ))}
+                            <ButtonSimple label="Add Activity" onClick={addItem} />
                         </ul>
                     </>
                 )}
