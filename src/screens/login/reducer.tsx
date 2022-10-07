@@ -28,7 +28,6 @@ export function loginReducer(state: LoginState, action: Record<string, any>): Lo
                     password: action.payload.password,
                 },
             }
-
         default:
             return state
     }

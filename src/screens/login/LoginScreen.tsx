@@ -9,11 +9,13 @@ import { useRouter } from "next/router"
 import { LoginForm, LoginFormValues } from "./LoginForm"
 import { SCREEN_NAME } from "../../router/rooterReducer"
 import { getLoggedInUser } from "./selectors"
+import { createAccountBtnClicked } from "../sign-up/actions"
 
 type Props = {
     onLoginBtnClicked: (email: string, password: string) => void
     screenChange: (screenName: SCREEN_NAME) => void
     onCollectLoginData: (values: any) => void
+    onCreateAccountBtnClicked: () => void
 }
 
 const LoginScreen = (props: Props): any => {
@@ -26,8 +28,10 @@ const LoginScreen = (props: Props): any => {
     }
 
     const createAccBtnClicked = () => {
-        console.log("")
-        props.screenChange(SCREEN_NAME.INFO)
+        console.log("create account btn clicked: ")
+        props.onCreateAccountBtnClicked()
+        props.screenChange(SCREEN_NAME.SIGN_UP_CREDENTIALS)
+        router.push("./signup-credentials")
     }
 
     return (
@@ -42,7 +46,6 @@ const LoginScreen = (props: Props): any => {
     )
 }
 
-// getDataFromRedux
 const mapStateToProps = (state: any) => ({
     onLoginBtnClicked: getLoggedInUser(state),
 })
@@ -50,6 +53,7 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = {
     onLoginBtnClicked: loginBtnClicked,
     screenChange: routerScreenChanged,
+    onCreateAccountBtnClicked: createAccountBtnClicked,
 }
 
 export default connect<any, any, any>(mapStateToProps, mapDispatchToProps)(LoginScreen)
