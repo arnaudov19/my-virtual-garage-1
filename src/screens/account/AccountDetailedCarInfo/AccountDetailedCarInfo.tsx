@@ -11,6 +11,8 @@ import { getCurrentScreenName } from "../../../router/selectors"
 import { getLoggedInUser, getUserEmail } from "../../login/selectors"
 import { loginBtnClicked } from "../../login/actions"
 import { routerScreenChanged } from "../../../router/actions"
+import { isAccountDetailNotificationClosed } from "./selectors"
+import { notificationCloseBtnClicked } from "./actions"
 
 type Props = {
     carBrand: string
@@ -66,11 +68,13 @@ const mapStateToProps = (state: any) => ({
     isLoggedIn: getLoggedInUser(state),
     carBrand: getSignedUnGeneralDataBrand(state),
     carModel: getSignedUnGeneralDataModel(state),
+    isNotificationClosed: isAccountDetailNotificationClosed(state),
 })
 
 const mapDispatchToProps = {
     onLoginBtnClicked: loginBtnClicked,
     screenChange: routerScreenChanged,
+    onNotificationBtnClicked: notificationCloseBtnClicked,
 }
 
 export default connect<any, any, any>(mapStateToProps, mapDispatchToProps)(AccountDetailedCarInfo)
