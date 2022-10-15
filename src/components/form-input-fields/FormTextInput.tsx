@@ -13,13 +13,14 @@ type Props = {
     value?: string
     disabled?: any
     onChange?: () => void
+    initialValue?: string
 }
 
 export const FormTextInput = (props: Props) => {
     return (
         <Form.Item noStyle>
             <label className="w-96 flex self">{props.label}</label>
-            <Form.Item name={props.name} style={props.styles} rules={props.rules}>
+            <Form.Item initialValue={props.initialValue} name={props.name} style={props.styles} rules={props.rules}>
                 <Input
                     disabled={props.disabled}
                     className={`w-full ${props.className}`}

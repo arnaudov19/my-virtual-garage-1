@@ -8,7 +8,7 @@ import { connect } from "react-redux"
 import { useRouter } from "next/router"
 import { routerScreenChanged } from "../../router/actions"
 import { backBtnClicked, nextBtnClickedCredentials } from "./actions"
-import { getSignedUnCredentialsData } from "./selectors"
+import { getSignedUpCredentialsData } from "./selectors"
 
 type Props = {
     screenChange: (screenName: SCREEN_NAME) => void
@@ -45,7 +45,7 @@ const SignupCredentials = (props: Props) => {
 
 const mapStateToProps = (state: any) => ({
     screenChange: getCurrentScreenName(state),
-    onCollectSignUpData: getSignedUnCredentialsData(state),
+    onCollectSignUpData: getSignedUpCredentialsData(state),
 })
 
 const mapDispatchToProps = {

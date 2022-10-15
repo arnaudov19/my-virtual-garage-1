@@ -1,28 +1,38 @@
-import { loginBtnClicked } from "../screens/login/actions"
 import { routerScreenChanged } from "../router/actions"
 import { connect } from "react-redux"
 import { getCurrentScreenName } from "../router/selectors"
 import { SCREEN_NAME } from "../router/rooterReducer"
 import { BasicLayout } from "../components/layouts/BasicLayout"
-import { getLoggedInUser, getUserEmail } from "../screens/login/selectors"
-import AccountDetailedCarInfo from "../screens/account/AccountDetailedCarInfo/AccountDetailedCarInfo"
+import { AccountDetailedCarInfo } from "../screens/account/AccountDetailedCarInfo/AccountDetailedCarInfo"
+import {
+    getSignedUpInfoCarPower,
+    getSignedUpInfoDisplacement,
+    getSignedUpInfoFuelType,
+    getSignedUpInfoKmOnPurchase,
+    getSignedUpInfoOilType,
+    getSignedUpInfoPrice,
+} from "../screens/sign-up/selectors"
 
 type Props = {
     screen: SCREEN_NAME
-    userEmail: string
-    isLoggedIn: boolean
+    kmOnPurchase?: string
+    price?: string
+    fuelType?: string
+    displacement?: string
+    power?: string
+    oilType?: string
 }
 
 const Info = (props: Props) => {
-    console.log(props.userEmail)
     return (
         <BasicLayout>
             <AccountDetailedCarInfo
-                isCustomerLoggedIn={props.isLoggedIn}
-                userEmail={props.userEmail}
-                carBrand={"Skoda"}
-                carModel={"Octavia"}
-                screenName={props.screen}
+                kmOnPurchase={props.kmOnPurchase}
+                price={props.price}
+                fuelType={props.fuelType}
+                displacement={props.displacement}
+                carPower={props.power}
+                oilType={props.oilType}
             />
         </BasicLayout>
     )
@@ -30,13 +40,15 @@ const Info = (props: Props) => {
 
 const mapStateToProps = (state: any) => ({
     screen: getCurrentScreenName(state),
-    userinfo: getLoggedInUser(state),
-    userEmail: getUserEmail(state),
-    isLoggedIn: getLoggedInUser(state),
+    kmOnPurchase: getSignedUpInfoKmOnPurchase(state),
+    price: getSignedUpInfoPrice(state),
+    fuelType: getSignedUpInfoFuelType(state),
+    displacement: getSignedUpInfoDisplacement(state),
+    power: getSignedUpInfoCarPower(state),
+    oilType: getSignedUpInfoOilType(state),
 })
 
 const mapDispatchToProps = {
-    onLoginBtnClicked: loginBtnClicked,
     screenChange: routerScreenChanged,
 }
 

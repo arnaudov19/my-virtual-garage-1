@@ -8,7 +8,7 @@ import { getCurrentScreenName } from "../../router/selectors"
 import { connect } from "react-redux"
 import { routerScreenChanged } from "../../router/actions"
 import { nextBtnClickedInfo } from "./actions"
-import { getSignedUnInfoData } from "./selectors"
+import { getSignedUpInfoData } from "./selectors"
 
 type Props = {
     screenChange: (screenName: SCREEN_NAME) => void
@@ -18,7 +18,7 @@ type Props = {
         price: string,
         fuel: string,
         displacement: string,
-        power: string,
+        carPower: string,
         oilType: string
     ) => void
 }
@@ -38,13 +38,15 @@ const SignUpDetailedInfo = (props: Props): any => {
         props.onNextBtnClicked(
             values.kmOnPurchase,
             values.price,
-            values.carPower,
             values.fuelType,
-            values.oilType,
-            values.displacement
+            values.displacement,
+            values.carPower,
+            values.oilType
         )
         onNextBtnClicked()
+        console.log(values)
     }
+
     return (
         <SignupContainer>
             <ProgressSteps currentStep={2} />
@@ -58,7 +60,7 @@ const SignUpDetailedInfo = (props: Props): any => {
 const mapDispatchToProps = {
     screenChange: routerScreenChanged,
     onNextBtnClicked: nextBtnClickedInfo,
-    onCollectDetailedCarInfoValues: getSignedUnInfoData,
+    onCollectDetailedCarInfoValues: getSignedUpInfoData,
 }
 const mapStateToProps = (state: any) => ({
     screenChange: getCurrentScreenName(state),

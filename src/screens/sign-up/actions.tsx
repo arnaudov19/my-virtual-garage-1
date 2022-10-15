@@ -26,21 +26,22 @@ export const nextBtnClickedGeneral = (
         registrationDate: registrationDate,
     },
 })
-export const NEXT_BTN_CLICKED_INFO = "next/btn/clicked/info"
+export const CREATE_ACCOUNT_BTN_CLICKED_INFO = "create/account/btn/clicked/info"
 export const nextBtnClickedInfo = (
     kmOnPurchase: string,
     price: string,
     fuelType: string,
     displacement: string,
-    power: string,
+    carPower: string,
     oilType: string
 ) => ({
-    type: NEXT_BTN_CLICKED_INFO,
+    type: CREATE_ACCOUNT_BTN_CLICKED_INFO,
     payload: {
         kmOnPurchase: kmOnPurchase,
         price: price,
+        fuelType: fuelType,
         displacement: displacement,
-        power: power,
+        carPower: carPower,
         oilType: oilType,
     },
 })

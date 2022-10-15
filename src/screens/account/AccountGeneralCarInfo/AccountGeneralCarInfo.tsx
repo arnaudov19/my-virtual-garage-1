@@ -1,27 +1,74 @@
 import React from "react"
 import { ButtonGroup } from "../../../components/buttons/ButtonGroup"
+import { FormSelectInput } from "../../../components/form-input-fields/FormSelectInput"
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
 import { AccountContainer } from "../AccountFormContainer/AccountFormContainer"
+import { SCREEN_NAME } from "../../../router/rooterReducer"
+import { notification } from "antd"
+import { connect } from "react-redux"
+import { getSignedUpGeneralDataBrand, getSignedUpGeneralDataModel } from "../../sign-up/selectors"
+import { getCurrentScreenName } from "../../../router/selectors"
+import { getLoggedInUser, getUserEmail } from "../../login/selectors"
+import { loginBtnClicked } from "../../login/actions"
+import { routerScreenChanged } from "../../../router/actions"
+import { isAccountDetailNotificationClosed } from "./selectors"
+import { notificationCloseBtnClicked } from "./actions"
 
 type Props = {
+    carBrand: string
+    carModel?: string
+    userEmail?: string
+    screenName: SCREEN_NAME
+    onScreenChange: (screen: SCREEN_NAME) => void
+    onNotificationBtnClicked: () => void
+    isNotificationClosed: boolean
+    isCustomerLoggedIn?: boolean
     onBackBtnClicked?: () => void
+    onSaveBtnClicked?: () => void
 }
+const carBrands = [
+    { brand: "skoda", name: "Skoda", id: 1 },
+    { brand: "audi", name: "Audi", id: 2 },
+    { brand: "vw", name: "VW", id: 3 },
+    { brand: "mercedes", name: "Mercedes", id: 4 },
+]
 
-export const AccountGeneralCarInfo = (props: Props) => {
+const AccountGeneralCarInfo = (props: Props) => {
+    const openNotification = () => {
+        notification.open({
+            message: "Welcome, ",
+            description: props.userEmail,
+            duration: 10,
+            onClose: () => props.onNotificationBtnClicked(),
+        })
+    }
+
     return (
         <AccountContainer>
-            <h1 className="text-2xl pb-6">General Car Data</h1>
-            <div>
-                <FormTextInput disabled={true} name="kmOnPurchase" label="Kilometres on Purchase" placeholder="59000" />
-                <FormTextInput disabled={true} name="price" label="Price" placeholder="4000$" />
-                <FormTextInput disabled={true} name="fuelType" label="Fuel Type" placeholder="Diesel, Gasoline.." />
-            </div>
-            <div>
-                <FormTextInput disabled={true} name="displacement" label="Displacement" placeholder="1998cc" />
-                <FormTextInput disabled={true} name="carPower" label="Power" placeholder="170hp" />
-                <FormTextInput disabled={true} name="oilType" label="Oil type" placeholder="SAE 10W-40" />
-            </div>
-            <ButtonGroup onBackBtnClicked={props.onBackBtnClicked} />
+            <>
+                {!props.isNotificationClosed && props.screenName === "general" ? openNotification() : null}
+                <span>{props.screenName}</span>
+                <FormSelectInput value={props.carBrand} optionsList={carBrands} className="w-96" label="Car Brand" />
+                <FormTextInput value={props.carModel} className="w-96" label="Car Model" />
+                <ButtonGroup onBackBtnClicked={props.onBackBtnClicked} />
+            </>
         </AccountContainer>
     )
 }
+
+const mapStateToProps = (state: any) => ({
+    screen: getCurrentScreenName(state),
+    userinfo: getLoggedInUser(state),
+    userEmail: getUserEmail(state),
+    isLoggedIn: getLoggedInUser(state),
+    carBrand: getSignedUpGeneralDataBrand(state),
+    carModel: getSignedUpGeneralDataModel(state),
+    isNotificationClosed: isAccountDetailNotificationClosed(state),
+})
+
+const mapDispatchToProps = {
+    onLoginBtnClicked: loginBtnClicked,
+    screenChange: routerScreenChanged,
+    onNotificationBtnClicked: notificationCloseBtnClicked,
+}
+export default connect<any, any, any>(mapStateToProps, mapDispatchToProps)(AccountGeneralCarInfo)

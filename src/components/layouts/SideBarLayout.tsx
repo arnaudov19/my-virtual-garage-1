@@ -13,8 +13,8 @@ type MenuItem = {
 }
 
 const menuItems: MenuItem[] = [
-    { name: "Detailed Info", icon: HomeIcon, id: SCREEN_NAME.INFO },
     { name: "General Info", icon: UsersIcon, id: SCREEN_NAME.GENERAL },
+    { name: "Detailed Info", icon: HomeIcon, id: SCREEN_NAME.INFO },
     { name: "User Credentials", icon: FolderIcon, id: SCREEN_NAME.CREDENTIALS },
     { name: "Maintenance", icon: FolderIcon, id: SCREEN_NAME.MAINTENANCE },
 ]

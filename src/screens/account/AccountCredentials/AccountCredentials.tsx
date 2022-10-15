@@ -4,6 +4,7 @@ import { FormTextInput } from "../../../components/form-input-fields/FormTextInp
 import { FormItemPasswordInput } from "../../../components/form-input-fields/FormItemPasswordInput"
 import { ButtonDisabled } from "../../../components/buttons/ButtonDisabled"
 import { ButtonMedium } from "../../../components/buttons/ButtonMedium"
+import { Form } from "antd"
 
 type Props = {
     carBrand?: string
@@ -22,11 +23,12 @@ export const AccountCredentials = (props: Props) => {
     return (
         <AccountContainer>
             <h1 className="text-2xl pb-6">User Credentials</h1>
-            <FormTextInput label="Email" className="w-96" disabled={true} value={props.loggedEmail} />
-            <FormItemPasswordInput label="Old password" disabled={false} className="w-96" />
-            <FormItemPasswordInput label="New Password" disabled={false} className="w-96" />
-            <FormItemPasswordInput label="Confirm New Password" disabled={false} className="w-96" />
-
+            <Form>
+                <FormTextInput label="Email" className="w-96" disabled={true} value={props.loggedEmail} />
+                <FormItemPasswordInput label="Old password" disabled={false} className="w-96" />
+                <FormItemPasswordInput label="New Password" disabled={false} className="w-96" />
+                <FormItemPasswordInput label="Confirm New Password" disabled={false} className="w-96" />
+            </Form>
             <div className="w-96 pt-6 flex justify-around">
                 {shouldDisableSaveButton() ? (
                     <ButtonDisabled disabled={true} label="Save" />

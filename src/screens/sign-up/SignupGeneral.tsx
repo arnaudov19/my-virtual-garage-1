@@ -5,7 +5,7 @@ import { GeneralCarInfoForm, GeneralCarInfoValues } from "./forms/GeneralCarInfo
 import { useRouter } from "next/router"
 import { SCREEN_NAME } from "../../router/rooterReducer"
 import { getCurrentScreenName } from "../../router/selectors"
-import { getSignedUnGeneralData } from "./selectors"
+import { getSignedUpGeneralData } from "./selectors"
 import { routerScreenChanged } from "../../router/actions"
 import { backBtnClicked, nextBtnClickedGeneral } from "./actions"
 import { connect } from "react-redux"
@@ -49,7 +49,7 @@ const mapDispatchToProps = {
 }
 const mapStateToProps = (state: any) => ({
     screenChange: getCurrentScreenName(state),
-    onCollectGeneralCarInfoValues: getSignedUnGeneralData(state),
+    onCollectGeneralCarInfoValues: getSignedUpGeneralData(state),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateUserGeneralCarInfo)
