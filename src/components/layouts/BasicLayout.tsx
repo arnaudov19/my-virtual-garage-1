@@ -1,6 +1,6 @@
 import { ContentLayout } from "./ContentLayout"
-import SideBarLayout from "./SideBarLayout"
 import Header from "./Header"
+import ResponsiveSideBarLayout from "./ResponsiveSideBarLayout"
 
 type Props = {
     children?: React.ReactNode
@@ -9,7 +9,7 @@ type Props = {
 export const BasicLayout = (props: Props) => {
     return (
         <div className="flex h-screen">
-            <SideBarLayout />
+            <ResponsiveSideBarLayout />
             <div className="flex-col w-full overflow-x-hidden">
                 <Header />
                 <ContentLayout>{props.children}</ContentLayout>

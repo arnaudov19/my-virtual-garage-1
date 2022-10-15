@@ -5,37 +5,53 @@ import { FormItemPasswordInput } from "../../../components/form-input-fields/For
 import { ButtonDisabled } from "../../../components/buttons/ButtonDisabled"
 import { ButtonMedium } from "../../../components/buttons/ButtonMedium"
 import { Form } from "antd"
+import { getCurrentScreenName } from "../../../router/selectors"
+import { getSignedUpDataEmail } from "../../sign-up/selectors"
+import { connect } from "react-redux"
+import { getLoggedInUser } from "../../login/selectors"
 
 type Props = {
     carBrand?: string
     onBackBtnClicked?: () => void
     onSaveBtnClicked?: () => void
-    loggedEmail: string
+    loggedEmail?: string
+    signedUpEmail?: string
 }
 
-export const AccountCredentials = (props: Props) => {
-    //enable button, if there is some input
+const AccountCredentials = (props: Props) => {
+    //todo enable button, if there is some input
     const shouldDisableSaveButton = (): boolean => {
         return false
     }
 
-    console.log("logged in email: ", props.loggedEmail)
+    console.log("signedUp email: ", props.signedUpEmail)
     return (
         <AccountContainer>
             <h1 className="text-2xl pb-6">User Credentials</h1>
             <Form>
-                <FormTextInput label="Email" className="w-96" disabled={true} value={props.loggedEmail} />
+                <FormTextInput
+                    label="Email"
+                    className="w-96"
+                    disabled={true}
+                    placeholder={props.signedUpEmail}
+                    initialValue={props.signedUpEmail}
+                />
                 <FormItemPasswordInput label="Old password" disabled={false} className="w-96" />
                 <FormItemPasswordInput label="New Password" disabled={false} className="w-96" />
                 <FormItemPasswordInput label="Confirm New Password" disabled={false} className="w-96" />
             </Form>
             <div className="w-96 pt-6 flex justify-around">
-                {shouldDisableSaveButton() ? (
-                    <ButtonDisabled disabled={true} label="Save" />
-                ) : (
-                    <ButtonMedium onClick={() => props.onSaveBtnClicked} label="Save" />
-                )}
+                <ButtonDisabled disabled={true} label="Edit" />
+                <ButtonMedium onClick={() => props.onSaveBtnClicked} label="Save" />
             </div>
         </AccountContainer>
     )
 }
+const mapStateToProps = (state: any) => ({
+    screen: getCurrentScreenName(state),
+    signedUpEmail: getSignedUpDataEmail(state),
+})
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountCredentials)

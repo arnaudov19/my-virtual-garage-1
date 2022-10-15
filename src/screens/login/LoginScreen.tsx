@@ -23,7 +23,7 @@ const LoginScreen = (props: Props): any => {
 
     const collectLoginData = (values: LoginFormValues) => {
         props.onLoginBtnClicked(values.email, values.password)
-        props.screenChange(SCREEN_NAME.INFO)
+        props.screenChange(SCREEN_NAME.GENERAL)
         router.push("/info")
     }
 

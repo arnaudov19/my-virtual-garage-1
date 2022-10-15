@@ -7,6 +7,8 @@ export const getSignedUpCredentialsData = (state: StateObject): any =>
     getSignUpStateObject(state).signedUpUserCredentialsData
 export const getSignedUpGeneralData = (state: StateObject): any => getSignUpStateObject(state).signedUpUserGeneralData
 export const getSignedUpInfoData = (state: StateObject): any => getSignUpStateObject(state).signedUpUserInfoData
+export const getSignedUpDataEmail = (state: StateObject): any =>
+    getSignUpStateObject(state).signedUpUserCredentialsData.email
 
 export const getSignedUpGeneralDataModel = (state: StateObject): any =>
     getSignUpStateObject(state).signedUpUserGeneralData.model
