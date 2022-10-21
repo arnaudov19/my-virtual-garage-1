@@ -13,7 +13,6 @@ import { loginBtnClicked } from "../../login/actions"
 import { routerScreenChanged } from "../../../router/actions"
 import { isAccountDetailNotificationClosed } from "./selectors"
 import { notificationCloseBtnClicked } from "./actions"
-import { DatePicker } from "antd/es"
 
 type Props = {
     carBrand: string
@@ -48,7 +47,7 @@ const AccountGeneralCarInfo = (props: Props) => {
         <AccountContainer>
             <>
                 {!props.isNotificationClosed && props.screenName === "general" ? openNotification() : null}
-                <span>{props.screenName}</span>
+                <h1 className="text-2xl pb-6">General Car Data</h1>
                 <FormSelectInput value={props.carBrand} optionsList={carBrands} className="w-96" label="Car Brand" />
                 <FormTextInput value={props.carModel} className="w-96" label="Car Model" />
                 <ButtonGroup onBackBtnClicked={props.onBackBtnClicked} />

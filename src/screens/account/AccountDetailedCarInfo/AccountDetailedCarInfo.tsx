@@ -17,7 +17,7 @@ type Props = {
 export const AccountDetailedCarInfo = (props: Props) => {
     return (
         <AccountContainer>
-            <h1 className="text-2xl pb-6">General Car Data</h1>
+            <h1 className="text-2xl pb-6">Detailed Car Data</h1>
             <Form>
                 <div>
                     <FormTextInput

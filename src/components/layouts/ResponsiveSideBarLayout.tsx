@@ -7,6 +7,7 @@ import { classNames } from "../../utils/utils"
 import { getCurrentScreenName } from "../../router/selectors"
 import { routerScreenChanged } from "../../router/actions"
 import { connect } from "react-redux"
+import { getLoggedInUser, getUserEmail } from "../../screens/login/selectors"
 
 type MenuItem = {
     id: SCREEN_NAME
@@ -24,6 +25,7 @@ type Props = {
     children?: React.ReactNode
     activeMenuItemId: SCREEN_NAME
     setActiveMenuItemId: (id: SCREEN_NAME) => void
+    loggedInEmail?: string
 }
 
 export const ResponsiveSideBarLayout = (props: Props) => {
@@ -35,6 +37,7 @@ export const ResponsiveSideBarLayout = (props: Props) => {
         props.setActiveMenuItemId(id)
         router.push(id)
     }
+
     return (
         <>
             <div>
@@ -137,7 +140,7 @@ export const ResponsiveSideBarLayout = (props: Props) => {
                                                 </div>
                                                 <div className="ml-3">
                                                     <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">
-                                                        Tom Cook
+                                                        {props.loggedInEmail}
                                                     </p>
                                                     <p className="text-sm font-medium text-gray-500 group-hover:text-gray-700">
                                                         View profile
@@ -202,7 +205,7 @@ export const ResponsiveSideBarLayout = (props: Props) => {
                                     </div>
                                     <div className="ml-3">
                                         <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                                            Tom Cook
+                                            {props.loggedInEmail}
                                         </p>
                                         <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
                                             View profile
@@ -242,6 +245,7 @@ export const ResponsiveSideBarLayout = (props: Props) => {
 }
 const mapStateToProps = (state: any) => ({
     activeMenuItemId: getCurrentScreenName(state),
+    loggedInEmail: getUserEmail(state),
 })
 
 const mapDispatchToProps = {
