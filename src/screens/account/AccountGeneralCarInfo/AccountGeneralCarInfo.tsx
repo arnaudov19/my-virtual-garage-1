@@ -4,7 +4,7 @@ import { FormSelectInput } from "../../../components/form-input-fields/FormSelec
 import { FormTextInput } from "../../../components/form-input-fields/FormTextInput"
 import { AccountContainer } from "../AccountFormContainer/AccountFormContainer"
 import { SCREEN_NAME } from "../../../router/rooterReducer"
-import { notification } from "antd"
+import { DatePicker, Form, notification } from "antd"
 import { connect } from "react-redux"
 import { getSignedUpGeneralDataBrand, getSignedUpGeneralDataModel } from "../../sign-up/selectors"
 import { getCurrentScreenName } from "../../../router/selectors"
@@ -13,6 +13,7 @@ import { loginBtnClicked } from "../../login/actions"
 import { routerScreenChanged } from "../../../router/actions"
 import { isAccountDetailNotificationClosed } from "./selectors"
 import { notificationCloseBtnClicked } from "./actions"
+import { FormDatePicker } from "../../../components/form-input-fields/FormDatePicker"
 
 type Props = {
     carBrand: string
@@ -48,8 +49,17 @@ const AccountGeneralCarInfo = (props: Props) => {
             <>
                 {!props.isNotificationClosed && props.screenName === "general" ? openNotification() : null}
                 <h1 className="text-2xl pb-6">General Car Data</h1>
-                <FormSelectInput value={props.carBrand} optionsList={carBrands} className="w-96" label="Car Brand" />
-                <FormTextInput value={props.carModel} className="w-96" label="Car Model" />
+                <Form>
+                    <FormSelectInput
+                        value={props.carBrand}
+                        optionsList={carBrands}
+                        className="w-96"
+                        label="Car Brand"
+                    />
+                    <FormTextInput value={props.carModel} className="w-96" label="Car Model" />
+                    <FormDatePicker className="w-96" label="Purchase Date" />
+                    <FormDatePicker className="w-96" label="Registration Date" />
+                </Form>
                 <ButtonGroup onBackBtnClicked={props.onBackBtnClicked} />
             </>
         </AccountContainer>
