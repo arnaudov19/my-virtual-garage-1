@@ -12,8 +12,9 @@ type Props = {
     styles?: {}
     value?: string
     disabled?: any
-    onChange?: () => void
+    onChange?: (val: any) => void
     initialValue?: string
+    suffix?: any
 }
 
 export const FormTextInput = (props: Props) => {
@@ -28,6 +29,7 @@ export const FormTextInput = (props: Props) => {
                     size={props.size}
                     placeholder={props.placeholder}
                     value={props.value}
+                    suffix={props.suffix}
                     onChange={props.onChange}
                 />
             </Form.Item>

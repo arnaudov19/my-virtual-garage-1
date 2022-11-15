@@ -8,6 +8,7 @@ type Props = {
     size?: SizeType
     label?: string
     name?: string
+    disabled?: boolean
 }
 
 export const FormDatePicker = (props: Props) => {
@@ -23,6 +24,7 @@ export const FormDatePicker = (props: Props) => {
                     size={props.size}
                     placeholder={props.placeholder}
                     onChange={handleValue}
+                    disabled={props.disabled}
                 />
             </Form.Item>
         </Form.Item>

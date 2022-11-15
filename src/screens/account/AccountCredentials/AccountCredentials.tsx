@@ -8,7 +8,6 @@ import { Form } from "antd"
 import { getCurrentScreenName } from "../../../router/selectors"
 import { getSignedUpDataEmail } from "../../sign-up/selectors"
 import { connect } from "react-redux"
-import { getLoggedInUser } from "../../login/selectors"
 
 type Props = {
     carBrand?: string

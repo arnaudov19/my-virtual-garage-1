@@ -12,11 +12,9 @@ export const ItemsList = () => {
     const handleSubmit = (values: any) => {
         // TODO MOST IMPORTANTEST EVER IN THE WORLD
         //  DO WHATEVER YOU WANT WITH DATA
-
-        console.log("Success:", values)
     }
     const addItem = () => {
-        setListItems([...listItems, { id: uuid.v4(), name: "Item name: ", disabled: false }])
+        setListItems([...listItems, { id: uuid.v4(), name: "Maintenance type: ", disabled: false }])
         setIsAddBtnClicked(true)
     }
     const deleteItem = (id: string) => {
@@ -69,7 +67,7 @@ export const ItemsList = () => {
                                     />
                                 </>
                             ))}
-                            <ButtonSimple label="Add an item" onClick={addItem} />
+                            <ButtonSimple label="Add Activity" onClick={addItem} />
                         </ul>
                     </>
                 )}

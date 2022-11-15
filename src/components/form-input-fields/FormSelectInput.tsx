@@ -14,6 +14,7 @@ type Props = {
     name?: string
     rules?: any[]
     optionsList: any[]
+    disabled?: boolean
 }
 
 export const FormSelectInput = (props: Props) => {
@@ -24,7 +25,11 @@ export const FormSelectInput = (props: Props) => {
         <Form.Item noStyle>
             <label className="w-96 flex self">{props.label}</label>
             <Form.Item className={`${props.className}`} name={props.name} style={props.styles} rules={props.rules}>
-                <Select size={props.size} placeholder="Select Car Brand" onChange={handleChange}>
+                <Select
+                    size={props.size}
+                    disabled={props.disabled}
+                    placeholder={props.placeholder}
+                    onChange={handleChange}>
                     {props.optionsList.map((item: any) => (
                         <Option key={item.id} value={item.brand}>
                             {item.name}
